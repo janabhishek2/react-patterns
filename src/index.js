@@ -8,7 +8,12 @@ const Right = () => <h1>Right</h1>;
 
 
 function App() {
-    return <SplitScreen Left={Left} Right={Right} leftWidth={1} rightWidth={3} />
+    return <SplitScreen leftWidth={1} rightWidth={3}>
+
+    <Left />
+    <Right />
+
+    </SplitScreen>
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
