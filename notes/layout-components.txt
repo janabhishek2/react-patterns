@@ -1,0 +1,3 @@
+Layout components: Used to render various components on the UI.
+
+The individual components should not be concerned about their placement on page.

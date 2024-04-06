@@ -1,0 +1,4 @@
+Design patterns
+
+1. Design patterns provide ready made solutions to common scenarios/ use-cases in the UI industry.
+2. Design patterns are used to save time/efforts used for maintaining code / re-using code.
