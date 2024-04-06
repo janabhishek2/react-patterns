@@ -3,15 +3,15 @@ import React from "react";
 import SplitScreen from "./components/split-screen.jsx";
 import './index.css';
 
-const Left = () => <h1>Left</h1>;
-const Right = () => <h1>Right</h1>;
+const Left = ({ title }) => <h1>{title}</h1>;
+const Right = ({ title }) => <h1>{title}</h1>;
 
 
 function App() {
     return <SplitScreen leftWidth={1} rightWidth={3}>
 
-    <Left />
-    <Right />
+    <Left title="right"/>
+    <Right title="left"/>
 
     </SplitScreen>
 }
