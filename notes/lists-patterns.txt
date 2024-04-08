@@ -1,0 +1,3 @@
+1. list pattern develops by creating re-usable small and large list item component for a list.
+2. Create a generic RegularList component which takes in Large/Small list component and their source name and data.
+3. Individual list-item component is used to show the list Item for the particular list data.
