@@ -1,0 +1,2 @@
+1. Container components are responsible for data fetching and passing data to child components.
+2. Child components should be un-aware of where/how data is being fetched.
