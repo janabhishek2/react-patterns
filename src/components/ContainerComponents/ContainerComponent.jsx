@@ -1,12 +1,12 @@
 import React from 'react'
-import CurrentUser from './CurrentUser';
+import CurrentUserLoader from './CurrentUserLoader';
 import User from './User';
 
 function ContainerComponent() {
   return (
-    <CurrentUser>
+    <CurrentUserLoader>
         <User />
-    </CurrentUser>
+    </CurrentUserLoader>
   )
 }
 

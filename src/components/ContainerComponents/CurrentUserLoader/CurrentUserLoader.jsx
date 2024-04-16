@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function CurrentUser({ children }) {
+function CurrentUserLoader({ children }) {
     const [user, setUser] = useState({});
 
     const fetchCurrentUser = () => {
@@ -34,4 +34,4 @@ function CurrentUser({ children }) {
   )
 }
 
-export default CurrentUser
+export default CurrentUserLoader;
