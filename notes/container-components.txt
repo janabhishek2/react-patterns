@@ -1,3 +1,4 @@
 1. Container components are responsible for data fetching and passing data to child components.
 2. Child components should be un-aware of where/how data is being fetched.
 3. Container components should take props from upper tree to make conditional api calls.
+4. Container components are useful when we want to pass some props to one/many child components.
