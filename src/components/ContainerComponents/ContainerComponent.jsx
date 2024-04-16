@@ -7,6 +7,7 @@ function ContainerComponent() {
     <>
       <UserLoader userId='1'>
         <User />
+        <User />
       </UserLoader>
 
       <UserLoader userId='2'>
