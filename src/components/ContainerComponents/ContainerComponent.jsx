@@ -1,20 +1,13 @@
-import React from 'react';
-import User from './User';
-import UserLoader from './UserLoader';
+import React from "react";
+import GenericDataLoader from "./GenericDataLoader";
+import User from "./User";
 
 function ContainerComponent() {
-  return (
-    <>
-      <UserLoader userId='1'>
-        <User />
-        <User />
-      </UserLoader>
-
-      <UserLoader userId='2'>
-        <User />
-      </UserLoader>
-    </>
-  )
+    return (
+        <GenericDataLoader resourceUrl="/ancd" resourceName="user">
+            <User />
+        </GenericDataLoader>
+    );
 }
 
 export default ContainerComponent;
