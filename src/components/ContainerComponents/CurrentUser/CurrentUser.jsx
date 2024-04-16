@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 function CurrentUser({ children }) {
     const [user, setUser] = useState({});
 
-    const fetchUsers = () => {
+    const fetchCurrentUser = () => {
       return new Promise((resolve) => {
         setTimeout(() => {
             resolve({
@@ -17,7 +17,7 @@ function CurrentUser({ children }) {
 
   useEffect(() => {
     const updateUser = async () => {
-      const user = await fetchUsers();
+      const user = await fetchCurrentUser();
       setUser(user);
     }
     updateUser();
