@@ -1,13 +1,19 @@
-import React from 'react'
-import CurrentUserLoader from './CurrentUserLoader';
+import React from 'react';
 import User from './User';
+import UserLoader from './UserLoader';
 
 function ContainerComponent() {
   return (
-    <CurrentUserLoader>
+    <>
+      <UserLoader userId='1'>
         <User />
-    </CurrentUserLoader>
+      </UserLoader>
+
+      <UserLoader userId='2'>
+        <User />
+      </UserLoader>
+    </>
   )
 }
 
-export default ContainerComponent
+export default ContainerComponent;
