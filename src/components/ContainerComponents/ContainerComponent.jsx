@@ -1,5 +1,6 @@
 import React from "react";
 import DataSource from "./DataSource";
+import DataSourceWithRenderProps from "./DataSourceWithRenderProps";
 
 import User from "./User";
 
@@ -16,9 +17,7 @@ const handleGetDataForUser = () => {
 }
 function ContainerComponent() {
     return (
-        <DataSource resourceName={"user"} getData={handleGetDataForUser}>
-            <User />
-        </DataSource>
+       <DataSourceWithRenderProps getData={handleGetDataForUser} render={(resource) => <User user={resource}/>}/>
     );
 }
 

@@ -2,3 +2,4 @@
 2. Child components should be un-aware of where/how data is being fetched.
 3. Container components should take props from upper tree to make conditional api calls.
 4. Container components are useful when we want to pass some props to one/many child components.
+5. Render props pattern ( pattern in which jsx to be rendered as child is passed in render prop from parent - container ) can be combined with the container components to render children from outside and use inside.
