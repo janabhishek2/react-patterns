@@ -1,12 +1,24 @@
 import React from "react";
-import GenericDataLoader from "./GenericDataLoader";
+import DataSource from "./DataSource";
+
 import User from "./User";
 
+const handleGetDataForUser = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                name: 'Abhishek',
+                age: 24,
+                books: ['react', 'react-dom', 'webpack']
+            })
+        }, 2000);
+    });
+}
 function ContainerComponent() {
     return (
-        <GenericDataLoader resourceUrl="/ancd" resourceName="user">
+        <DataSource resourceName={"user"} getData={handleGetDataForUser}>
             <User />
-        </GenericDataLoader>
+        </DataSource>
     );
 }
 
