@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function DataSourceWithRenderProps({ render = () => <></>, getData = () => {} }) {
+function DataSourceWithRenderProps({ render = () => <></>, getData = () => Promise.resolve("") }) {
     const [data, setData] = useState({});
 
     const fetchAndSetData = async () => {
