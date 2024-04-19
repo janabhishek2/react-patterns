@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import ContainerComponent from "./components/ContainerComponents";
+import Index from "./components/Controlled-Uncontrolled";
 
 function App() {
-    return (<ContainerComponent />);
+    return (<Index />);
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
