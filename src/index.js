@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import Index from "./components/Controlled-Uncontrolled";
+import ControlledUncontrolled from './components/Controlled-Uncontrolled';
 
 function App() {
-    return (<Index />);
+    return (<ControlledUncontrolled />);
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
