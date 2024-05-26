@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 import ControlledModal from './ControlledModal';
+import Step from './Step';
+import UnControlledLogin from './Un-controlled-login-flow';
 
 const Index = () => {
-    const [shouldDisplay, setShouldDisplay] = useState(false);
-    const handleClose = () => {
-        setShouldDisplay(false);
-    }
-    return (
-        <>
-        <ControlledModal shouldDisplay={shouldDisplay} onClose={handleClose}>
-            I am a controlled modal
-        </ControlledModal>
-
-        {!shouldDisplay && (<button onClick={() => setShouldDisplay(true)}>
-            Show modal
-        </button>)}
-        </>
-    );
+    return <UnControlledLogin>
+        <Step id={1} />
+        <Step id={2} />
+        <Step id={3} />
+    </UnControlledLogin>
 }
 
 export default Index;
