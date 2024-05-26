@@ -2,3 +2,5 @@
 2. Controlled components do not have their own state; they take data and handler/mutate functions from parent compnent.
 3. Un-controlled components have their own state / data and handler functions; addtional functions can be passed from props and run with existing handler functions.
 4. Controlled components are preferred.
+
+5. In un-controlled flows parent component does not has access to data; so data manipulation is very difficult.
