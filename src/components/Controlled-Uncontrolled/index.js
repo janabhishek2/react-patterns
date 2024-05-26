@@ -4,7 +4,12 @@ import Step from './Step';
 import UnControlledLogin from './Un-controlled-login-flow';
 
 const Index = () => {
-    return <UnControlledLogin>
+
+    const onDone = (data) => {
+        console.log('You are now done: ', data);
+    };
+
+    return <UnControlledLogin onDone={onDone}>
         <Step id={1} />
         <Step id={2} />
         <Step id={3} />
