@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react';
 import React, { useState } from 'react';
 
+// uncontrolled login is a un-controlled component as app.js has no state with itself. all state is defined at un-controlled level.
 export default function UnControlledLogin(props) {
     const { children } = props;
 
     // save curr-step state
     const [currStep, setCurrStep] = useState(0);
 
-    
     // we define goNext at parent element and pass via props to children
     const childrenArr = React.Children.toArray(children);
 
