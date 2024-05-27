@@ -26,6 +26,7 @@ export default function UnControlledLogin(props) {
 
     const renderStep = childrenArr[currStep];
 
+    // if we have to show/hide a component based on prev data; we can not do it here.
     return React.isValidElement(renderStep) ? (
         React.cloneElement(renderStep, {goNext})
     ) : renderStep
