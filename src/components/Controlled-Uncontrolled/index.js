@@ -1,19 +1,9 @@
-import React, { useState } from 'react';
-import ControlledModal from './ControlledModal';
-import Step from './Step';
-import UnControlledLogin from './Un-controlled-login-flow';
+import React from 'react';
+import ControlledFlow from './Controlled-login-flow';
 
 const Index = () => {
 
-    const onDone = (data) => {
-        console.log('You are now done: ', data);
-    };
-
-    return <UnControlledLogin onDone={onDone}>
-        <Step id={1} />
-        <Step id={2} />
-        <Step id={3} />
-    </UnControlledLogin>
+    return <ControlledFlow />
 }
 
 export default Index;
