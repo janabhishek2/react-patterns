@@ -1,7 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-function UserInfo({ user }) {
+function UserInfo({ user, updateUser, loading }) {
     const { name, age, country, books } = user || {};
+
+    const handleUpdate = () => {
+        const updatedUser = {...user};
+        updatedUser.name = 'new-name';
+        updatedUser.age = 22;
+        updatedUser.country = 'India';
+
+        updateUser(updatedUser);
+    };
+
     return user ? (
         <>
             <h2>Name: {name}</h2>
@@ -15,6 +25,9 @@ function UserInfo({ user }) {
                     })
                 }        
             </ul>
+
+            <hr />
+            <button onClick={handleUpdate} disabled={loading}>Update User</button>
         </>
     ): (
         <h3>Loading....</h3>
