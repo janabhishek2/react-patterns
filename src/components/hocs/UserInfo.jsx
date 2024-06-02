@@ -12,7 +12,7 @@ function UserInfo({ user, updateUser, loading }) {
         updateUser(updatedUser);
     };
 
-    return user ? (
+    return Object.keys(user).length > 0 ? (
         <>
             <h2>Name: {name}</h2>
             <p>Age: {age}</p>
