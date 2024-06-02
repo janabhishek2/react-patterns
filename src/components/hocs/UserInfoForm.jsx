@@ -36,7 +36,7 @@ const UserInfoForm = includeUpdateUser((props) => {
             </div>
             <div>
                 <button onClick={onReset}>Reset</button>
-                <button onClick={updateCallback}>Update</button>
+                <button onClick={updateCallback} disabled={loading}>Update</button>
             </div>
         </div>
     </>) : (
