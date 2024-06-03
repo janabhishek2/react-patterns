@@ -1,0 +1,4 @@
+1. useMemo is a hook which is used for caching the data once it is calculated.
+2. useMemo takes 2 args: a function which returns a computed value and a dependency array.
+3. function is run to re-calculate only when deps change.
+4. This prevents react from re-rendering same logic if any other state var change.
