@@ -1,0 +1,4 @@
+1. Hocs are functions which take in a component; and return a functional Component with enhanced ( extra ) props.
+2. Hocs are used when we have to add additional functionality/logic to our app.
+3. Hocs can be used to fetch data / update data.
+4. For updating; hocs will have to manage the state locally and pass callbacks to child component.
