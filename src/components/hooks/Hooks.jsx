@@ -1,11 +1,12 @@
 import React from 'react';
 import Userinfo from './reusableComponents/Userinfo';
-import useCurrentUser from './useCurrentUser/useCurrentUser';
+import useUser from './useUser/useUser.hook';
 
 function Hooks() {
-    const user = useCurrentUser();
+    const { user, loading } = useUser(1);
+
     return (
-        user ? (
+        (!loading && user) ? (
             <Userinfo {...user} />
         ) : (
             <h2>Loading....</h2>
