@@ -1,17 +1,15 @@
 import React from 'react';
-import Userinfo from './reusableComponents/Userinfo';
-import useUser from './useUser/useUser.hook';
+import Todos from './useTodos/Todos';
 
 function Hooks() {
-    const { user, loading } = useUser(1);
 
     return (
-        (!loading && user) ? (
-            <Userinfo {...user} />
-        ) : (
-            <h2>Loading....</h2>
-        )
-    )
+        <>
+            <Todos id="1" />
+            <Todos id="2" />
+            <Todos id="3" />
+        </>
+    );
 }
 
 export default Hooks;

@@ -22,7 +22,7 @@ const useUser = (userId) => {
        if(!user) {
         getUser();
        }
-    }, []);
+    }, [userId]);
 
     return {
         user, loading
