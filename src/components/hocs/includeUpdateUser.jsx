@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { updateUser as updateUserApiCall, fetchUser } from './promises';
+import { updateUser as updateUserApiCall, fetchUser } from '../hooks/reusableComponents/promises';
 
 const userInitialState = {
     initial: {},

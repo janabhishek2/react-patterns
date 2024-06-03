@@ -11,7 +11,7 @@ function Userinfo(props) {
             <ul>
                 {
                     books.map(book => {
-                        return <li key={book}>{book}</li>
+                        return <li key={book.id}>{book.name}</li>
                     })
                 }
             </ul>
