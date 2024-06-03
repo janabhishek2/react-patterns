@@ -2,3 +2,6 @@
 2. useMemo takes 2 args: a function which returns a computed value and a dependency array.
 3. function is run to re-calculate only when deps change.
 4. This prevents react from re-rendering same logic if any other state var change.
+
+5. React.memo: is a hoc which when wrapped around a function prevents it from re-renders unless there is any prop/state change from parent component.
+6. Usually when parent state changes; it re-renders all its children; React.memo prevents it from happening.
