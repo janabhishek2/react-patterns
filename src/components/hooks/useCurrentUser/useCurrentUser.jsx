@@ -7,9 +7,9 @@ const useCurrentUser = () => {
     const getUser = async () => {
         try {
             const response = await fetchUser();
-            if(!response.data) throw new Error('error fetching user');
+            if(!response) throw new Error('error fetching user');
 
-            setUser(response.data);
+            setUser(response);
         } catch(err) {
             
         }

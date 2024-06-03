@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import UserInfoForm from "./components/hocs/UserInfoForm";
+import Hooks from "./components/hooks";
 
 function App() {
 
-    return <UserInfoForm />
+    return <Hooks />
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
