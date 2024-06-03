@@ -1,2 +1,4 @@
 1. Custom hooks are re-usable hooks which uses existing hooks for enhanced functionality.
 2. If there is some common logic; we can encapsulate it in a custom hook and use it in the app.
+3. Examples: if we want to fetch users from a server; we can store user state and fetch logic in a custom hook;
+    and return user-state,loading,error values--> example is react query.
