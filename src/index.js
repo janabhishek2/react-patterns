@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import Primes from "./components/Test/Primes";
+import Test from "./components/Test/Test";
 
 function App() {
 
-    return <Primes />;
+    return <Test />;
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));

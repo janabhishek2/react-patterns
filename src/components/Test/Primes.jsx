@@ -20,6 +20,8 @@ function Primes() {
     const handleNumChange = ({ target: { value }}) => {
         setSelectedNum(value);
     };
+
+    console.log('render primes');
     const primes = useMemo(() => {
         
         let primes = [];
@@ -49,4 +51,4 @@ function Primes() {
     )
 }
 
-export default Primes;
+export default React.memo(Primes);
