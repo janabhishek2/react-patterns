@@ -1,14 +1,25 @@
 import React from 'react';
-import Todos from './useTodos/Todos';
+import useCustomHook from './customHook/useCustomHook.hook';
+import TodoConsumer from './useTodos/TodoConsumer';
+
+const baseTodoUrl = "https://jsonplaceholder.typicode.com/todos";
 
 function Hooks() {
 
+    const getTodoData = (todoId) => {
+        return fetch(`${baseTodoUrl}/${todoId}`, {
+            method: "get"
+        })
+    };
+
+    const { resource, loading } = useCustomHook(() => getTodoData(1));
+
     return (
-        <>
-            <Todos id="1" />
-            <Todos id="2" />
-            <Todos id="3" />
-        </>
+        resource && !loading ? (
+            <TodoConsumer todo={resource} />
+        ) : (
+            <h3>Loading...</h3>
+        )
     );
 }
 
