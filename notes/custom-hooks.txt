@@ -1,0 +1,2 @@
+1. Custom hooks are re-usable hooks which uses existing hooks for enhanced functionality.
+2. If there is some common logic; we can encapsulate it in a custom hook and use it in the app.
