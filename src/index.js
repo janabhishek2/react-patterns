@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import Hooks from "./components/hooks";
+import Primes from "./components/Test/Primes";
 
 function App() {
 
-    return <Hooks />
+    return <Primes />;
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
