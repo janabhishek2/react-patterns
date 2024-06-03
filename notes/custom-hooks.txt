@@ -2,3 +2,5 @@
 2. If there is some common logic; we can encapsulate it in a custom hook and use it in the app.
 3. Examples: if we want to fetch users from a server; we can store user state and fetch logic in a custom hook;
     and return user-state,loading,error values--> example is react query.
+4. Custom hooks start with the word : "use".
+5. Allow us to share complex behaviour among multiple components.
