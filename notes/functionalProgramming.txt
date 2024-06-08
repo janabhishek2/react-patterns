@@ -6,4 +6,4 @@ USe cases:
 3. hocs
 4. Recursive component.
 5. Partial component.
-6. Composition
+6. Composition: output of one function served as ip to other; F(G(x)).
