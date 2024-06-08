@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import Test from "./components/Test/Test";
+import FunctionalProgramming from "./components/Functional-Programming";
 
 function App() {
 
-    return <Test />;
+    return <FunctionalProgramming />;
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
