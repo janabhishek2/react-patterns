@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import FunctionalProgramming from "./components/Functional-Programming";
+import CompoundPatterns from "./components/CompoundPatterns";
 
 function App() {
 
-    return <FunctionalProgramming />
+    return <CompoundPatterns />
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));

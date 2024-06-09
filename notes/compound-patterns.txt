@@ -1,0 +1,4 @@
+1. Compound patterns means we are breaking the original component into sub components
+and re-using those sub components to achieve a complex result.
+2. We are attaching sub components to the prototype of original component.
+3. Compound pattern manage their own state. sub components access this state using context.
