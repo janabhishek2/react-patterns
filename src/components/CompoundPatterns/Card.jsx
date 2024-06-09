@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Card(props) {
-    const { header, body, footer } = props;
+    const { children } = props;
     return (
         <div style={{
             width: '80%',
@@ -9,9 +9,7 @@ function Card(props) {
             margin: "auto",
             marginTop: "20px"
         }}>
-            {header && <Card.Header>{header}</Card.Header>}
-            {body && <Card.Body>{body}</Card.Body>}
-            {footer && <Card.Footer>{footer}</Card.Footer>}
+            {children}
         </div>
     )
 }
