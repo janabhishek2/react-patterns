@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
+const CardContext = React.createContext(null);
 
 function Card(props) {
     const { children } = props;
+    const [count, setCount] = useState(1);
+
     return (
-        <div style={{
+        <CardContext.Provider value={{
+            count, setCount
+        }}>
+            <div style={{
             width: '80%',
             border: '1px solid black',
             margin: "auto",
@@ -11,6 +17,7 @@ function Card(props) {
         }}>
             {children}
         </div>
+        </CardContext.Provider>
     )
 }
 
@@ -25,6 +32,7 @@ const Header = ({ children }) => {
 };
 
 const Body = ({children}) => {
+    console.log('render');
     return <div style={{
         backgroundColor: 'cream',
         padding: '15px',
@@ -34,18 +42,24 @@ const Body = ({children}) => {
     </div>
 };
 
-const Footer = ({ children }) => {
+const Footer = ({ children, handleClick }) => {
+    const { count, setCount } = useContext(CardContext);
     return <div style={{
         padding: '10px'
     }}>
         {
             children
         }
+        <hr />
+        {
+            count
+        }
+        <button style={{ marginLeft: '10px' }} onClick={() => setCount(count+1)}>Increment</button>
     </div>
 };
 
 Card.Header = Header;
-Card.Footer = Footer;
+Card.Footer = (Footer);
 Card.Body = Body;
 
 export default Card;
