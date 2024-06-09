@@ -7,3 +7,5 @@ USe cases:
 4. Recursive component.
 5. Partial component.
 6. Composition: output of one function served as ip to other; F(G(x)).
+
+Composition: Similar to inheritance; using one base class and extending its properties to other classes. example: red button is composed of button class, small button is composed of button class.

@@ -5,7 +5,7 @@ import FunctionalProgramming from "./components/Functional-Programming";
 
 function App() {
 
-    return <FunctionalProgramming />;
+    return <FunctionalProgramming />
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));

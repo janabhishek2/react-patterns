@@ -1,10 +1,12 @@
 import React from 'react';
-import RecursiveComponents from './RecursiveComponents';
-import { nested } from './RecursiveComponents/nestedObject';
+import { SmallButton, RedButton } from './Composition/Composition';
 
 function FunctionalProgramming() {
   return (
-    <RecursiveComponents data={nested}></RecursiveComponents>
+   <>
+    <SmallButton text="small" color="green"/>
+    <RedButton text="Red" />
+   </>
   )
 }
 
