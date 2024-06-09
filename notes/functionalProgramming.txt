@@ -9,3 +9,4 @@ USe cases:
 6. Composition: output of one function served as ip to other; F(G(x)).
 
 Composition: Similar to inheritance; using one base class and extending its properties to other classes. example: red button is composed of button class, small button is composed of button class.
+Partial Components: components which takes a part of props of the original component and returns new component. partial are hocs which return new components.

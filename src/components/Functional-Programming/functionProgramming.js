@@ -1,11 +1,11 @@
 import React from 'react';
-import { SmallButton, RedButton } from './Composition/Composition';
+import { RedButton, SmallRedButton } from './PartialComponents/Partial';
 
 function FunctionalProgramming() {
   return (
    <>
-    <SmallButton text="small" color="green"/>
-    <RedButton text="Red" />
+    <RedButton text="red button"/>
+    <SmallRedButton text="small red button" />
    </>
   )
 }
