@@ -1,0 +1,2 @@
+1. Observer pattern is also known as subscriber pattern.
+2. Parent emits events; child listens to it.

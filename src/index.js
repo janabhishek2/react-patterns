@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import CompoundPatterns from "./components/CompoundPatterns";
+import Observer from "./components/ObserverPatterns/Observer";
 
 function App() {
 
-    return <CompoundPatterns />
+    return <Observer />
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
