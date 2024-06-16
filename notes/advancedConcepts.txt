@@ -1,3 +1,7 @@
 1. React portals are used to display elements/html at specific dom node in the dom tree.
 2. createPortal takes in 2 args: jsx and the element selector where it is to be displayed.
 3. It is useful when we need to display something independent of the main UI; example: alert.
+
+4. Forwarding refs: refs can be passed down the component tree using special props;
+5. func child(props, newRef) is used to access the ref.
+6. Child is wrapped in forwardRef() hoc to access the newRef.
