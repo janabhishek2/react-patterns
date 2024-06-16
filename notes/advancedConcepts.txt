@@ -5,3 +5,8 @@
 4. Forwarding refs: refs can be passed down the component tree using special props;
 5. func child(props, newRef) is used to access the ref.
 6. Child is wrapped in forwardRef() hoc to access the newRef.
+
+7. Error boundary is used to display fallback in case render step of react throws any error.
+8. Error boundary is a class component with static method getDerivedStateFromError(err) to update state if error is found.
+9. It also has a method componentDidCatch(err) which can be used to perform some operation when error is caught. ex: logging.
+
