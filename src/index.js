@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import './index.css';
-import Observer from "./components/ObserverPatterns/Observer";
+import Advanced from "./components/AdvancedReact/Advanced";
 
 function App() {
 
-    return <Observer />
+    return <Advanced />;
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
