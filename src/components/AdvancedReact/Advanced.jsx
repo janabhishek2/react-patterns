@@ -1,13 +1,9 @@
 import React from 'react';
-import ErrorBoundaries from './ErrorBoundaries';
-import ForwardRef from './ForwardRefs';
-import Keys from './Keys';
-import LayoutEffect from './LayoutEffect';
-import Portals from './Portals';
+import UseId from './useId/UseId';
 
 function Advanced() {
   return (
-    <LayoutEffect />
+    <UseId/>
   )
 }
 
