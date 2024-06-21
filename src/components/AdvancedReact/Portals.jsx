@@ -9,7 +9,7 @@ function Portals() {
     };
 
     return (
-        <div onClick={() => {
+        <div onClickCapture={() => {
             console.log("div click");
         }}>
             <h1>Hello world</h1>
@@ -37,7 +37,7 @@ const Alert = ({ show, children, setShow }) => {
         opacity: "0.5"
 
     }}
-    onClick={(e) => {
+    onClickCapture={(e) => {
         console.log("alert click")
         setShow(false);
     }}>
