@@ -17,4 +17,6 @@
 13. Bubbling means event listener of child will be called first; and then parent.
 14. Capturing: Capturing events from top to bottom. onClickCapture.
 
-15.
+15. useLayoutEffect is similar to useEffect;
+16. useEffect renders the html on first load; then runs the code within effect and then re-renders the html with updated data.
+17. useLayoutEffect renders the html after the code within the effect is completed with updated data.
