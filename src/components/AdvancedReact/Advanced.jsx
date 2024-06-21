@@ -6,7 +6,7 @@ import Portals from './Portals';
 
 function Advanced() {
   return (
-    <Keys />
+    <Portals />
   )
 }
 

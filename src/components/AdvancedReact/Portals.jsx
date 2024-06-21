@@ -9,7 +9,9 @@ function Portals() {
     };
 
     return (
-        <div>
+        <div onClick={() => {
+            console.log("div click");
+        }}>
             <h1>Hello world</h1>
             <button onClick={handleShowPortal}>Show alert</button>
             <Alert show={show} setShow={setShow}>
@@ -34,8 +36,9 @@ const Alert = ({ show, children, setShow }) => {
         position: "sticky",
         opacity: "0.5"
 
-    }}onClick={(e) => {
-        e.stopPropagation();
+    }}
+    onClick={(e) => {
+        console.log("alert click")
         setShow(false);
     }}>
         {children}

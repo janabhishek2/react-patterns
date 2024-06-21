@@ -13,3 +13,6 @@
 10. Keys are used by react to re-mount the component which is placed at same level in the react-dom.
 11. Keys are used as unique identifiers to check for similarity between nodes placed at same level in react DOM tree.
 12. Keys are also used to re-mount any existing component in DOM in case state changes.
+
+13. Bubbling means event listener of child will be called first; and then parent.
+14. Capturing: Capturing events from top to bottom. onClickCapture.
