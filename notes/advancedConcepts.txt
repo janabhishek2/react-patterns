@@ -16,3 +16,5 @@
 
 13. Bubbling means event listener of child will be called first; and then parent.
 14. Capturing: Capturing events from top to bottom. onClickCapture.
+
+15.
