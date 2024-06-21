@@ -1,9 +1,9 @@
 import React from 'react';
-import UseId from './useId/UseId';
+import Refs from './Refs';
 
 function Advanced() {
   return (
-    <UseId/>
+    <Refs/>
   )
 }
 
