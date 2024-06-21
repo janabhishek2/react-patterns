@@ -1,9 +1,14 @@
 import React from 'react';
+import Form from './Form';
 
 function UseId() {
     return (
-        <div>UseId</div>
-    )
+        <>
+            <Form />
+            <br />
+            <Form />
+        </>
+    );
 }
 
 export default UseId;
