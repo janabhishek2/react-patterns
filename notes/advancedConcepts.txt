@@ -25,3 +25,5 @@
 19. useCallback can be used in place of useEffect and useRef to handle input in case of mount/un-mount.
 20. useCallback takes in a function with the dom node which can be used for operations on ref.
 21. This makes sure when ref is mounted/un-mounted we can check for element and do specific actions.
+
+22. useImperativeHandle is a hook used to expose only relevant methods,properties to parent component accessing the ref of child component.
