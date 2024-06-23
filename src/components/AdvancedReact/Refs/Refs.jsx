@@ -3,11 +3,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 function Refs() {
     
     const [showInput, setShowInput] = useState(true);
-    const inputRef = useRef(null);
-
-    useEffect(() => {
-       inputRef?.current && inputRef.current.focus();
-    }, [inputRef.current]);
+    const inputRef = useCallback((element) => {
+        if(element) {
+            element.focus();
+        }
+    });
 
     const toggleShow = () => {
         setShowInput(!showInput);
