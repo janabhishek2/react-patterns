@@ -4,7 +4,7 @@ import Refs from './Refs';
 
 function Advanced() {
   return (
-    <CallbackMemo/>
+    <Refs/>
   )
 }
 

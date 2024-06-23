@@ -1,18 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import System from './System';
 
 function Refs() {
     
     const [showInput, setShowInput] = useState(true);
     const inputRef = useRef(null);
 
-    const func = useCallback(() => {
-        console.log("bye!");
-    }, []);
-
     useEffect(() => {
-        // inputRef.current.focus();
-    }, []);
+       inputRef?.current && inputRef.current.focus();
+    }, [inputRef.current]);
 
     const toggleShow = () => {
         setShowInput(!showInput);
@@ -20,7 +15,6 @@ function Refs() {
     return (
         <>
             <button onClick={toggleShow}>Toggle !</button>
-            <System func={func} />
             {
                 showInput && <div>
                 <label htmlFor='name'>Name: </label>
