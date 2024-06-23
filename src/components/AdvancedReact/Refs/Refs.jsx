@@ -1,24 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import System from './System';
 
 function Refs() {
     
-    const buttonRef = useRef(null);
-    const nameRef = useRef(null);
+    const [showInput, setShowInput] = useState(true);
+    const inputRef = useRef(null);
+
+    const func = useCallback(() => {
+        console.log("bye!");
+    }, []);
 
     useEffect(() => {
-       
-    }, [nameRef?.current]);
+        // inputRef.current.focus();
+    }, []);
 
-    const handleClick = () => {
-        nameRef.current.value = 'abcd';
-    };
-
+    const toggleShow = () => {
+        setShowInput(!showInput);
+    }
     return (
         <>
-            <button ref={buttonRef} onClick={handleClick}>Click me</button>
-            <br />
-            <br />
-            <input ref={nameRef} type="text" />
+            <button onClick={toggleShow}>Toggle !</button>
+            <System func={func} />
+            {
+                showInput && <div>
+                <label htmlFor='name'>Name: </label>
+                <input id="name" type="text" ref={inputRef} />
+                </div>
+            }
         </>
     )
 }
