@@ -21,3 +21,7 @@
 16. useEffect renders the html on first load; then runs the code within effect and then re-renders the html with updated data.
 17. useLayoutEffect renders the html after the code within the effect is completed with updated data.
 18. To prevent the UI lags on first render; we use useLayoutEffect.
+
+19. useCallback can be used in place of useEffect and useRef to handle input in case of mount/un-mount.
+20. useCallback takes in a function with the dom node which can be used for operations on ref.
+21. This makes sure when ref is mounted/un-mounted we can check for element and do specific actions.
