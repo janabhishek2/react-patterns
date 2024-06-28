@@ -1,35 +1,25 @@
-class Circle {
-    static allowedColors = new Set(["red", "green", "blue"]);
-    constructor(radius, color) {
-        this._radius = radius;
-        this.setColor(color);
+class User {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    get radius() {
-        return this._radius;
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
     }
 
-    setColor(color) {
-        if(Circle.allowedColors.has(color)) {
-            this._color = color;
-        } else {
-            throw new Error("Color not allowed");
+    set fullName(name) {
+        if(typeof name !== "string") {
+            throw new Error("Not a valid fullname");
         }
-    }
-
-    get color() {
-        return this._color;
-    }
-
-    set radius(rad) {
-        if(rad < 0) {
-            throw new Error('radius can not be less than 0');
+        const [fname, lname, ...rest] = name.trim().split(" ");
+        if(fname && lname && rest.length === 0) {
+            this.firstName = fname;
+            this.lastName = lname;
         } else {
-            this._radius = rad;
+            throw new Error("Not a valid fullname")
         }
-    }
-
-    set color(col) {
-       this.setColor(col);
     }
 }
+
+const user = new User("Abhishek", "Jan");
