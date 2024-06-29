@@ -1,12 +1,12 @@
-class Cat {
-    // public class fields
-    static numCats = 0;
-    numLegs = 4;
-    constructor(name) {
-        this.name = name;
-        Cat.numCats++;
-        console.log()
+class Circle {
+    // private class fields begin with #
+    #radius = 3;
+
+    constructor(radius) {
+        this.#radius = radius;
     }
+
 }
 
-const cat = new Cat("blue");
+const circle = new Circle(3);
+console.log(circle);
