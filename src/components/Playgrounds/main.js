@@ -6,7 +6,11 @@ class Circle {
         this.#radius = radius;
     }
 
+    get radius(){
+        return this.#radius;
+    }
+
 }
 
 const circle = new Circle(3);
-console.log(circle);
+console.log(circle.radius);
