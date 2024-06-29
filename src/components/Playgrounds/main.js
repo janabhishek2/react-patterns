@@ -1,22 +1,15 @@
 class Cat {
     constructor(name) {
-        this.catName = name;
+        this.name = name;
     }
-
-    sleep() {
-        console.log(this);
+    dance() {
+        console.log(`I am ${this.name}  and I like to dance...`);
     }
-}
+};
 
-const object = {
-    name: "ABcd",
-    func: function() {
-        console.log(this.name);
-    }
-}
+const cat = new Cat("fluffy");
 
-const classFn = (new Cat("Fluffy")).sleep;
-const objectFn = object.func;
+const fDance = cat.dance;
 
-classFn(); // Here this refers to undefined
-objectFn(); // this refers to window/global object.
+// Value of this is: undefined
+fDance();
