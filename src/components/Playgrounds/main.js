@@ -1,19 +1,17 @@
 class Cat {
-    constructor(name) {
-        this.name = name;
+    constructor(firstName) {
+        this.firstName = firstName;
     }
-    dance() {
-        console.log(`I am ${this.name}  and I like to dance...`);
+
+    dance(type = "tango") {
+        console.log(`THis is ${this.firstName} and I like to dance... ${type}`);
     }
-};
+}
 
 const cat = new Cat("fluffy");
 
-const fDance = cat.dance;
+const kitty = new Cat("Kitty");
 
-// Call the dance method on instance of cat.
-cat.dance();
-// Value of this is: undefined
+const dance = cat.dance;
+dance.call(kitty, "rfc");
 
-// Call th dance method on : undefined
-fDance();
