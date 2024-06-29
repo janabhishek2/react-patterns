@@ -1,29 +1,56 @@
-class DatabaseConnection {
-    static connection = 0;
-    // This code is run when class is loaded for first time.
-
-    // on creating instances it will not be run
-    static {
-        const env = "prod"; 
-        // env = process.env.NODE_ENV;
-        env === "prod" ? this.loadProdConnection() : this.loadDevelopmentConnection();
-    }
-    static loadDevelopmentConnection() {
-        // console.log("Development Connection...");
-        this.connection++;
-    }
-    static loadProdConnection() {
-        // console.log("Prod Connection...", this.connection);
-        this.connection++;
+class UserProfile {
+    setUserName(username) {
+        if(typeof username === "string" && username.length > 0) {
+            this._username = username;
+        } else {
+            throw new Error("Invalid username.");
+        }
     }
 
-    // first static init block will be run; then constructor will run
-    
-    constructor() {
-        // this will always return 1;
-        console.log(DatabaseConnection.connection);
+    setEmail(email) {
+        if(email.includes("@")) {
+            this._email = email;
+        } else {
+            throw new Error("Invalid email.");
+        }
+    }
+
+    setBirthDate(birthDate) {
+        const ms = Date.parse(birthDate);
+        if(!isNaN(ms)) {
+            this._birthdate = birthDate;
+        } else {
+            throw new Error("Invalid birthdate.")
+        }
+    }
+
+    constructor(username, email, birthdate) {
+        this.setUserName(username);
+        this.setEmail(email);
+        this.setBirthDate(birthdate);
+    }
+
+    get username() {
+        return this._username;
+    }
+
+    get email() {
+        return this._email;
+    }
+
+    get birthdate() {
+        return this._birthdate;
+    }
+
+    set username(username) {
+        this.setUserName(username);
+    }
+
+    set email(email) {
+        this.setEmail(email);
+    }
+
+    set birthdate(birthDate) {
+        this.setBirthDate(birthDate);
     }
 }
-
-const dbC1 = new DatabaseConnection();
-const dbC2 = new DatabaseConnection();
