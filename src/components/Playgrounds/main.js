@@ -3,8 +3,11 @@ const person = {
     city: "LA",
     sing: function() {
         // this refers to object
-        console.log("LALALA", this);
+        console.log(`${this.name} sings LALALA`);
     }
 };
 
-person.sing();
+// this will refer to undefined
+const pSing = person.sing;
+
+pSing();
