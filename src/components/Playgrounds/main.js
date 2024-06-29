@@ -1,13 +1,22 @@
-const person = {
-    name: "Conan",
-    city: "LA",
-    sing: function() {
-        // this refers to object
-        console.log(`${this.name} sings LALALA`);
+class Cat {
+    constructor(name) {
+        this.catName = name;
     }
-};
 
-// this will refer to undefined
-const pSing = person.sing;
+    sleep() {
+        console.log(this);
+    }
+}
 
-pSing();
+const object = {
+    name: "ABcd",
+    func: function() {
+        console.log(this.name);
+    }
+}
+
+const classFn = (new Cat("Fluffy")).sleep;
+const objectFn = object.func;
+
+classFn(); // Here this refers to undefined
+objectFn(); // this refers to window/global object.
