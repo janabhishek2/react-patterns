@@ -1,31 +1,29 @@
-class Circle {
-    // private class fields begin with #
+class DatabaseConnection {
+    static connection = 0;
+    // This code is run when class is loaded for first time.
 
-    // class field means declaring all variables that will be used in the class before-hand.
-    // for private fields and public fields, we declare class fields.
-    // for private methods we do not need class fields.
-
-    #radius = 3;
-
-    // declare a private method starting with pound sign. (#)
-    #getDiameter() {
-        return this.#radius * 2;
+    // on creating instances it will not be run
+    static {
+        const env = "prod"; 
+        // env = process.env.NODE_ENV;
+        env === "prod" ? this.loadProdConnection() : this.loadDevelopmentConnection();
+    }
+    static loadDevelopmentConnection() {
+        // console.log("Development Connection...");
+        this.connection++;
+    }
+    static loadProdConnection() {
+        // console.log("Prod Connection...", this.connection);
+        this.connection++;
     }
 
-    constructor(radius) {
-        this.#radius = radius;
+    // first static init block will be run; then constructor will run
+    
+    constructor() {
+        // this will always return 1;
+        console.log(DatabaseConnection.connection);
     }
-
-    get radius(){
-        return this.#radius;
-    }
-
-    get diameter() {
-        // using private method inside a function of class.
-        return this.#getDiameter();
-    }
-
 }
 
-const circle = new Circle(3);
-console.log(circle.diameter);
+const dbC1 = new DatabaseConnection();
+const dbC2 = new DatabaseConnection();
