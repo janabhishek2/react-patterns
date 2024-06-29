@@ -1,25 +1,12 @@
-class User {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    get fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    set fullName(name) {
-        if(typeof name !== "string") {
-            throw new Error("Not a valid fullname");
-        }
-        const [fname, lname, ...rest] = name.trim().split(" ");
-        if(fname && lname && rest.length === 0) {
-            this.firstName = fname;
-            this.lastName = lname;
-        } else {
-            throw new Error("Not a valid fullname")
-        }
+class Cat {
+    // public class fields
+    static numCats = 0;
+    numLegs = 4;
+    constructor(name) {
+        this.name = name;
+        Cat.numCats++;
+        console.log()
     }
 }
 
-const user = new User("Abhishek", "Jan");
+const cat = new Cat("blue");
