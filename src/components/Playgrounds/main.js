@@ -1,16 +1,8 @@
-// Bind makes a new function and binds its this context to the value provided.
-
-const conan = {
-    name: "Conan",
-    sings: function() {
-        console.log(`${this.name} sings LALALA !!`);
-    }
+const multiply = function(a, b) {
+    return a * b;
 };
 
-const lisa = {
-    name: "Lisa"
-};
+// pass 2 as param A;
+const double = multiply.bind(null, 2);
 
-const lisaSings = conan.sings.bind(lisa);
-
-lisaSings();
+console.log(double(3));
