@@ -1,14 +1,13 @@
-const conan = {
-    name: "Conan",
-    city: "LA",
-    sings: function() {
-        console.log(`${this.name} sings LALALALALA....`);
+const ringo = {
+    name: "Ringo",
+    greet: function(greeting) {
+        console.log(`${ringo.name} says ${greeting}`);
     }
 };
 
-const lisa = {
-    name: "Lisa"
+const george = {
+    name: "George"
 };
 
-const genericSings = conan.sings;
-genericSings.call(lisa);
+//  apply can be called on array like objects: Array, Iterable, etc.
+ringo.greet.apply(george, ["Bye"]);
