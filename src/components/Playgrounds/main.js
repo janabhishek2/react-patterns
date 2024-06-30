@@ -1,17 +1,16 @@
 class Counter {
-    constructor(startingNum = 0, increment = 1) {
-        this.count = startingNum;
-        this.increment = increment;
+    constructor(initCount, buttonElement) {
+        this.count = initCount;
+        this.btnElement = buttonElement;
+        this.btnElement.addEventListener("click", this.incrementCount.bind(this));
     }
 
-    start() {
-        // we need to bind setInterval to Counter instance; by default the callback is bound to window.
-        setInterval(function() {
-            console.log("Value is: ", this.count);
-            this.count += this.increment;
-        }.bind(this), 1000)
+    incrementCount() {
+        console.log(this.count);
+        this.count = this.count + 1;
     }
 };
 
-const counter = new Counter();
-counter.start();
+const btnElement = document.querySelector("#clickMe");
+
+const counter = new Counter(0, btnElement);
