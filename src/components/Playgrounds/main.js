@@ -1,13 +1,9 @@
-const ringo = {
-    name: "Ringo",
-    greet: function(greeting) {
-        console.log(`${ringo.name} says ${greeting}`);
-    }
+const maximum = (...args) => {
+    // return Math.max.apply(null, [...args]);
+
+    // or 
+
+    return Math.max.call(null, ...args);
 };
 
-const george = {
-    name: "George"
-};
-
-//  apply can be called on array like objects: Array, Iterable, etc.
-ringo.greet.apply(george, ["Bye"]);
+console.log(maximum(1, 3, 88, -1));
