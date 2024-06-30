@@ -1,16 +1,23 @@
-class Counter {
-    constructor(initCount, buttonElement) {
-        this.count = initCount;
-        this.btnElement = buttonElement;
-        this.btnElement.addEventListener("click", this.incrementCount.bind(this));
+class Timer {
+    constructor() {
+      this.tick = 0;
+      this.timerId = null;
+    }
+  
+    start() {
+      this.timerId = setInterval(() => {
+        if(this.tick === 4) {
+            this.stop();
+        }
+        console.log(this.tick++);
+      }, 1000);
     }
 
-    incrementCount() {
-        console.log(this.count);
-        this.count = this.count + 1;
+    stop() {
+        if(this.timerId) {
+            clearInterval(this.timerId);
+        }
     }
-};
-
-const btnElement = document.querySelector("#clickMe");
-
-const counter = new Counter(0, btnElement);
+}
+const timer = new Timer();
+timer.start();
