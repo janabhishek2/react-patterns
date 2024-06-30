@@ -1,17 +1,14 @@
-class Cat {
-    constructor(firstName) {
-        this.firstName = firstName;
+const conan = {
+    name: "Conan",
+    city: "LA",
+    sings: function() {
+        console.log(`${this.name} sings LALALALALA....`);
     }
+};
 
-    dance(type = "tango") {
-        console.log(`THis is ${this.firstName} and I like to dance... ${type}`);
-    }
-}
+const lisa = {
+    name: "Lisa"
+};
 
-const cat = new Cat("fluffy");
-
-const kitty = new Cat("Kitty");
-
-const dance = cat.dance;
-dance.call(kitty, "rfc");
-
+const genericSings = conan.sings;
+genericSings.call(lisa);
