@@ -1,5 +1,11 @@
-const ul = document.querySelector("ul");
+const firstLi = document.querySelector("li");
 
-const lastChild = ul.lastElementChild;
+// parent node and parent element are always same because only parent elements can have child elements.
+const parentNode = firstLi.parentNode;
 
-lastChild.textContent = "You are last!";
+parentNode.setAttribute("data-t", "x");
+
+// Ancestors of a node
+
+const bodyAncestor = firstLi.closest("body");
+bodyAncestor.style.backgroundColor = 'grey';
