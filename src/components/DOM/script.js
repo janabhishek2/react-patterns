@@ -1,6 +1,5 @@
-const listItems = document.getElementsByTagName("li");
+const ul = document.querySelector("ul");
 
-for(const listItemEl of listItems) {
-    listItemEl.textContent += " (changed)";
-    listItemEl.style['backgroundColor'] = "pink";
-}
+const lastChild = ul.lastElementChild;
+
+lastChild.textContent = "You are last!";
