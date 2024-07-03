@@ -1,11 +1,13 @@
-const firstLi = document.querySelector("li");
+const ul = document.querySelector("ul");
 
-// parent node and parent element are always same because only parent elements can have child elements.
-const parentNode = firstLi.parentNode;
+// Get access to header element.
 
-parentNode.setAttribute("data-t", "x");
+const headerElement = ul.previousElementSibling;
 
-// Ancestors of a node
+console.log(headerElement.textContent); // <h1>textContnet</h1>
 
-const bodyAncestor = firstLi.closest("body");
-bodyAncestor.style.backgroundColor = 'grey';
+// Get access to input field next sibling to ul.
+
+const input = ul.nextElementSibling;
+
+console.log(input.value);
