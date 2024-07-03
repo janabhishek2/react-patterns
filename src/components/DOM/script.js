@@ -1,5 +1,5 @@
-const ul = document.querySelector("ul");
+const listItems = document.querySelectorAll("li");
 
-const li = ul.querySelectorAll("li")[1];
-
-console.dir(li);
+for(const listItemEl of listItems) {
+    console.dir(listItemEl);
+}
