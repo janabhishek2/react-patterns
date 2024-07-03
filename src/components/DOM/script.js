@@ -1,13 +1,11 @@
-const ul = document.querySelector("ul");
+const button = document.querySelector("button");
+const section = document.querySelector("section");
 
-// Get access to header element.
-
-const headerElement = ul.previousElementSibling;
-
-console.log(headerElement.textContent); // <h1>textContnet</h1>
-
-// Get access to input field next sibling to ul.
-
-const input = ul.nextElementSibling;
-
-console.log(input.value);
+button.addEventListener("click", () => {
+    const sectionClasses = section.className;
+    if(sectionClasses.includes("invisible")) {
+        section.className = 'red-bg visible';
+    } else {
+        section.className = 'red-bg invisible';
+    }
+})
