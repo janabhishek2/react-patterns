@@ -1,5 +1,6 @@
-const listItems = document.querySelectorAll("li");
+const listItems = document.getElementsByTagName("li");
 
 for(const listItemEl of listItems) {
-    console.dir(listItemEl);
+    listItemEl.textContent += " (changed)";
+    listItemEl.style['backgroundColor'] = "pink";
 }
