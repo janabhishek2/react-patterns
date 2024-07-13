@@ -8,9 +8,9 @@ div.style.border = "1px solid black";
 div.style.padding = "10px";
 
 const button = document.querySelector("button");
-button.textContent = "Insert after begin";
+button.textContent = "Insert before end..";
 
 button.addEventListener("click", function(e) {
    console.log(e);
-   div.insertAdjacentHTML("afterbegin", adjacentHtmlAfterbegin);
+   div.insertAdjacentHTML("beforeend", adjacentHtmlBeforeEnd);
 });
