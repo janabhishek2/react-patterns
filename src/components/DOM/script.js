@@ -12,5 +12,6 @@ button.textContent = "Insert before end..";
 
 button.addEventListener("click", function(e) {
    console.log(e);
+   // benefit: does not re-render children like innerHTML ONLY ADDS ELEMENT BEFORE END;
    div.insertAdjacentHTML("beforeend", adjacentHtmlBeforeEnd);
 });
