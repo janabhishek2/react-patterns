@@ -1,7 +1,7 @@
 const button = document.querySelector("button");
 const section = document.querySelector("section");
 
-button.addEventListener("click", () => {
-   section.classList.toggle("visible");
-   section.classList.toggle("invisible");
-})
+const div = document.querySelector("div");
+
+// all children of div are re-rendered.
+div.innerHTML += "<p>Hello world</p>";
