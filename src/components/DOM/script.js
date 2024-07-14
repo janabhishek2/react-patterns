@@ -1,8 +1,9 @@
 const list = document.querySelector("ul");
 
-const newLi = document.createElement("li");
-newLi.textContent = "acd";
+const secondLi = list.children[1];
 
-const firstLi = list.firstElementChild;
+const newElement = document.createElement("li");
+newElement.textContent = "newly created item";
 
-firstLi.replaceWith(newLi);
+// Use this method in place of after: for better browser support
+secondLi.insertAdjacentElement("afterend", newElement);
