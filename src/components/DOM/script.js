@@ -1,7 +1,9 @@
 const list = document.querySelector("ul");
 
 const newLi = document.createElement("li");
+newLi.textContent = "Item 5";
 
-newLi.textContent = "List item -- new";
+const lastLi = list.lastElementChild;
+console.log(lastLi);
 
-list.appendChild(newLi);
+lastLi.before(newLi);
