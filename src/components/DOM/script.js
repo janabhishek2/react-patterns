@@ -1,6 +1,8 @@
 const list = document.querySelector("ul");
 
 const newLi = document.createElement("li");
-newLi.textContent = "Item 5";
+newLi.textContent = "acd";
 
-list.prepend(newLi);
+const firstLi = list.firstElementChild;
+
+firstLi.replaceWith(newLi);
