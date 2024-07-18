@@ -1,5 +1,5 @@
 const list = document.querySelector("ul");
 
-list.parentNode.removeChild(list);
+list.remove();
 
 // 2 methods: .remove() and .removeChild()
