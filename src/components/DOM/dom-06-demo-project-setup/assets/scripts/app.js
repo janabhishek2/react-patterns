@@ -6,7 +6,11 @@ const backDropElement = document.getElementById("backdrop");
 
 const toggleMovieModal = () => {
     addModalElement.classList.toggle("visible");
-    backDropElement.classList.toggle("visible");
+    toggleBackDrop();
 };
+
+const toggleBackDrop = () => {
+    backDropElement.classList.toggle("visible");
+}
 
 addButton.addEventListener('click', toggleMovieModal);
