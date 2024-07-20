@@ -54,8 +54,7 @@ const handleAddMovie = () => {
         errorElement.id = "errorElement";
         errorElement.textContent = "There is an error";
         modalBody.append(errorElement);
-    }; 
-    if(!hasError && document.getElementById("errorElement")) {
+    } else {
         document.getElementById("errorElement").remove();
     }
 }
