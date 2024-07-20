@@ -235,6 +235,10 @@ input:focus {
   flex-direction: column;
 }
 
+.error {
+  border: 1px solid red;
+}
+
 @media (min-width: 768px) {
   .modal {
     width: 40rem;
