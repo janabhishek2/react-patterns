@@ -4,21 +4,40 @@ const addButton = body.querySelector("header button");
 const addModalElement = document.getElementById("add-modal");
 const backDropElement = document.body.firstElementChild;
 
+const userInputs = addModalElement.querySelectorAll("input");
+
 const cancelButtonAddModal = addModalElement.querySelector(".btn--passive");
 
+const toggleBackDrop = () => {
+    backDropElement.classList.toggle("visible");
+}
 // functions
 const toggleMovieModal = (e) => {
     addModalElement.classList.toggle("visible");
     toggleBackDrop();
 };
 
-const toggleBackDrop = () => {
-    backDropElement.classList.toggle("visible");
+const clearMovieInputs = () => {
+    for(const input of userInputs) {
+        input.value = '';
+    }
+    return;
+};
+
+const closeMovieModal = () => {
+    toggleMovieModal();
+    clearMovieInputs();
+}
+
+const openMovieModal = () => {
+    toggleMovieModal();
 }
 
 const isEmpty = (str) => {
     return str.length === 0;
 }
+
+const movies = [];
 
 const validate = (...arguments) => {
     let hasError = false;
@@ -54,18 +73,32 @@ const handleAddMovie = () => {
         errorElement.id = "errorElement";
         errorElement.textContent = "There is an error";
         modalBody.append(errorElement);
-    } else {
-        document.getElementById("errorElement").remove();
+        return;
     }
+
+    document.getElementById("errorElement").remove();
+
+    const movie = {
+        title: title.value,
+        imageUrl: imageUrl.value,
+        rating: rating.value
+    };
+
+    movies.push(movie);
+
+    console.log(movies);
+
+    toggleMovieModal();
+    clearMovieInputs();
 }
 
 // event listeners..
 
-backDropElement.addEventListener("click", toggleMovieModal);
+backDropElement.addEventListener("click", closeMovieModal);
 
-cancelButtonAddModal.addEventListener("click", toggleMovieModal);
+cancelButtonAddModal.addEventListener("click", closeMovieModal);
 
-addButton.addEventListener('click', toggleMovieModal);
+addButton.addEventListener('click', openMovieModal);
 
 // apply checks when user clicks on add movie button.
 
