@@ -54,6 +54,34 @@ const validate = (...arguments) => {
     return hasError;
 }
 
+const mainElement = document.body.getElementsByTagName("main")[0];
+const noMoviesSection = document.getElementById("entry-text");
+
+const updateUI = () => {
+    const doMoviesExist = movies.length > 0 ;
+    if(doMoviesExist) {
+        noMoviesSection.remove();
+        const ulElement = document.getElementById("movie-list");
+    
+        // remove existing children
+        const children = ulElement.children;
+        for(let child of children) {
+            child.remove();
+        }
+    
+        // render new children
+        const ulChilds = movies.map(movie => {
+            const liElement = document.createElement("li");
+            liElement.textContent = `${movie.title} ${movie.rating}`;
+            return liElement;
+        });
+        ulElement.append(...ulChilds);
+        return;
+    } else {
+        mainElement.firstChild.insertBefore(noMoviesSection);
+    }
+}
+
 const handleAddMovie = () => {
 
     const modalBody = document.getElementsByClassName("modal__content")[0];
@@ -76,7 +104,7 @@ const handleAddMovie = () => {
         return;
     }
 
-    document.getElementById("errorElement").remove();
+    document.getElementById("errorElement")?.remove();
 
     const movie = {
         title: title.value,
@@ -90,6 +118,7 @@ const handleAddMovie = () => {
 
     toggleMovieModal();
     clearMovieInputs();
+    updateUI();
 }
 
 // event listeners..
