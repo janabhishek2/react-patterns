@@ -70,9 +70,18 @@ const updateUI = () => {
         }
     
         // render new children
-        const ulChilds = movies.map(movie => {
+        const ulChilds = movies.map(({ title, imageUrl, rating }) => {
             const liElement = document.createElement("li");
-            liElement.textContent = `${movie.title} ${movie.rating}`;
+            liElement.className = "movie-element";
+            liElement.innerHTML = `
+                <div class="movie-element__image">
+                    <img src="${imageUrl}" alt="${title}">
+                </div>
+                <div class="movie-element__info">
+                    <h2>${title}</h2>
+                    <p>${rating}/5 stars</p>
+                </div>
+            `;
             return liElement;
         });
         ulElement.append(...ulChilds);
