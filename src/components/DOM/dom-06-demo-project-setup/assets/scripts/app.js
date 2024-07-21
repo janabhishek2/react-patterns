@@ -37,7 +37,8 @@ const isEmpty = (str) => {
     return str.length === 0;
 }
 
-const movies = [];
+let movies = [
+];
 
 const validate = (...arguments) => {
     let hasError = false;
@@ -63,12 +64,12 @@ const updateUI = () => {
         noMoviesSection.remove();
         const ulElement = document.getElementById("movie-list");
     
-        // remove existing children
-        const children = ulElement.children;
-        for(let child of children) {
-            child.remove();
+        // clear the ul
+        
+        const liElementsLength = ulElement.children.length;
+        for(let i=0; i<liElementsLength; i++) {
+            ulElement.firstChild.remove();
         }
-    
         // render new children
         const ulChilds = movies.map(({ title, imageUrl, rating }) => {
             const liElement = document.createElement("li");
@@ -82,14 +83,30 @@ const updateUI = () => {
                     <p>${rating}/5 stars</p>
                 </div>
             `;
+            liElement.style.cursor = "pointer";
+            liElement.addEventListener("click", () => {
+                handleMovieDelete({ title });
+            });
             return liElement;
         });
         ulElement.append(...ulChilds);
         return;
     } else {
-        mainElement.firstChild.insertBefore(noMoviesSection);
+        // bring the section back;
+        mainElement.firstChild.before(noMoviesSection);
+
+        // clear the ul
+        const ul = document.getElementById("movie-list");
+        for(let child of ul.children) {
+            child.remove();
+        }
     }
 }
+
+const handleMovieDelete = (selectedMovie) => {
+    movies = movies.filter(movie => movie.title != selectedMovie.title);
+    updateUI();
+};
 
 const handleAddMovie = () => {
 
@@ -123,8 +140,6 @@ const handleAddMovie = () => {
 
     movies.push(movie);
 
-    console.log(movies);
-
     toggleMovieModal();
     clearMovieInputs();
     updateUI();
@@ -143,3 +158,5 @@ addButton.addEventListener('click', openMovieModal);
 const addMovieButton = cancelButtonAddModal.nextElementSibling;
 
 addMovieButton.addEventListener("click", handleAddMovie);
+
+updateUI();
