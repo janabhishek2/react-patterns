@@ -3,10 +3,12 @@ const body = document.body;
 const addButton = body.querySelector("header button");
 const addModalElement = document.getElementById("add-modal");
 const backDropElement = document.body.firstElementChild;
+const deleteModalElement = document.getElementById("delete-modal");
 
 const userInputs = addModalElement.querySelectorAll("input");
 
 const cancelButtonAddModal = addModalElement.querySelector(".btn--passive");
+const cancelButtonDeleteModal = deleteModalElement.querySelector(".btn--passive");
 
 const toggleBackDrop = () => {
     backDropElement.classList.toggle("visible");
@@ -16,6 +18,20 @@ const toggleMovieModal = (e) => {
     addModalElement.classList.toggle("visible");
     toggleBackDrop();
 };
+
+const toggleDeleteModal = () => {
+    deleteModalElement.classList.toggle("visible");
+    toggleBackDrop();
+};
+
+const closeDeleteModal = (selectedMovie) => {
+    toggleDeleteModal();
+};
+
+const openDeleteModal = () => {
+    deleteModalElement.classList.add("visible");
+    toggleBackDrop();
+}
 
 const clearMovieInputs = () => {
     for(const input of userInputs) {
@@ -38,6 +54,21 @@ const isEmpty = (str) => {
 }
 
 let movies = [
+    {
+        "title": "JS-1",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+        "rating": "1"
+    },
+    {
+        "title": "JS-2",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+        "rating": "2"
+    },
+    {
+        "title": "JS-3",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+        "rating": "3"
+    }
 ];
 
 const validate = (...arguments) => {
@@ -84,8 +115,15 @@ const updateUI = () => {
                 </div>
             `;
             liElement.style.cursor = "pointer";
-            liElement.addEventListener("click", () => {
-                handleMovieDelete({ title });
+            liElement.addEventListener("mouseover", () => {
+                liElement.style.border = "1px solid green";
+            });
+            liElement.addEventListener("mouseleave", () => {
+                liElement.style.border ='';
+            })
+            liElement.addEventListener("click", (e) => {
+                openDeleteModal();
+                deleteMovieHandler({e, selectedMovie: title });
             });
             return liElement;
         });
@@ -108,6 +146,12 @@ const handleMovieDelete = (selectedMovie) => {
     updateUI();
 };
 
+const deleteMovieHandler = ({ e, selectedMovie })=> {
+    // show the delete confirmation modal
+
+    // if yes selected then delete the movie and close modal
+   
+}
 const handleAddMovie = () => {
 
     const modalBody = document.getElementsByClassName("modal__content")[0];
@@ -152,6 +196,19 @@ backDropElement.addEventListener("click", closeMovieModal);
 cancelButtonAddModal.addEventListener("click", closeMovieModal);
 
 addButton.addEventListener('click', openMovieModal);
+
+deleteModalElement.querySelector(".btn--danger").addEventListener("click", () => {
+    closeDeleteModal(selectedMovie);
+    handleMovieDelete(selectedMovie);
+});
+
+cancelButtonDeleteModal.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(e);
+    
+
+    closeDeleteModal(selectedMovie);
+});
 
 // apply checks when user clicks on add movie button.
 
