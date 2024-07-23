@@ -1,17 +1,7 @@
-// slice returns new copy of array
+const arr1 = [1, 2, 3, 4];
+const arr2 = [5, 6, 7, 8];
 
-const arr = [1, 2, 3, 4];
+// returns new array with arr2 concatenated with arr1
+const newArr = arr1.concat(arr2);
 
-// slice is used to copy arrays
-
-const newArr = arr.slice();
-
-// slice is used to get elements from start to end-1
-
-const sliced = arr.slice(0, 2); // 0 and 1
-
-// negative index
-
-const sliced1 = arr.slice(-3, -1); // b > a
-
-console.log(sliced1);
+console.log(newArr);
