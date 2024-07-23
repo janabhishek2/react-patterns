@@ -1,16 +1,17 @@
-const hobbies = ["singing", "dancing"];
+// slice returns new copy of array
 
-// splice: (startindex, elements to delete, new element(s) to insert..)
-hobbies.splice(0, 0, "Good food");
+const arr = [1, 2, 3, 4];
 
-const ulElement = document.querySelector("ul");
-ulElement.innerHTML = "";
+// slice is used to copy arrays
 
-for(let hobby of hobbies) {
-    const liChild = document.createElement("li");
-    liChild.textContent = hobby;
+const newArr = arr.slice();
 
-    ulElement.appendChild(liChild);
-};
+// slice is used to get elements from start to end-1
 
-console.log(ulElement);
+const sliced = arr.slice(0, 2); // 0 and 1
+
+// negative index
+
+const sliced1 = arr.slice(-3, -1); // b > a
+
+console.log(sliced1);
