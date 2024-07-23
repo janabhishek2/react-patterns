@@ -1,9 +1,7 @@
-// arrays
+// here prototype would be NodeList
+const listItems = document.querySelectorAll("li");
 
-// using Array.of
+// here prototype will be array
+const arrayListItems = Array.from(listItems);
 
-// single element 2
-const arr = Array.of(2);
-
-console.log(arr);
-
+console.log(arrayListItems);
