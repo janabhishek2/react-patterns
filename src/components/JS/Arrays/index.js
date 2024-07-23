@@ -1,6 +1,9 @@
 // arrays
 
-const arr = Array('hi', 'welcome');
+// using Array.of
 
-// ["hi","welcome"]
+// single element 2
+const arr = Array.of(2);
+
 console.log(arr);
+
