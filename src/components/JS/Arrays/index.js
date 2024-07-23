@@ -1,15 +1,16 @@
-const hobbies = ["cooking", "singing"];
+const hobbies = ["singing", "dancing"];
 
-// push to last element;
-hobbies.push("swimming");
+// splice: (startindex, elements to delete, new element(s) to insert..)
+hobbies.splice(0, 0, "Good food");
 
-// remove last element
-hobbies.pop();
+const ulElement = document.querySelector("ul");
+ulElement.innerHTML = "";
 
-// insert at first place
-hobbies.unshift("Drining");
+for(let hobby of hobbies) {
+    const liChild = document.createElement("li");
+    liChild.textContent = hobby;
 
-// Remove from first place
-hobbies.shift();
+    ulElement.appendChild(liChild);
+};
 
-console.log(hobbies);
+console.log(ulElement);
