@@ -1,4 +1,15 @@
-//  We can have similar/differnt type of data in arrays
+const hobbies = ["cooking", "singing"];
 
-const arr = [1, 2, 3, "hello", [1, 2], [[1, 2], [3, 4]]];
-console.log(arr);
+// push to last element;
+hobbies.push("swimming");
+
+// remove last element
+hobbies.pop();
+
+// insert at first place
+hobbies.unshift("Drining");
+
+// Remove from first place
+hobbies.shift();
+
+console.log(hobbies);
