@@ -1,4 +1,6 @@
-const arr = new Array(2);
+// arrays
 
-// length 2 empty array
+const arr = new Array('hi', 'welcome');
+
+// ["hi","welcome"]
 console.log(arr);
