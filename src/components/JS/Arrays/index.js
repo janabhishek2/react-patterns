@@ -1,6 +1,6 @@
 // Exercise 1
 
-const nums = [3, 5, 7, 9, 111, 15];
+const nums = [3, -5, 7, 9, 111, 15];
 
 const numsGreaterThan5 = nums.filter(num => num >5);
 
@@ -14,12 +14,19 @@ const reducedNums = nums.reduce((prev, curr) => {
 
 const findMax = (...args) => {
     let max = args[0];
+    let min = args[0];
     for(let item of args) {
         if(item > max) {
             max = item;
         }
+        if(item < min) {
+            min = item;
+        }
     }
-    return max;
+    return [min, max];
 }
 
-console.log(findMax.call(null, ...nums));
+// assignment 3
+const [min, max] = findMax(...nums);
+
+console.log(min, max);
