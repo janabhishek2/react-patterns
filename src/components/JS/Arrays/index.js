@@ -1,11 +1,11 @@
-const person = {
-    name: "Maxi"
-};
+// Exercise 1
 
-const persons = new WeakSet([person]);
+const nums = [3, 5, 7, 9, 111, 15];
 
-// person is garbage collected
-person = null;
+const numsGreaterThan5 = nums.filter(num => num >5);
 
-// persons will not refer to person now.
-console.log(persons);
+const mappedNums = nums.map(num => ({ num }));
+
+const reducedNums = nums.reduce((prev, curr) => {
+    return prev + curr;
+}, 0);
