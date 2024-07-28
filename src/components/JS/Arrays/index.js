@@ -30,3 +30,13 @@ const findMax = (...args) => {
 const [min, max] = findMax(...nums);
 
 console.log(min, max);
+
+// assignment4
+
+const list = new Set();
+list.add(3);
+list.add(3);
+
+for(let item of list) {
+    console.log(item);
+}
