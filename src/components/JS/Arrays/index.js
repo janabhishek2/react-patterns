@@ -1,5 +1,11 @@
-const set = new Set([1, 2, 3, 4]);
+const person = {
+    name: "Maxi"
+};
 
-// set takes in an iterable.
-// sets are used to store unique keys in an iterable
-// methods: has, values(), entries, add, clear, keys
+const persons = new WeakSet([person]);
+
+// person is garbage collected
+person = null;
+
+// persons will not refer to person now.
+console.log(persons);
