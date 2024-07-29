@@ -1,17 +1,27 @@
-function Dog(name, breed) {
+class Dog {
+    constructor(name, breed) {
+        this._name = name;
+        this._breed = breed;
+    }
+
+    bark() {
+        console.log(`${this.name} says woof !`);
+    }
+    sleep() {
+        console.log(`${this._name} sleeps... zzZZzzZZ`);
+    }
+}
+
+function Doggy(name, breed) {
     this._name = name;
     this._breed = breed;
 
-    console.log(this);
+    this.bark = function() {
+        console.log(`${this._name} says woof !`);
+    }
 }
 
-// this refers to window
-// window._name = "abcd";
-const p = Dog("abcd", "Efg");
+const elton = new Dog("Elton", "Breed1");
+const woofy = new Doggy("Woofy", "Breed2");
 
-// this creates a new object with keys _name and _breed
-// this is called a factory function / constructor function
-// cf are used in conjunction with new keyword to create objects.
-const dog = new Dog("Test", "Breed");
-
-// new keyword: creates an empty object ; binds the this keyword to that object and returns it
+console.log(woofy.bark === elton.bark);
