@@ -4,6 +4,7 @@ class Dog {
         this._breed = breed;
     }
 
+    // here bark is bound to prototype of object created by new keyword.
     bark() {
         console.log(`${this.name} says woof !`);
     }
@@ -16,6 +17,7 @@ function Doggy(name, breed) {
     this._name = name;
     this._breed = breed;
 
+    // here bark is bound to object created from constructor function
     this.bark = function() {
         console.log(`${this._name} says woof !`);
     }
