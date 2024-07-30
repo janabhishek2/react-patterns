@@ -1,20 +1,9 @@
-function Dog(name, breed) {
-    this._name = name;
-    this._breed = breed;
-};
+function sum() {
+    let total = 0;
+    for(let item of arguments) {
+        total += item;
+    }
+    return total;
+}
 
-Dog.prototype.bark = function() {
-    console.log(`${this._name} says woof!`);
-};
-
-// every function has prototype method
-// Dog.prototype.constructor refers to the same dog function.
-
-const dog = new Dog.prototype.constructor("Yet", "n");
-
-// this can also be accessed via __proto__ on dog.
-
-const newDog = new dog.__proto__.constructor("Test", "3");
-
-
-
+// sum.prototype.constructor(args) is same as sum(args)
