@@ -11,4 +11,5 @@ class Dog {
 
 const dog = new Dog("DogName", "DogBreed");
 
+// prototypes means the base class using which object was created.
 console.log(dog.__proto__);
