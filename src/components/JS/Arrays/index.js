@@ -1,15 +1,12 @@
-class Dog {
-    constructor(name, breed) {
-        this._name = name;
-        this._breed = breed;
+function Dog(name, breed) {
+    this._name = name;
+    this._breed = breed;
+
+    this.__proto__.bark = function() {
+        console.log(`${this._name} says woof!`);
     }
+};
 
-    bark() {
-        console.log(`${this._name} says woof!!`);
-    }
-}
+const dog = new Dog("Test name", "Test Breed");
 
-const dog = new Dog("DogName", "DogBreed");
-
-// prototypes means the base class using which object was created.
-console.log(dog.__proto__);
+console.log(dog);
