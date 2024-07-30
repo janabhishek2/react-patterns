@@ -1,31 +1,19 @@
-class Dog {
-    constructor(name, breed) {
-        this._name = name;
-        this._breed = breed;
-    }
+function Dog(name, breed) {
+    this._name = name;
+    this._breed = breed;
+};
 
-    bark() {
-        console.log(`${this._name} says woof!`);
-    }
-
-    sleep() {
-        console.log(`${this._name} sleeps zzz...zzzZZ`);
-    }
+Dog.prototype.bark = function() {
+    console.log(`${this._name} barks woof!`);
 }
 
-class GuideDog extends Dog {
-    constructor(name, breed, canGuide) {
-        super(name, breed);
-        this._canGuide = canGuide;
+function GuideDog(name, breed, canguide) {
+    this.__proto__ = new Dog(name, breed);
+    this._guide = canguide;
+
+    this.canGuide = function() {
+        console.log(`${this._name} can ${!this._guide && "not"} guide`);
     }
+};
 
-    canGuide() {
-        console.log(`${this._name} can ${!this._canGuide && "not"} guide`)
-    }
-}
-
-const guideDog = new GuideDog("Test", "breed", true);
-
-// guideDog.__proto__.__proto__.__proto__.__proto__ is null
-
-// classes are syntatic sugar over contructor functions extending each other.
+const guideDog = new GuideDog("Moku", "pomerian", false);
