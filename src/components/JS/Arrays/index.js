@@ -1,9 +1,18 @@
-function sum() {
-    let total = 0;
-    for(let item of arguments) {
-        total += item;
-    }
-    return total;
+// Implementing inheritance using prototype chain
+
+const grandParent = {
+    prop3: "prop3"
+};
+
+const parent = {
+    prop2: "prop2",
+    __proto__: grandParent
 }
 
-// sum.prototype.constructor(args) is same as sum(args)
+const child = {
+    prop1: "prop1",
+    __proto__: parent
+};
+
+// child inherits parent and parent inherits gparent.
+console.log(child.prop3);
