@@ -16,3 +16,5 @@ const child = {
 
 // child inherits parent and parent inherits gparent.
 console.log(child.prop3);
+
+// JS looks for properties/functions in prototype objects and if not found returns;
