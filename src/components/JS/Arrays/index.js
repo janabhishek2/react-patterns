@@ -1,20 +1,31 @@
-// Implementing inheritance using prototype chain
+class Dog {
+    constructor(name, breed) {
+        this._name = name;
+        this._breed = breed;
+    }
 
-const grandParent = {
-    prop3: "prop3"
-};
+    bark() {
+        console.log(`${this._name} says woof!`);
+    }
 
-const parent = {
-    prop2: "prop2",
-    __proto__: grandParent
+    sleep() {
+        console.log(`${this._name} sleeps zzz...zzzZZ`);
+    }
 }
 
-const child = {
-    prop1: "prop1",
-    __proto__: parent
-};
+class GuideDog extends Dog {
+    constructor(name, breed, canGuide) {
+        super(name, breed);
+        this._canGuide = canGuide;
+    }
 
-// child inherits parent and parent inherits gparent.
-console.log(child.prop3);
+    canGuide() {
+        console.log(`${this._name} can ${!this._canGuide && "not"} guide`)
+    }
+}
 
-// JS looks for properties/functions in prototype objects and if not found returns;
+const guideDog = new GuideDog("Test", "breed", true);
+
+// guideDog.__proto__.__proto__.__proto__.__proto__ is null
+
+// classes are syntatic sugar over contructor functions extending each other.
