@@ -17,3 +17,6 @@ function GuideDog(name, breed, canguide) {
 };
 
 const guideDog = new GuideDog("Moku", "pomerian", false);
+
+// Prototypes are objects which inherit the base object; they share common functionality
+// with the base object.
