@@ -15,4 +15,6 @@ const personParent = {
 // Used to set prototype of person to other object.
 Object.setPrototypeOf(person, personParent);
 
-console.log(person);
+// obj1.isPrototypeOf(obj2) to check if a obj2 is a prototype of obj1
+// true
+console.log({personParent}.isPrototypeOf(person));
