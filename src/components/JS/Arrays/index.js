@@ -1,14 +1,18 @@
 // Useful prototype methods
 
-// Object.create(obj1): used to create an object with prototype obj1
+// Object.getProtoTypeof(obj): to get the prototpye of obj
 
 const person = {
-    sing() {
-        console.log(`${this.name} sings... zzZZZ`);
-    }
+    name: "Abhishek",
 };
 
-const raman = Object.create(person);
-raman.name = "Raman";
+const prototypeOfPerson = Object.getPrototypeOf(person);
 
-raman.sing();
+const personParent = {
+    species: "animals"
+};
+
+// Used to set prototype of person to other object.
+Object.setPrototypeOf(person, personParent);
+
+console.log(person);
