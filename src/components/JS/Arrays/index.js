@@ -1,22 +1,14 @@
-function Dog(name, breed) {
-    this._name = name;
-    this._breed = breed;
-};
+// Useful prototype methods
 
-Dog.prototype.bark = function() {
-    console.log(`${this._name} barks woof!`);
-}
+// Object.create(obj1): used to create an object with prototype obj1
 
-function GuideDog(name, breed, canguide) {
-    this.__proto__ = new Dog(name, breed);
-    this._guide = canguide;
-
-    this.canGuide = function() {
-        console.log(`${this._name} can ${!this._guide && "not"} guide`);
+const person = {
+    sing() {
+        console.log(`${this.name} sings... zzZZZ`);
     }
 };
 
-const guideDog = new GuideDog("Moku", "pomerian", false);
+const raman = Object.create(person);
+raman.name = "Raman";
 
-// Prototypes are objects which inherit the base object; they share common functionality
-// with the base object.
+raman.sing();
