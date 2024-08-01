@@ -1,19 +1,12 @@
-// New features in JS
+// nullish coalescing
 
-// optional chaining: to check if a property method exists? then call it else returns
-// why: to prevent errors.
 const user = {
-    fname: "Abhishek",
-    lname: "Jan",
-    fullName: function() {
-        return this.fname + " " + this.lname;
-    }
-}
+    name: "Abhishek",
+    age: 0
+};
 
-// check if fname exists then set it to var
-const fname = user?.fname;
+// || operator checks for falsy values and sets the RHS.
+// ?? useful if age is 0 or falsy and we need to set it to a LHS.
 
-const age = user?.age; // undefined
-
-// call a function if it exists
-user?.imaginaryFunction?.();
+const age = user?.age ?? "unknown age";
+console.log(age);
