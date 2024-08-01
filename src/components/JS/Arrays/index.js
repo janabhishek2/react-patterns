@@ -1,20 +1,14 @@
-// Useful prototype methods
+// New features in JS
 
-// Object.getProtoTypeof(obj): to get the prototpye of obj
+// optional chaining: to check if a property method exists? then call it else returns
+// why: to prevent errors.
+const user = {
+    fname: "Abhishek",
+    lname: "Jan",
+    fullName: function() {
+        return this.fname + " " + this.lname;
+    }
+}
 
-const person = {
-    name: "Abhishek",
-};
-
-const prototypeOfPerson = Object.getPrototypeOf(person);
-
-const personParent = {
-    species: "animals"
-};
-
-// Used to set prototype of person to other object.
-Object.setPrototypeOf(person, personParent);
-
-// obj1.isPrototypeOf(obj2) to check if a obj2 is a prototype of obj1
-// true
-console.log({personParent}.isPrototypeOf(person));
+const fname = user?.fname;
+console.log(fname);
