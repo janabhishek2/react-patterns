@@ -10,5 +10,10 @@ const user = {
     }
 }
 
+// check if fname exists then set it to var
 const fname = user?.fname;
-console.log(fname);
+
+const age = user?.age; // undefined
+
+// call a function if it exists
+user?.imaginaryFunction?.();
