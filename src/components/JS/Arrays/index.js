@@ -1,6 +1,13 @@
-let str = "I am a cat. Cats are very good.";
+// Logical assignment
 
-// replaces all occurences of cat with dog and returns it.
-const ans = str.replaceAll("cat", "dog");
+// logical: && , || , ??
 
-console.log(ans);
+const person = {
+    name: "Abhishek",
+    father: "abcd"
+};
+
+// if person.father is not set then set it to tesst
+person.father ||= "Tesst";
+
+console.log(person);
