@@ -1,12 +1,6 @@
-// nullish coalescing
+// numeric separators
 
-const user = {
-    name: "Abhishek",
-    age: 0
-};
+// we can add _ to improve readability of numbers in js.
+const num = 1_000_00;
 
-// || operator checks for falsy values and sets the RHS.
-// ?? useful if age is 0 or falsy and we need to set it to a LHS. --> only for null and undefined it it set to RHS.
-
-const age = user?.age ?? "unknown age";
-console.log(age);
+console.log(num);
