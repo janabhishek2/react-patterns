@@ -1,8 +1,6 @@
-// at operator arrays
+let str = "I am a cat. Cats are very good.";
 
-const colors = ["red", "green", "blue"];
+// replaces all occurences of cat with dog and returns it.
+const ans = str.replaceAll("cat", "dog");
 
-// colors.at(index) gives element at that index
-
-console.log(colors.at(1)); //green
-console.log(colors.at(-1)); // blue
+console.log(ans);
