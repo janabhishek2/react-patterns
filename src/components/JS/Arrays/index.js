@@ -1,6 +1,8 @@
-// numeric separators
+// at operator arrays
 
-// we can add _ to improve readability of numbers in js.
-const num = 1_000_00;
-const num2 = 12_324_2312_1231;
-console.log(num, num2);
+const colors = ["red", "green", "blue"];
+
+// colors.at(index) gives element at that index
+
+console.log(colors.at(1)); //green
+console.log(colors.at(-1)); // blue
