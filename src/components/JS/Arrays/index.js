@@ -3,11 +3,10 @@
 // logical: && , || , ??
 
 const person = {
-    name: "Abhishek",
-    father: "abcd"
+    name: "Abhishek"
 };
 
-// if person.father is not set then set it to tesst
-person.father ||= "Tesst";
+// if person name exists(truthy) then set it it rocky
+person.name &&= "Rocky";
 
 console.log(person);
