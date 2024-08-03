@@ -1,12 +1,10 @@
-// let and const using hoisting
-
 function test() {
-    // JS hoists let/const variables to this zone; variables are not accessible unless they are defined.
-    // temporal dead zone
-    // x = undefined but not accessible in the function before initialisation
-    console.log(x); // gives error
-    let x = 3;
-
-    // temporal dead zone
+    if(false) {
+        var message = "abcd";
+    }
+    // this wont throw error as message has function scope: var keyword does not have block scope.
+    // we will get message as undefined which is not expected.
+    console.log(message);
 }
+
 test();
