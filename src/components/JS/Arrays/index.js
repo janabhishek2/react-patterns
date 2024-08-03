@@ -1,7 +1,15 @@
-// var variables are bind to window object and conflict with their scope
+// var variables are globally scoped except for functions
 
-// var origin = "Test"; // conflicts with window.origin
+// let and const are block scoped
 
-// let and const do not conflict
+let y = 4;
+if(true) {
+    let x = 3;
+    let y = 5;
+}
 
-let origin = "Test"; //window.origin is intact
+// console.log(x); // x is not accessible here.
+
+console.log(y);
+
+// y will be 4
