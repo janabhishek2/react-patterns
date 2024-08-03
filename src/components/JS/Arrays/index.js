@@ -1,8 +1,12 @@
-// HOISTING
+// let and const using hoisting
 
-// var keyword defs are moved to the top of scope chain: function/global scope only and set to undefined.
-// they are assigned values when they are interpreted by code.
+function test() {
+    // JS hoists let/const variables to this zone; variables are not accessible unless they are defined.
+    // temporal dead zone
+    // x = undefined but not accessible in the function before initialisation
+    console.log(x); // gives error
+    let x = 3;
 
-// we don't get the undefined error while using var keyword; this is not true with let/const.
-console.log(food); // returns undefined
-var food = "pizza";
+    // temporal dead zone
+}
+test();
