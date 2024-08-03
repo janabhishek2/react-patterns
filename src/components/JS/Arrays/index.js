@@ -1,27 +1,18 @@
-// scope chain
+let animal = "lion";
 
-// 1. Look in local scope
-// 2. Look in ext functions
-// 3. Look in global scope --> can be accessed from console directly
-
-let age = 10;
-
-function outer() {
-    let age = "ageless";
-    function inner() {
-        // age = "internal age";
-        function superInner() {
-            console.log("Super inner age is: ", age);
-        }
-        superInner();
-        console.log("Inner age is: ", age);
-    }
-    inner();
-    console.log("Outer age is: ", age);
+function printAnimal() {
+    console.log("Animal is: ", animal);
 }
 
-outer();
-console.log("global age", age);
+function alsoPrintAnimal() {
+    let animal = "tiger";
+    printAnimal(); // prints lion
 
+    // in few languages animal is bound to printAnimal() function and hence tiger is printed.
+    // however this is not the case for JS.
+}
 
-// if age is not found in local scope; js will look for outer functions else global scope for age variable.
+alsoPrintAnimal(); 
+
+// Js is lexically scoped meaning it takes the scope of variables as where the function is defined;
+// it looks for var in local scope, then outer function scopes and then global scope.
