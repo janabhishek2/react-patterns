@@ -1,18 +1,7 @@
-let animal = "lion";
+// HOISTING
 
-function printAnimal() {
-    console.log("Animal is: ", animal);
-}
+// var keyword defs are moved to the top of scope chain: function/global scope only and set to undefined.
+// they are assigned values when they are interpreted by code.
 
-function alsoPrintAnimal() {
-    let animal = "tiger";
-    printAnimal(); // prints lion
-
-    // in few languages animal is bound to printAnimal() function and hence tiger is printed.
-    // however this is not the case for JS.
-}
-
-alsoPrintAnimal(); 
-
-// Js is lexically scoped meaning it takes the scope of variables as where the function is defined;
-// it looks for var in local scope, then outer function scopes and then global scope.
+console.log(food); // returns undefined
+var food = "pizza";
