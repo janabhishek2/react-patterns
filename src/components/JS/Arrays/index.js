@@ -1,15 +1,18 @@
-// var variables are globally scoped except for functions
+// scope chain
 
-// let and const are block scoped
+// 1. Look in local scope
+// 2. Look in ext functions
+// 3. Look in global scope
 
-let y = 4;
-if(true) {
-    let x = 3;
-    let y = 5;
+let age = 10;
+
+function outer() {
+    let age = "ageless";
+    function inner() {
+        let age = "eternal";
+        console.log(age);
+    }
+    inner();
 }
 
-// console.log(x); // x is not accessible here.
-
-console.log(y);
-
-// y will be 4
+// if age is not found in local scope; js will look for outer functions else global scope for age variable.
