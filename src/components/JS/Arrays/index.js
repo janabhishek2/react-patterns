@@ -1,13 +1,15 @@
-function outerFunction() {
-    let outerVariable = "outer";
-    function innerFunction() {
-        console.log("I am inner function");
-        // inner function has access to outer variable
-        console.log("Outer variable is: ", outerVariable);
+function idGenerator() {
+    let count = 1;
+    function nextIdGenerator() {
+        return count++;
     }
-    return innerFunction;
+    return nextIdGenerator;
 }
 
-// when we call inner function; it has access to its outer functions' variables.
-const outer = outerFunction();
-outer();
+const nextIdGenerator = idGenerator();
+
+console.log(nextIdGenerator()); // 1 
+console.log(nextIdGenerator()); // 2
+console.log(nextIdGenerator()); // 3
+
+// closure: A function and its parent functions scope/variables is called closure.
