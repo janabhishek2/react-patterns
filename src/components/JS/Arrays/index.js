@@ -1,10 +1,13 @@
-function test() {
-    if(false) {
-        var message = "abcd";
+function outerFunction() {
+    let outerVariable = "outer";
+    function innerFunction() {
+        console.log("I am inner function");
+        // inner function has access to outer variable
+        console.log("Outer variable is: ", outerVariable);
     }
-    // this wont throw error as message has function scope: var keyword does not have block scope.
-    // we will get message as undefined which is not expected.
-    console.log(message);
+    return innerFunction;
 }
 
-test();
+// when we call inner function; it has access to its outer functions' variables.
+const outer = outerFunction();
+outer();
