@@ -1,24 +1,19 @@
-function createCounter() {
-    let count = 0;
-    function increment() {
-        return ++count;
+class Counter {
+    #count;
+    constructor() {
+        this.#count = 0;
     }
-    function decrement() {
-        return --count;
+    increment() {
+        ++this.#count;
     }
-    function getCount() {
-        return count;
+    decrement() {
+        --this.#count;
     }
-    return {
-        increment, decrement, getCount
-    };
+    get count() {
+        return this.#count;
+    }
 }
 
-const counter = createCounter();
-const increment = counter.increment;
-const getCount = counter.getCount;
-
-increment(); // increments count to 1
-increment(); // increments count to 2
-
-console.log(getCount()); // print the count
+const counter = new Counter();
+counter.increment();
+console.log(counter.count);
