@@ -1,18 +1,24 @@
-function idGenerator() {
-    let count = 1;
-    function nextIdGenerator() {
-        return count++;
+function createCounter() {
+    let count = 0;
+    function increment() {
+        return ++count;
     }
-    return nextIdGenerator;
+    function decrement() {
+        return --count;
+    }
+    function getCount() {
+        return count;
+    }
+    return {
+        increment, decrement, getCount
+    };
 }
 
-const nextIdGenerator = idGenerator();
+const counter = createCounter();
+const increment = counter.increment;
+const getCount = counter.getCount;
 
-console.log(nextIdGenerator()); // 1 
-console.log(nextIdGenerator()); // 2
-console.log(nextIdGenerator()); // 3
+increment(); // increments count to 1
+increment(); // increments count to 2
 
-// closure: A function and its parent functions scope/variables is called closure.
-
-// Here nextIdGenerator function has access to nextIdGenerator() function inside idGenerator
-// and count variable of idGenerator function.
+console.log(getCount()); // print the count
