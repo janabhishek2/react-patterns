@@ -13,3 +13,6 @@ console.log(nextIdGenerator()); // 2
 console.log(nextIdGenerator()); // 3
 
 // closure: A function and its parent functions scope/variables is called closure.
+
+// Here nextIdGenerator function has access to nextIdGenerator() function inside idGenerator
+// and count variable of idGenerator function.
