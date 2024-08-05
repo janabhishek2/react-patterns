@@ -1,13 +1,13 @@
-// Closures and event listeners
+function createButtonEventListener(id) {
+    let button = document.getElementById(id);
 
-const buttonElement = document.querySelector("button");
-
-// add event listener
-
-buttonElement.addEventListener("click", (() => {
     let count = 0;
-    // below function has access to count variable hence we don't need to define and keep it outside.
-    return function() {
-        buttonElement.textContent = `Clicked the button ${++count} times`;
-    }
-})());
+    button.addEventListener("click", function() {
+        button.textContent = `You clicked ${++count} times!`;
+    });
+    return;
+}
+
+createButtonEventListener("btn1");
+createButtonEventListener("btn2");
+createButtonEventListener("btn3");
