@@ -4,6 +4,8 @@ const counterInstance = (function counter() {
     // counter is a private variable when we invoke counter() function we only get access to
     // increment, decrement and getCounter
     let counter = 0;
+
+    // increment, dec, getCount have access to its parent functions scope variables via closure
     function increment() {
         ++counter;
     }
