@@ -1,13 +1,9 @@
-function createButtonEventListener(id) {
-    let button = document.getElementById(id);
-
-    let count = 0;
-    button.addEventListener("click", function() {
-        button.textContent = `You clicked ${++count} times!`;
-    });
-    return;
+for(var i=1; i<=5; i++) {
+    // we need to do this to preserve the value of i on each increment;
+    // because var variables are not under the block scope so they are not part of closure of the setTimeout funciton
+    (function(j){
+        setTimeout(() => {
+            console.log("TIMES UP!! ", j);
+        }, 1000 * j);
+    })(i);
 }
-
-createButtonEventListener("btn1");
-createButtonEventListener("btn2");
-createButtonEventListener("btn3");
