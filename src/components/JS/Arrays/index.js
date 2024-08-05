@@ -1,19 +1,23 @@
-class Counter {
-    #count;
-    constructor() {
-        this.#count = 0;
-    }
-    increment() {
-        ++this.#count;
-    }
-    decrement() {
-        --this.#count;
-    }
-    get count() {
-        return this.#count;
-    }
-}
+// Using IIFE to create a counter instance
 
-const counter = new Counter();
-counter.increment();
-console.log(counter.count);
+const counterInstance = (function counter() {
+    // counter is a private variable when we invoke counter() function we only get access to
+    // increment, decrement and getCounter
+    let counter = 0;
+    function increment() {
+        ++counter;
+    }
+    function decrement() {
+        return --counter;
+    }
+    function getCounter() {
+        return counter;
+    }
+    return {
+        increment, decrement, getCounter
+    }
+})();
+
+counterInstance.increment();
+counterInstance.increment();
+console.log(counterInstance.getCounter());
