@@ -1,13 +1,18 @@
 // Closures and factory functions
 
-function createExpFunction(exp) {
-    // this function has access to exp because of closure.
-    return function(val) {
-        return val ** exp;
+function uniqueIdGen(prefix) {
+    let id = 0;
+    // this function has access to prefix and id variables of parent function
+    return function() {
+        return `${prefix}-${++id}`;
     }
 }
 
-const square = createExpFunction(2);
-const cube = createExpFunction(3);
+const movieIdIncrementor = uniqueIdGen("movie");
 
-console.log(square(4)); // 16
+const arr = Array(3);
+for(let item of arr) {
+    console.log(movieIdIncrementor());
+}
+
+// output: movie-1, movie-2, movie-3
