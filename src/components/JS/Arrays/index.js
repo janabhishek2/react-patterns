@@ -1,22 +1,13 @@
 // Closures and factory functions
 
-function Counter() {
-    this.counter = 0;
-    this.increment = function(){
-        ++this.counter;
+function createExpFunction(exp) {
+    // this function has access to exp because of closure.
+    return function(val) {
+        return val ** exp;
     }
-    function decrement() {
-        --this.counter;
-    }
-    function getCounter() {
-        return this.counter;
-    }
-    this.decrement = decrement;
-    this.getCounter = getCounter;
 }
 
-const counter = new Counter();
-counter.increment();
-counter.decrement();
-counter.decrement();
-console.log(counter.counter);
+const square = createExpFunction(2);
+const cube = createExpFunction(3);
+
+console.log(square(4)); // 16
