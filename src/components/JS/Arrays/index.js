@@ -1,18 +1,13 @@
-// Closures and factory functions
+// Closures and event listeners
 
-function uniqueIdGen(prefix) {
-    let id = 0;
-    // this function has access to prefix and id variables of parent function
+const buttonElement = document.querySelector("button");
+
+// add event listener
+
+buttonElement.addEventListener("click", (() => {
+    let count = 0;
+    // below function has access to count variable hence we don't need to define and keep it outside.
     return function() {
-        return `${prefix}-${++id}`;
+        buttonElement.textContent = `Clicked the button ${++count} times`;
     }
-}
-
-const movieIdIncrementor = uniqueIdGen("movie");
-
-const arr = Array(3);
-for(let item of arr) {
-    console.log(movieIdIncrementor());
-}
-
-// output: movie-1, movie-2, movie-3
+})());
