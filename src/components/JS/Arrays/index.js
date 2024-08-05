@@ -1,25 +1,22 @@
-// Using IIFE to create a counter instance
+// Closures and factory functions
 
-const counterInstance = (function counter() {
-    // counter is a private variable when we invoke counter() function we only get access to
-    // increment, decrement and getCounter
-    let counter = 0;
-
-    // increment, dec, getCount have access to its parent functions scope variables via closure
-    function increment() {
-        ++counter;
+function Counter() {
+    this.counter = 0;
+    this.increment = function(){
+        ++this.counter;
     }
     function decrement() {
-        return --counter;
+        --this.counter;
     }
     function getCounter() {
-        return counter;
+        return this.counter;
     }
-    return {
-        increment, decrement, getCounter
-    }
-})();
+    this.decrement = decrement;
+    this.getCounter = getCounter;
+}
 
-counterInstance.increment();
-counterInstance.increment();
-console.log(counterInstance.getCounter());
+const counter = new Counter();
+counter.increment();
+counter.decrement();
+counter.decrement();
+console.log(counter.counter);
