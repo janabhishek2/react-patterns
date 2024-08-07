@@ -1,18 +1,13 @@
 // Timers...
 
-function showNotification(message, duration) {
-    const alertMessage = document.createElement("div");
-    alertMessage.classList.add('notification');
-    alertMessage.textContent = message;
-    document.body.insertAdjacentElement("beforebegin", alertMessage);
+const h1 = document.getElementById("timer");
+let secondsRemaining = 10;
+h1.textContent = secondsRemaining;
 
-    function removeNotification() {
-        alertMessage.remove();
-    };
+setInterval(function() {
+    if(secondsRemaining) {
+        secondsRemaining -= 1;
+    }
+    h1.textContent = secondsRemaining;
+}, 1000);
 
-    setTimeout(() => {
-        removeNotification();
-    }, duration);
-}
-
-showNotification("Hello there !! ", 3000);
