@@ -8,11 +8,18 @@ const searchInput = document.querySelector("#search");
 
 // debounced search
 
-let timeoutId = null;
+function debounce(callback, delay) {
+    let timeoutId;
+    return function(input) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => { 
+            callback(input);
+        }, delay);
+    }
+}
+
+const getDebounceQueryApi = debounce(queryApi, 1000);
 
 searchInput.addEventListener("input", (e) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-        queryApi(e.target.value);
-    }, 1000);
+    getDebounceQueryApi(e.target.value);
 });
