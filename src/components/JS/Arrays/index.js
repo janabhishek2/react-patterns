@@ -1,17 +1,17 @@
 // Timers...
 
-const h1 = document.getElementById("timer");
-let secondsRemaining = 3;
-h1.textContent = secondsRemaining;
+const button = document.querySelector("button");
 
-const intervalId = setInterval(function() {
-    if(secondsRemaining > 0) {
-        h1.textContent = secondsRemaining;
-        secondsRemaining -= 1;
-    } else {
-        h1.textContent = "Time is UPP!";
-        // inner function gets access to outer variable intervalid via closure
-        clearInterval(intervalId);
-    }
-}, 1000);
+const timeoutId = setTimeout(() => {
+    window.location.href = "https://www.google.com";
+}, 5000);
 
+function preventRedirect() {
+    console.log("Redirection cancelled !!");
+    clearTimeout(timeoutId);
+}
+
+button.addEventListener("click", preventRedirect);
+
+// original link
+// http://127.0.0.1:5500/src/components/JS/Arrays/index.html
