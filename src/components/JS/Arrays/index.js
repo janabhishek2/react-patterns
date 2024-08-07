@@ -2,9 +2,7 @@
 
 function showNotification(message, duration) {
     const alertMessage = document.createElement("div");
-    alertMessage.style.margin = "auto";
-    alertMessage.style.width = "60%";
-    alertMessage.style.padding = "12px";
+    alertMessage.classList.add('notification');
     alertMessage.textContent = message;
     document.body.insertAdjacentElement("beforebegin", alertMessage);
 
