@@ -1,20 +1,12 @@
-// immutablity
-
-const object = {
-    name: 'ABhishek',
-    age: 25,
-    newObj: {
-        test: '3'
+const person = {
+    name: 'Abhishek',
+    address: {
+        street: "one"
     }
 };
 
-// Object.freeze will only freeze properties at level1 of the object. Inside objects can still be changed.
-Object.freeze(object);
+// Immutable approach to copy object : copies only level 1 keys
+const newPerson = {...person};
+newPerson.address.colony = "two";
 
-// will not change
-object.age = "rami";
-
-// will change
-object.newObj.test = 44;
-
-console.log(object);
+console.log(person);
