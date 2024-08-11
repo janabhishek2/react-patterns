@@ -1,17 +1,9 @@
-// JS functions are first class objects/citizens : functions can be treated the same way as any other variable.
-// we can assign functions to vars, pass functions to functions/return from functions etc.
+// Pure functions: allow us to write predictable code.
 
-function callWithBlue(callback) {
-    callback("blue");
+let value = 2;
+
+// Impure: because value is mutated here.
+function squareAndUpdateValue(num) {
+    value = num * num;
+    return value;
 }
-
-function sayHi(name) {
-    console.log(`Hello ! ${name}, how you doing ? `);
-}
-
-function hate(name) {
-    console.log(`I hate you !!, ... ${name}`);
-}
-
-callWithBlue(sayHi);
-callWithBlue(hate);
