@@ -40,17 +40,23 @@ function loadMoreItems() {
     }
 }
 
-let isThrottled = false;
-window.addEventListener("scroll", () => {
-    // if isThrottled is false then call the loadItems.
-    if(!isThrottled) {
-        loadMoreItems();
-        // after loading set throttle to true and set a timeout to open the throttle
-        isThrottled = true;
-        setTimeout(() => {
-            isThrottled = false;
-        }, 1000);
+const getThrottleFunction = (callback, delay) => {
+    let isThrottled = false;
+    return function() {
+        if(!isThrottled) {
+            callback();
+            isThrottled = true;
+            setTimeout(() => {
+                isThrottled = false;
+            }, delay)
+        }
     }
+};
+
+const throttledLoadItems = getThrottleFunction(loadMoreItems, 1000);
+window.addEventListener("scroll", () => {
+    // call the throttled function here
+    throttledLoadItems();
 })
 
 loadMoreItems();
