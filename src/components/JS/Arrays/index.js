@@ -1,10 +1,10 @@
-// Recursion factorial
-
-function factorial(n) {
-    if(n<=1) return n;
-    return n* factorial(n-1);
+function greet(greeting, name) {
+    console.log(`${greeting}, ${name}`);
 }
 
-console.log(factorial(4));
+// Partial application: Baking in some args of the function using bind and returning new function and using that...
+const aussieGreet = greet.bind(null, "G'day!");
+const spiteGreet = greet.bind(null, 'I hate you! ');
 
-// Recursion emphasises immutability
+aussieGreet("Elton");
+spiteGreet("Elton");
