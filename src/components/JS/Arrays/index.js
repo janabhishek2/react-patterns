@@ -17,3 +17,6 @@ for(let num of nums) {
 const ans = nums.filter((item) => item%2 === 0);
 
 console.log(ans);
+
+// Imperative: logic is more... 
+// Functional: there are built in useful methods to achieve sopmething.
