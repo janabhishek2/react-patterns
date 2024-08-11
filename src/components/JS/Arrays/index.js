@@ -1,16 +1,19 @@
 // Functional Programming
 
-// TO sum 2 numbers there are 2 approaches
-// Imperative
+// Get even nums
 
-// using a state to manipulate
-let sum = 0;
-for(let i=1; i<=5; i++) {
-    sum += i;
+const nums = [1, 2, 3, 4, 5];
+
+// imperative
+let evens = [];
+for(let num of nums) {
+    if(num%2 === 0) {
+        evens.push(num);
+    }
 }
 
-// FP approach
+// functional
 
-// we are using pure functions to manipulate data.
-const ans = [1, 2, 3, 4, 5].reduce((acc, curr) => acc + curr, 0);
+const ans = nums.filter((item) => item%2 === 0);
+
 console.log(ans);
