@@ -15,6 +15,14 @@ function addToArray(arr, val) {
     arr.push(val);
 }
 
+// Pure addToarray
+function pureAddToArray(arr, value) {
+    const newArr = [...arr];
+    newArr.push(value);
+    return newArr;
+}
+
 const nums = [1, 2, 3];
-addToArray(nums, 4);
-console.log(nums);
+
+const newNums = pureAddToArray(nums, 5);
+console.log(nums, newNums);
