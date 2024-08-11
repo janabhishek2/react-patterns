@@ -1,28 +1,24 @@
-// Pure functions: allow us to write predictable code.
+// HOF
+// Function recives another function as an arg, returns a function or does both..
 
-let value = 2;
-
-// Impure: because value is mutated here.
-// no mutation, no side effects for pure functions...
-// same input: same output
-function squareAndUpdateValue(num) {
-    value = num * num;
-    return value;
+function doTwice(func) {
+    func();
+    func();
 }
 
-// Impure: because it updates nums array as well.
-function addToArray(arr, val) {
-    arr.push(val);
+doTwice(() => console.log("Hiii"));
+
+// factory functions 
+
+// HOF: returns a function 
+function multiplyBy(factor) {
+    return function(number) {
+        return number * factor;
+    }
 }
 
-// Pure addToarray
-function pureAddToArray(arr, value) {
-    const newArr = [...arr];
-    newArr.push(value);
-    return newArr;
-}
+const double = multiplyBy(2);
+const triple = multiplyBy(3);
 
-const nums = [1, 2, 3];
-
-const newNums = pureAddToArray(nums, 5);
-console.log(nums, newNums);
+console.log(double(3));
+console.log(triple(5));
