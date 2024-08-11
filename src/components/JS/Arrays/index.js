@@ -1,17 +1,10 @@
-const person = {
-    name: 'Abhishek',
-    address: {
-        street: "one"
-    }
-};
+// Recursion factorial
 
-// Immutable approach to copy object : copies only level 1 keys
+function factorial(n) {
+    if(n<=1) return n;
+    return n* factorial(n-1);
+}
 
-// Copy full object for complete copy
-const newPerson = {...person, address: {
-    ...person.address
-}};
+console.log(factorial(4));
 
-newPerson.address.colony = "two";
-
-console.log(person);
+// Recursion emphasises immutability
