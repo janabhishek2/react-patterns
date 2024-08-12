@@ -1,10 +1,13 @@
-function greet(greeting, name) {
-    console.log(`${greeting}, ${name}`);
-}
+// Writing partial functions
 
-// Partial application: Baking in some args of the function using bind and returning new function and using that...
-const aussieGreet = greet.bind(null, "G'day!");
-const spiteGreet = greet.bind(null, 'I hate you! ');
+function partial(func, ...fixedArgs) {
+    return function(...remainingArgs) {
+        return func(...fixedArgs, ...remainingArgs);
+    }
+};
 
-aussieGreet("Elton");
-spiteGreet("Elton");
+const multiply = (a, b) => {
+    return a * b;
+};
+
+const double = partial(multiply, 2, 3);
