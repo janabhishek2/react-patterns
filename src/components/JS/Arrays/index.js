@@ -1,13 +1,13 @@
 // Writing partial functions
 
-function partial(func, ...fixedArgs) {
-    return function(...remainingArgs) {
-        return func(...fixedArgs, ...remainingArgs);
-    }
+function partial(func, ...fixed) {
+    return func.bind(null, ...fixed);
+}
+
+const multiply = (a, b, c) => {
+    return a * b * c;
 };
 
-const multiply = (a, b) => {
-    return a * b;
-};
+const double = partial(multiply, 5);
 
-const double = partial(multiply, 2, 3);
+console.log(double(3, 4));
