@@ -1,9 +1,16 @@
-// Composition: passing return values of 1 funciton to other funciton
+// Compose functions
 
-const lowercaseStr = str => str.toLowerCase();
-const split = (str) => str.split(" ");
-const joinWithDash = (arr) => arr.join("-");
+const compose = function(func1, func2, func3) {
+    return function(value) {
+        return func1(func2(func3(value)));
+    }
+};
 
-const result = joinWithDash(split(lowercaseStr("My Testing String"))); 
+const convertToLowercase = (str) => str.toLowerCase();
+const splitWords = (str) => str.split(" ");
+const joinWithDashes = args => args.join("-");
 
-console.log(result);
+const lowerCaseJoinedWithDashes = compose(joinWithDashes, splitWords, convertToLowercase);
+
+const ans = lowerCaseJoinedWithDashes("Abhishek Jan");
+console.log(ans);
