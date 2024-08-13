@@ -5,4 +5,8 @@ const multiply = (a, b) => a * b;
 
 const ans = add(2, multiply(10,3));
 
-console.log(ans);
+const square = (a) => a * a;
+
+const addAndSquare = (a, b) => square(add(a,b));
+
+console.log(addAndSquare(3,4));
