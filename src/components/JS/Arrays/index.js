@@ -1,12 +1,9 @@
 // Composition: passing return values of 1 funciton to other funciton
 
-const add = (a, b) => a + b;
-const multiply = (a, b) => a * b;
+const lowercaseStr = str => str.toLowerCase();
+const split = (str) => str.split(" ");
+const joinWithDash = (arr) => arr.join("-");
 
-const ans = add(2, multiply(10,3));
+const result = joinWithDash(split(lowercaseStr("My Testing String"))); 
 
-const square = (a) => a * a;
-
-const addAndSquare = (a, b) => square(add(a,b));
-
-console.log(addAndSquare(3,4));
+console.log(result);
