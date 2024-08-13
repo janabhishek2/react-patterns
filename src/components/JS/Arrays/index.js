@@ -1,13 +1,29 @@
 // Writing partial functions
 
-function partial(func, ...fixed) {
-    return func.bind(null, ...fixed);
-}
-
-const multiply = (a, b, c) => {
-    return a * b * c;
+const partial = (func, ...fixed) => {
+    return function(...rem) {
+        return func(...fixed, ...rem);
+    }
 };
 
-const double = partial(multiply, 5);
+const fetchData = (url, apiKey, payload) => {
+    const urlSearchParams = new URLSearchParams(payload);
+    
+    const fullUrl = `${url}?${urlSearchParams.toString()}`;
+    console.log('Making api call', fullUrl);
+    console.log('Api key', apiKey);
+};
 
-console.log(double(3, 4));
+const myApiKey = "abcd";
+const myApiUrl = "https://contacts-api.51b.dev";
+
+const googleApiKey = "google-api-key";
+const googleUrl = "https://google.51b.dev";
+
+const fetchMyApi = partial(fetchData, myApiUrl, myApiKey);
+const fetchGoogleApi = partial(fetchData, googleUrl, googleApiKey);
+
+fetchMyApi({
+    param1: 'value1',
+    param2: "value2"
+});
