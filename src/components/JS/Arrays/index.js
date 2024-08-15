@@ -1,15 +1,15 @@
 // Compose functions
 
-const compose = (...funcs) => {
+function compose(...funcs) {
     return function(value) {
-       const funcsArray = Array.from(funcs);
-       let composedValue = funcsArray[funcsArray.length - 1](value);
-       for(let i = funcsArray.length - 2; i>=0; i--) {
-            composedValue *= funcs[i](composedValue);
+       let funcsLength = funcs.length;
+       let interRes = funcs[funcsLength-1](value);
+       for(let i = funcsLength - 2; i>=0; i--) {
+            interRes = funcs[i](interRes);
        }
-       return composedValue;
+       return interRes;
     }
-};
+}
 
 const convertToLowercase = str => str.toLowerCase();
 const removeSpaces = str => {
@@ -17,7 +17,15 @@ const removeSpaces = str => {
     const ans = str.replace(/ /g, "");
     return ans;
 };
+const increaseBy1Character = (str) => {
+    let temp = "";
+    for(let i = 0; i< str.length; i++) {
+        let currCharCode = str.charCodeAt(i);
+        temp = temp + String.fromCharCode(currCharCode+1);
+    }
+    return temp;
+}
 
-const lowercaseAndRemoveSpaces = compose(removeSpaces, convertToLowercase);
+const lowercaseAndRemoveSpaces = compose(increaseBy1Character, removeSpaces, convertToLowercase);
 
-console.log(lowercaseAndRemoveSpaces("ABCD EF"));
+console.log(lowercaseAndRemoveSpaces("ABCD EF GH Ij"));
