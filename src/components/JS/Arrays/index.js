@@ -1,15 +1,17 @@
-const compose = (...funcs) => {
-    return function(data) {
-        // reduce all functions from right side of funcs[]
-        return funcs.reduceRight(((value, func) => func(value)), data)
+// Currying: f(a,b,c) -> f(a)(b)(c);
+
+function f(a) {
+    console.log(a);
+    return function(b) {
+        console.log(b);
+        return function(c) {
+            console.log(c);
+        }
     }
-};
+}
 
-const lowerCaseString = str => str.toLowerCase();
-const replaceS = str => str.replaceAll("s", "$");
+function f(a, b, c){
+    console.log(a, b, c);
+}
 
-const lowerCaseRepacedS = compose(replaceS, lowerCaseString);
-
-const ans = lowerCaseRepacedS("sorry for sucking at js");
-
-console.log(ans);
+f(1)(2)(3);
