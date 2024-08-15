@@ -1,16 +1,23 @@
 // Compose functions
 
-const compose = function(func1, func2, func3) {
+const compose = (...funcs) => {
     return function(value) {
-        return func1(func2(func3(value)));
+       const funcsArray = Array.from(funcs);
+       let composedValue = funcsArray[funcsArray.length - 1](value);
+       for(let i = funcsArray.length - 2; i>=0; i--) {
+            composedValue *= funcs[i](composedValue);
+       }
+       return composedValue;
     }
 };
 
-const convertToLowercase = (str) => str.toLowerCase();
-const splitWords = (str) => str.split(" ");
-const joinWithDashes = args => args.join("-");
+const convertToLowercase = str => str.toLowerCase();
+const removeSpaces = str => {
+    debugger;
+    const ans = str.replace(/ /g, "");
+    return ans;
+};
 
-const lowerCaseJoinedWithDashes = compose(joinWithDashes, splitWords, convertToLowercase);
+const lowercaseAndRemoveSpaces = compose(removeSpaces, convertToLowercase);
 
-const ans = lowerCaseJoinedWithDashes("Abhishek Jan");
-console.log(ans);
+console.log(lowercaseAndRemoveSpaces("ABCD EF"));
