@@ -1,17 +1,16 @@
-// Currying: f(a,b,c) -> f(a)(b)(c);
+function add(a, b, c) {
+    return a + b + c;
+};
 
-function f(a) {
-    console.log(a);
+function addCurry(a) {
     return function(b) {
-        console.log(b);
         return function(c) {
-            console.log(c);
+            // variables a and b accesible via closure
+            return a+b+c;
         }
     }
-}
+};
 
-function f(a, b, c){
-    console.log(a, b, c);
-}
+const curry = addCurry(3)(4)(5);
 
-f(1)(2)(3);
+console.log(curry);
