@@ -9,7 +9,7 @@ class DiceGame {
         this.infoSection.textContent = "Click the above button to start the game!";
 
         this.displayButton = document.getElementById(buttonId);
-        this.displayButton.addEventListener("click", this.rollDice);
+        this.displayButton.addEventListener("click", this.rollDice.bind(this));
     }
 
     getRandomNumber() {
@@ -20,7 +20,7 @@ class DiceGame {
         return selected === 6;
     }
 
-    rollDice = () => {
+    rollDice() {
         const rand = this.getRandomNumber();
         ++DiceGame.tries;
         if(this.isGameWon(rand)) {
