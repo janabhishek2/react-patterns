@@ -1,3 +1,28 @@
+// const toUppercase = str => str.toUpperCase();
+// const split = str => str.split(" ");
+
+// const strr = "i fall for her ";
+// const composed = compose(split, toUppercase);
+// const ans = composed(strr);
+
+// console.log(ans);
+// return;
+
+
+const partial = (func, ...fixed) => {
+    return function(...rem) {
+        return func(...fixed, ...rem);
+    }
+};
+
+const compose = (...funcs) => {
+    return function(data) {
+        return funcs.reduceRight((value, func) => {
+            return func(value);
+        }, data)
+    }
+}
+
 const getRandomRoll = () => Math.ceil(Math.random() * 6);
 
 // writing pure functions
@@ -25,7 +50,11 @@ const createDiceGame = (buttonId, textId) => {
     const textElement = document.getElementById(textId);
 
     buttonElement.textContent = "Click me!";
-    buttonElement.addEventListener("click", handleButtonClick(tries, textElement));
+    const argsBoundHandler = partial(handleButtonClick, tries, textElement);
+
+    buttonElement.addEventListener("click", argsBoundHandler());
 }
 
-createDiceGame("click_me", "text");
+const boundDiceGame = partial(createDiceGame, "click_me", "text");
+
+boundDiceGame();
