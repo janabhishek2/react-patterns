@@ -1,13 +1,9 @@
 // Localstorage
 
-// localStorage object is available on window object.
-// it has type Storage
-// methods: getItem(key), setItem(key, value), removeItem(key), clear()
-// max size: approx 5MB;
+// Everything in localstorage are treated as strings
+// To store objects/array convert them to string using JSON.stringigy, convert to obejcts/arrays using JSON.parse
+const arr = [1, 2, 3];
 
-localStorage.setItem("color", "magenta");
-localStorage.setItem("username", "Colt");
+localStorage.setItem('nums', JSON.stringify(arr));
 
-console.log(localStorage.length); //2
-
-console.log(localStorage.getItem("username"));
+console.log(localStorage.getItem('nums'));
