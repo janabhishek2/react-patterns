@@ -1,30 +1,30 @@
-const todoApi = `https://jsonplaceholder.typicode.com/todos`;
-
-// Use new Headers() constructor to create new headers object which has keys auto-formatted.
+const todoURL = "https://jsonplaceholder.typicode.com/todos";
 
 const headers = new Headers({
-    'content-TYpe': "application/json",
-    "testing-header": "1234"
+    'content-type': "application/json",
+    "authorization": "Bearer TEST"
 });
 
-// List all header keys and their values;
+const postTodo = async function(body = {}) {
+    const payload = {
+        ...body,
+        testParam: 1
+    };
 
-// for(let key of headers.keys()) {
-//     console.log(key, headers.get(key));
-// }
-
-const fetchTodos = async function() {
-    try{
-        const response = await fetch(todoApi, {
-            headers
+    try {
+        const response = await fetch(todoURL, {
+            headers,
+            method: "POST",
+            // use JSON.stringigy to convert payload to json string and send in the body parameter
+            body: JSON.stringify(payload)
         });
-        if(!response.ok) {
-            throw new Error("Error found!");
-        }
+
         const data = await response.json();
+
+        console.log(data);
     } catch(err) {
         console.log(err);
     }
 }
 
-fetchTodos();
+postTodo();
