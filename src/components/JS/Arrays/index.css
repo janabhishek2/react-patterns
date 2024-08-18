@@ -1,19 +1,4 @@
-.notification {
-    margin: auto;
-    width: 60%;
-    padding: 12px;
-    border: 2px solid black;
+body.dark-mode {
     color: white;
-    background-color: maroon;
-    text-align: center;
-    border-radius: 12px;
-}
-
-.item {
-    width: 100%;
-    min-height: 30%;
-}
-
-html {
-    height: 100%;
+    background-color: black;
 }

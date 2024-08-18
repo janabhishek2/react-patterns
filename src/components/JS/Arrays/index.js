@@ -1,9 +1,25 @@
-// Localstorage
+// Toggle switch
 
-// Everything in localstorage are treated as strings
-// To store objects/array convert them to string using JSON.stringigy, convert to obejcts/arrays using JSON.parse
-const arr = [1, 2, 3];
+const modeSwitch = document.getElementById("switch__mode");
 
-localStorage.setItem('nums', JSON.stringify(arr));
+function handleToggle() {
+    const current = localStorage.getItem('mode');
+    if(!current || current === "light-mode") {
+        localStorage.setItem('mode', 'dark-mode');
+        renderCorrectUI("dark-mode");
+    } else {
+        localStorage.setItem('mode', 'light-mode');
+        renderCorrectUI("light-mode");
+    }
+};
 
-console.log(localStorage.getItem('nums'));
+function renderCorrectUI(mode) {
+    if(mode==='dark-mode'){
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
+modeSwitch.addEventListener("click", handleToggle);
+renderCorrectUI(localStorage.getItem("mode"));
