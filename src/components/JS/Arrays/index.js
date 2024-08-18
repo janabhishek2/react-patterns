@@ -1,10 +1,23 @@
 const todoApi = `https://jsonplaceholder.typicode.com/todos`;
 
-// fetch never rejects the promise; except when network is down!
-// we need to check if promise gave positive status code using ok flag.
+// Use new Headers() constructor to create new headers object which has keys auto-formatted.
+
+const headers = new Headers({
+    'content-TYpe': "application/json",
+    "testing-header": "1234"
+});
+
+// List all header keys and their values;
+
+// for(let key of headers.keys()) {
+//     console.log(key, headers.get(key));
+// }
+
 const fetchTodos = async function() {
     try{
-        const response = await fetch(todoApi);
+        const response = await fetch(todoApi, {
+            headers
+        });
         if(!response.ok) {
             throw new Error("Error found!");
         }
