@@ -1,30 +1,38 @@
-const todoURL = "https://jsonplaceholder.typicode.com/todos";
+// Files selection with code
 
-const headers = new Headers({
-    'content-type': "application/json",
-    "authorization": "Bearer TEST"
+const filesInput = document.getElementById("myFiles");
+
+filesInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+    uploadFiles(files);
 });
 
-const postTodo = async function(body = {}) {
-    const payload = {
-        ...body,
-        testParam: 1
-    };
+const fileBaseUrl = "https://jsonplaceholder.typicode.com/todos";
+
+const uploadFiles = async function(formData) {
+    const headers = new Headers({
+        fileInput: true
+    });
 
     try {
-        const response = await fetch(todoURL, {
+        const response = await fetch(fileBaseUrl, {
             headers,
             method: "POST",
-            // use JSON.stringigy to convert payload to json string and send in the body parameter
-            body: JSON.stringify(payload)
+            body: formData,
         });
-
+        if(!response.ok) {
+            throw new Error('failed to fetch!!');
+        }
         const data = await response.json();
-
         console.log(data);
-    } catch(err) {
-        console.log(err);
+    } catch(er) {
+        console.log(er.message);
     }
 }
 
-postTodo();
+const filesInputElement = document.getElementById("myFiles");
+filesInputElement.addEventListener("change", (e) => {
+    const fd = new FormData();
+    fd.append("logo", filesInput.files[0]);
+    uploadFiles(fd);
+})
