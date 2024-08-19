@@ -1,6 +1,6 @@
 const getLocalStorageNotes = function() {
     const notesString = localStorage.getItem("notes");
-    const notes = notesString ? JSON.parse(notesString) : [];
+    const notes = JSON.parse(notesString) ?? [];
     return notes;
 }
 
