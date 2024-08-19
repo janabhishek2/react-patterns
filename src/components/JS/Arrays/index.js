@@ -55,3 +55,12 @@ const handleAddNote = function(e) {
 
 const saveNoteButton = document.getElementById("saveNote");
 saveNoteButton.addEventListener("click", handleAddNote);
+
+// Listen for the storage event; to re-populate the UI
+
+window.addEventListener("storage", (e) => {
+    console.log(e);
+    if(e.key === "notes") {
+        populateUI();
+    }
+});
