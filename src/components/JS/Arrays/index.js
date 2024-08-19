@@ -1,12 +1,27 @@
-const searchElement = document.getElementById("searchInput");
-const searchKey = "search";
+// Saving all values of form to sessionStorage
 
-searchElement.addEventListener("input", (e) => {
-    sessionStorage.setItem(searchKey, e.target.value);
+const checkoutForm = document.getElementById("checkoutForm");
+
+const form_key = "form_1"
+checkoutForm.addEventListener("input", (e) => {
+    // get sessioStorage object for form
+
+    const formValues = JSON.parse(sessionStorage.getItem(form_key)) ?? {};
+    const { name, value } = e?.target ?? {};
+    formValues[name] = value;
+
+    // set the values to sessionStorage
+    sessionStorage.setItem(form_key, JSON.stringify(formValues));
 });
 
-const populateSearch = function() {
-    searchElement.value = sessionStorage.getItem(searchKey) ?? "";
+const populateForm = function() {
+    const formValues = JSON.parse(sessionStorage.getItem(form_key)) ?? {};
+    for(let key in formValues) {
+        // find the element in UI
+        const element = document.getElementById(key);
+        element && (element.value = formValues[key]);
+    }
+    return;
 }
 
-populateSearch();
+populateForm();
