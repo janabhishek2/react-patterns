@@ -46,6 +46,11 @@ open.onsuccess = async function() {
         const result = data.result;
         console.log(result);
     }
+
+    // close the db after use
+    transaction.oncomplete = function() {
+        db.close()
+    }
 };
 
 // called when the connection to db failed
