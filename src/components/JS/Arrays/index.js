@@ -7,8 +7,8 @@ const locationDisplay = document.getElementById("locationDisplay");
 
 getLocationButton.addEventListener("click", function() {
     if(navigator.geolocation) {
-        // getCurrentPosition is the api used to fetch the user permission
-        navigator.geolocation.getCurrentPosition(function(position) {
+        // watchPosition calls the callback when the sensor data is updated in browser.
+        navigator.geolocation.watchPosition(function(position) {
             const { latitude, longitude } = position.coords;
             locationDisplay.textContent = `Latitude is ${latitude} and longitude is ${longitude}`;
         }, function(err) {
