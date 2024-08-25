@@ -1,18 +1,17 @@
-// Geolocation
+// Intersection observer: api which can track when an element gets in and out of the viewport
 
-const geolocation = navigator.geolocation;
-
-const getLocationButton = document.getElementById("getlocation");
-const locationDisplay = document.getElementById("locationDisplay");
-
-getLocationButton.addEventListener("click", function() {
-    if(navigator.geolocation) {
-        // watchPosition calls the callback when the sensor data is updated in browser.
-        navigator.geolocation.watchPosition(function(position) {
-            const { latitude, longitude } = position.coords;
-            locationDisplay.textContent = `Latitude is ${latitude} and longitude is ${longitude}`;
-        }, function(err) {
-            locationDisplay.textContent = `Error: ${err.message}`;
-        })
-    }
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        console.log("INTERSECTION OBSERVED !!");
+        // entry has properties like isIntersecting which tells if the element is in the viewport/not in the viewport
+        const { isIntersecting } = entry;
+        if(isIntersecting) {
+            console.log("It is visible !");
+        } else {
+            console.log("It is not visible !");
+        }
+    })
 });
+
+const adElement = document.getElementsByClassName("ad")[0];
+observer.observe(adElement);

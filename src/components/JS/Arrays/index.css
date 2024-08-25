@@ -1,4 +1,13 @@
-body.dark-mode {
+body {
+    height: 3000px;
+}
+
+.ad {
+    position: relative;
+    top: 1500px;
+    width: 200px;
+    height: 200px;
+    background-color: darkorange;
     color: white;
-    background-color: black;
+    left: 20px;
 }
