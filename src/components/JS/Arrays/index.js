@@ -2,15 +2,16 @@
 
 const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-        console.log("INTERSECTION OBSERVED !!");
-        // entry has properties like isIntersecting which tells if the element is in the viewport/not in the viewport
-        const { isIntersecting } = entry;
-        if(isIntersecting) {
-            console.log("It is visible !");
+        const percentage = Math.round(entry.intersectionRatio * 100, 2);
+        if(entry.isIntersecting) {
+            console.log(`${percentage}% of the ad is visible !`);
         } else {
-            console.log("It is not visible !");
+            console.log('Ad is not visible!');
         }
     })
+}, {
+    // This property triggers the above callback when % of the element is visible.
+    threshold: [0, 0.25, 0.5, 0.75, 1]
 });
 
 const adElement = document.getElementsByClassName("ad")[0];
