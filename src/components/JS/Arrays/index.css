@@ -2,12 +2,22 @@ body {
     height: 3000px;
 }
 
-.ad {
+#orange {
     position: relative;
     top: 1500px;
     width: 200px;
     height: 200px;
     background-color: darkorange;
+    color: white;
+    left: 20px;
+}
+
+#blue {
+    position: relative;
+    top: 2000px;
+    width: 200px;
+    height: 200px;
+    background-color: blue;
     color: white;
     left: 20px;
 }
