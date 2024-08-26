@@ -1,20 +1,23 @@
-// Intersection observer: api which can track when an element gets in and out of the viewport
+// Lazy load images
 
 const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-        const { isIntersecting } = entry;
-        const { id } = entry.target;
-        if(isIntersecting) {
-            console.log(`${id} ad is visible!`);
-        } else {
-            console.log(`${id} ad is not visible`);
+    entries.forEach(async function(entry) {
+        if(entry.isIntersecting) {
+            try{
+                const response = await fetch('https://loremflickr.com/200/200');
+                entry.target.src = response.url;
+                observer.unobserve(entry.target);
+            }
+            catch(e){ 
+                console.log(e);
+            }
         }
     });
 }, {
     threshold: 0.5
 });
 
-const divs = document.querySelectorAll(".ad");
-divs.forEach(function(div) {
-    observer.observe(div);
-});
+const images = document.querySelectorAll("img.lazy");
+for(let image of images) {
+    observer.observe(image);
+}

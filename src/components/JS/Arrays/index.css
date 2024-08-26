@@ -1,23 +1,7 @@
-body {
-    height: 3000px;
-}
-
-#orange {
-    position: relative;
-    top: 1500px;
-    width: 200px;
-    height: 200px;
-    background-color: darkorange;
-    color: white;
-    left: 20px;
-}
-
-#blue {
-    position: relative;
-    top: 2000px;
-    width: 200px;
-    height: 200px;
-    background-color: blue;
-    color: white;
-    left: 20px;
+img.lazy {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwr7hezbSLIzt0x_LcGYkOF0z4UKsj6QTEZA&s");
+    background-repeat: no-repeat;
+    display: block;
+    min-height: 200px;
+    margin-bottom: 20px;;
 }
