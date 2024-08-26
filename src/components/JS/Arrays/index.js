@@ -2,23 +2,25 @@
 
 let adVisibleStartTime = undefined;
 let adVisibleTimes = [];
+let observer = null;
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-        const { isIntersecting } = entry;
-        if(isIntersecting) {
-            adVisibleStartTime = Date.now();
-        } else if(adVisibleStartTime) {
-            const viewedTime = Date.now() - adVisibleStartTime;
-            adVisibleTimes.push(viewedTime);
-            adVisibleStartTime = undefined;  
-        }
+(() => {
+    let start = 0;
+    observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            const { isIntersecting } = entry;
+            if(isIntersecting) {
+                start = Date.now();
+            } else if(start) {
+                const viewedTime = Date.now() - start;
+                adVisibleTimes.push(viewedTime);
+            }
+        });
         console.log(adVisibleTimes);
-
-    })
-}, {
-    threshold: 0.5
-});
+    }, {
+        threshold: 0.5
+    });
+})()
 
 const ad = document.querySelector(".ad");
 observer.observe(ad);
