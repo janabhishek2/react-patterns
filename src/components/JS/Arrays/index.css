@@ -1,7 +1,27 @@
-img.lazy {
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwr7hezbSLIzt0x_LcGYkOF0z4UKsj6QTEZA&s");
-    background-repeat: no-repeat;
-    display: block;
-    min-height: 200px;
-    margin-bottom: 20px;;
+html {
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    background-color: grey;
+}
+
+#startStreamButton {
+    width: 30%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.container {
+    width: 50%;
+    height: 60%;
+    position: relative;
+    top: 25%;
+    background-color: white;
+    border: 1px solid black;
+    position: relative;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
 }
