@@ -23,3 +23,15 @@ startStreamButton.addEventListener("click", async function() {
         console.log(err);
     }
 });
+
+const getDevices = async () => {
+    try{
+        const availableDevices = await navigator.mediaDevices.enumerateDevices();
+        console.log(availableDevices);
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+getDevices();
+
