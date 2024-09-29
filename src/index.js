@@ -2,11 +2,10 @@ import { createRoot } from 'react-dom/client';
 
 import React from "react";
 import './index.css';
-import Advanced from "./components/AdvancedReact/Advanced";
+import RtkWrapper from './components/rtk-query/RtkWrapper';
 
 function App() {
-
-    return <Advanced />;
+    return <RtkWrapper />;
 }
 
 const root = createRoot(document.getElementById("root"))

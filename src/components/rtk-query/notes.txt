@@ -1,0 +1,3 @@
+1. rtk query is the package made to integrate with redux to solve data-fetching problem.
+2. Traditional approach uses: thunks/sagas and updates store.
+3. 3 methods of api data fetching : fetch-before-render, fetch-during-render(rtk), fetch-after-render(redux/useEffect). 
