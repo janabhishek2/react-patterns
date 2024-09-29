@@ -7,7 +7,10 @@ const apiSlice = createApi({
     endpoints: function(builder) {
         return {
             getAllTodos: builder.query({
-               query: () => "/todos"
+               query: () => "/todos",
+               transformResponse: function(data) {
+                return data?.todos ?? [];
+               }
             }),
             getTodo: builder.query({
                 query: (id) => `https://dummyjson.com/todos/${id}`
