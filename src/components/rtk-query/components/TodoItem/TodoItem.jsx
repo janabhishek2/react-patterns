@@ -7,11 +7,13 @@ const statusGetter = (completed) => {
 
 function TodoItem({ data }) {
     const { todo, id } = data;
-    const [trigger, { data: todoData = {}, isLoading }] = useLazyGetTodoQuery();
+    const [trigger, { data: todoData = {}, isLoading, isError, error = {} }] = useLazyGetTodoQuery();
 
     const handleGetStatus = function () {
-        trigger(id);
+        trigger("asd");
     };
+
+    console.log(error);
    
     return (
         <div style={{ display: "flex", margin: "1rem 0rem" }}>
@@ -24,6 +26,9 @@ function TodoItem({ data }) {
             }
             {
                 Object.keys(todoData).length > 0 && <span style={{ marginLeft: "1rem" }} >{statusGetter(todoData?.completed)}</span>
+            }
+            {
+                isError && <span style={{ marginLeft: "1rem" }} >{error.data.message}</span>
             }
         </div>
     );

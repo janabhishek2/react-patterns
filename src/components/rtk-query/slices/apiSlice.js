@@ -13,7 +13,16 @@ const apiSlice = createApi({
                }
             }),
             getTodo: builder.query({
-                query: (id) => `/todos/${id}`
+                query: (id) => `/todos/${id}`,
+                transformErrorResponse: function(error) {
+                    return  {
+                        ...error,
+                        data: {
+                            ...error.data,
+                            huihui: true
+                        }
+                    }
+                }
             })
         }
     }
