@@ -1,13 +1,15 @@
 import React from 'react';
-import { useGetTodoQuery } from '../../slices/apiSlice';
+import { useGetAllTodosQuery, useGetTodoQuery } from '../../slices/apiSlice';
 import TodoItem from '../TodoItem';
 
 function Todos() {
     const {
         isLoading,
-        data,
+        data: {
+            todo = ''
+        } = {},
         error
-    } = useGetTodoQuery();
+    } = useGetTodoQuery(3);
 
     if(isLoading) {
         return <h3>Loading!!</h3>
@@ -18,11 +20,14 @@ function Todos() {
 
     return (
         <ul>
-            {
+            {/* {
                 data.todos.map(todoItem => {
                     return <TodoItem key={todoItem.id} data={todoItem} />
                 })
-            }
+            } */}
+            <li>
+               {todo}
+            </li>
         </ul>
         
     )
