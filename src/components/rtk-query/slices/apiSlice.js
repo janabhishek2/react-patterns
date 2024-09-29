@@ -1,25 +1,16 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const apiSlice = createApi({
+    baseQuery: fetchBaseQuery({
+        baseUrl: "https://dummyjson.com"
+    }),
     endpoints: function(builder) {
         return {
             getAllTodos: builder.query({
-                queryFn: async function() {
-                    const resposnse = await fetch('https://dummyjson.com/todos');
-                    const data = await resposnse.json();
-                    return  {
-                        data
-                    }
-                }
+               query: () => "/todos"
             }),
             getTodo: builder.query({
-                queryFn: async function(id) {
-                    const resposnse = await fetch(`https://dummyjson.com/todos/${id}`);
-                    const data = await resposnse.json();
-                    return  {
-                        data
-                    } 
-                }
+                query: (id) => `https://dummyjson.com/todos/${id}`
             })
         }
     }

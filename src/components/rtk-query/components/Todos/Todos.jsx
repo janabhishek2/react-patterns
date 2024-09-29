@@ -5,6 +5,7 @@ import TodoItem from '../TodoItem';
 function Todos() {
     const {
         isLoading,
+        data,
         data: {
             todo = ''
         } = {},
