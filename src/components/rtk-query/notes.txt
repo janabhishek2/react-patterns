@@ -1,3 +1,9 @@
 1. rtk query is the package made to integrate with redux to solve data-fetching problem.
 2. Traditional approach uses: thunks/sagas and updates store.
 3. 3 methods of api data fetching : fetch-before-render, fetch-during-render(rtk), fetch-after-render(redux/useEffect). 
+4. redux: reducers, rtk: apiSlices.
+5. In slices we setup all endpoints for a base url.
+6. fetchBaseQuery is the fetch based wrapper to make api calls and get the data, error, states.
+7. apiSlice exports 5 types of hooks: use{endpointName}Query, use{endPointName}LazyQuery.
+8. useQuery hook is used to trigger api call as soon as it is called / during render. {data, isLoading, error} are received.
+9. useLazyQuery is used to trigger api call on demand. [trigger, {data, isLoading, error}] are recevied from this hook.
