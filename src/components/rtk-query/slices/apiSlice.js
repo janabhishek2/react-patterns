@@ -13,11 +13,11 @@ const apiSlice = createApi({
                }
             }),
             getTodo: builder.query({
-                query: (id) => `https://dummyjson.com/todos/${id}`
+                query: (id) => `/todos/${id}`
             })
         }
     }
 });
 
-export const { useGetAllTodosQuery, useGetTodoQuery } = apiSlice;
+export const { useGetAllTodosQuery, useLazyGetTodoQuery } = apiSlice;
 export default apiSlice;

@@ -1,10 +1,32 @@
-import React from 'react'
+import React from "react";
+import { useLazyGetTodoQuery } from "../../slices/apiSlice";
 
-function TodoItem({ data }) {
-    const { todo } = data;
-    return (
-        <li>{todo}</li>
-    )
+const statusGetter = (completed) => {
+        return completed ? "Completed..": "Not complete";
 }
 
-export default TodoItem
+function TodoItem({ data }) {
+    const { todo, id } = data;
+    const [trigger, { data: todoData = {}, isLoading }] = useLazyGetTodoQuery();
+
+    const handleGetStatus = function () {
+        trigger(id);
+    };
+   
+    return (
+        <div style={{ display: "flex", margin: "1rem 0rem" }}>
+            <li>{todo}</li>
+            <button style={{ marginLeft: "1rem" }} onClick={handleGetStatus}>
+                Get status
+            </button>
+            {
+                isLoading && <span style={{ marginLeft: "1rem" }}>Loading...</span>
+            }
+            {
+                Object.keys(todoData).length > 0 && <span style={{ marginLeft: "1rem" }} >{statusGetter(todoData?.completed)}</span>
+            }
+        </div>
+    );
+}
+
+export default TodoItem;
