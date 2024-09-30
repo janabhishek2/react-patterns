@@ -13,11 +13,16 @@ function TodoItem({ data }) {
         trigger("asd");
     };
 
-    console.log(error);
+    const handleDelete = function() {
+        
+    }
    
     return (
         <div style={{ display: "flex", margin: "1rem 0rem" }}>
             <li>{todo}</li>
+            <button style={{ marginLeft: "1rem" }} onClick={handleDelete}>
+                Delete
+            </button>
             <button style={{ marginLeft: "1rem" }} onClick={handleGetStatus}>
                 Get status
             </button>
