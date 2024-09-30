@@ -19,7 +19,7 @@ function TodoItem({ data }) {
     }, [deleteTodoResult.isSuccess]);
 
     const handleGetStatus = function () {
-        trigger("asd");
+        trigger(id);
     };
 
     const handleDelete = function() {
