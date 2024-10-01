@@ -31,10 +31,10 @@ function Todos() {
             completed: false,
             userId: 123,
             todo: todoInput
-        }).then((res) => {
-            console.log(res);
+        }).unwrap().then((data) => {
+            console.log(data);
             refetchTodosList();
-        });
+        })
         setTodoInput("");
     }
 
