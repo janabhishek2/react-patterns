@@ -24,10 +24,17 @@ const apiSlice = createApi({
                         }
                     }
                 }
+            }),
+            addTodo: builder.mutation({
+                query: (params) => ({
+                    url: "/todos/add",
+                    method: "POST",
+                    body: params
+                })
             })
         }
     }
 });
 
-export const { useGetAllTodosQuery, useLazyGetTodoQuery } = apiSlice;
+export const { useGetAllTodosQuery, useLazyGetTodoQuery, useAddTodoMutation } = apiSlice;
 export default apiSlice;
