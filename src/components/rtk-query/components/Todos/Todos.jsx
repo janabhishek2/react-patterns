@@ -3,7 +3,7 @@ import { useAddTodoMutation, useGetAllTodosQuery } from "../../slices/apiSlice";
 import TodoItem from "../TodoItem";
 
 function Todos() {
-    const { isLoading, data: todos, error } = useGetAllTodosQuery();
+    const { isLoading, data: todos, error, refetch: refetchTodosList } = useGetAllTodosQuery();
     const [addTodo, addTodoResult] = useAddTodoMutation();
     const [todoInput, setTodoInput] = useState("");
 
@@ -31,6 +31,9 @@ function Todos() {
             completed: false,
             userId: 123,
             todo: todoInput
+        }).then((res) => {
+            console.log(res);
+            refetchTodosList();
         });
         setTodoInput("");
     }
