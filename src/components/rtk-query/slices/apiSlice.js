@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const apiSlice = createApi({
     reducerPath: "todoApiSlice",
+    // refetch true: rtk-query does not make isLoading true, fetches data in background and updates it.
     refetchOnFocus: true,
     refetchOnReconnect: true,
     tagTypes: ["GetAllTodosTag"],

@@ -32,6 +32,8 @@ function Todos() {
             userId: 123,
             todo: todoInput
         });
+        // react-query does not make loading true for this case! fetches data in background
+        // refetchTodosList();
     }
 
     const handleTodoInputChange = function(e) {
