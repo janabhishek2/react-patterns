@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const apiSlice = createApi({
     reducerPath: "todoApiSlice",
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
     tagTypes: ["GetAllTodosTag"],
     baseQuery: fetchBaseQuery({
         baseUrl: "https://dummyjson.com"
@@ -13,7 +15,11 @@ const apiSlice = createApi({
                providesTags: ["GetAllTodosTag"],
                transformResponse: function(data) {
                 return data?.todos ?? [];
-               }
+               },
+            // cache time 3s after this data is refetched.
+            // by default rtk-query keeps data cached for 60seconds.
+            // if we re-mount component we get the cached data.
+               keepUnusedDataFor: 1
             }),
             getTodo: builder.query({
                 query: (id) => `/todos/${id}`,
