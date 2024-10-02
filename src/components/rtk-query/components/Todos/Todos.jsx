@@ -31,11 +31,7 @@ function Todos() {
             completed: false,
             userId: 123,
             todo: todoInput
-        }).unwrap().then((data) => {
-            console.log(data);
-            refetchTodosList();
-        })
-        setTodoInput("");
+        });
     }
 
     const handleTodoInputChange = function(e) {
