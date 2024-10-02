@@ -7,16 +7,30 @@ const apiSlice = createApi({
     refetchOnReconnect: true,
     tagTypes: ["GetAllTodosTag"],
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://dummyjson.com"
+        baseUrl: "https://dummyjson.com",
+        prepareHeaders: (headers)=>{
+            // used to set common headers for all apis
+            headers.set("r-1",'d');
+            return headers;
+        }
     }),
     endpoints: function(builder) {
         return {
             getAllTodos: builder.query({
-               query: () => "/todos",
+               query: () => {
+                return {
+                    url: "/todos",
+                    // used to set custom headers for one api.
+                    headers: {
+                        "authorisation": "empty"
+                    }
+                }
+               },
                providesTags: ["GetAllTodosTag"],
                transformResponse: function(data) {
                 return data?.todos ?? [];
                },
+               
             // cache time 3s after this data is refetched.
             // by default rtk-query keeps data cached for 60seconds.
             // if we re-mount component we get the cached data.
