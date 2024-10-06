@@ -13,4 +13,6 @@
 11. We can not call hooks in functions.
 12. Hooks can be used only in fn comp not in class comp.
 13. We copy the original object and make changes to copy: Why copy the object is passed as arg in useState?: reference to object remains same hence react does not trigger re-render. Hence we need to copy the original state object and use setter function.
+14. We can abstract the object copy logic in another hook. Hence we do not need to copy whole useState object everytime the user makes changes to state.
+15. WHy useState returns array? so we can name vars it accordingy: in object we have to give fixed names.
 
