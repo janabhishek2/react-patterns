@@ -1,69 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Test = () => {
-    const [counters, setCounters] = useCounters({
-        value1: 2,
-        value2: 3
-    });
+    const {
+        data = [], loading
+    } = useNetwork("https://dummyjson.com/todos");
 
-    console.log(counters);
-
-    const handleIncrement1 = () => {
-        setCounters({
-            value1: counters.value1 + 1
-        });
-    };
-
-    const handleDecrement1 =() => {
-        setCounters({
-            value1: counters.value1 - 1
-        });
+    const [count, setCount] = useState(0);
+    if(loading) {
+        return <h1>Loading!!</h1>
     }
-
-    const handleIncrement2 = () => {
-        setCounters({
-            value2: counters.value2 + 1
-        });
-    };
-
-    const handleDecrement2 = () => {
-        setCounters({
-            value2: counters.value2 - 1
-        });
-    };
-
-    return(
-        <>
-            <div>
-                <button onClick={handleDecrement1}>-</button>
-                {
-                    counters.value1
-                }
-                <button onClick={handleIncrement1}>+</button>
-            </div>
-            <br/>
-            <div>
-                <button onClick={handleDecrement2}>-</button>
-                    {
-                        counters.value2
-                    }
-                <button onClick={handleIncrement2}>+</button>
-            </div>
-        </>
+    return (
+       <ul>
+        {
+            (data || []).map(item => {
+                return <li onClick={() => setCount(count + 1)}>{item.todo}</li>
+            })
+        }
+       </ul>
     )
 };
 
-const useCounters = (initialState = {}) => {
-    const [counters, setCounters] = useState(initialState);
+const useNetwork = (url = '') => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-    const updateCounters = (value) => {
-        setCounters({
-            ...counters,
-            ...value
-        });
+    const fetchData = async () => {
+        try{
+            setLoading(true);
+            const response = await fetch(url);
+            if(!response.ok) throw new Error('api call error');
+            const data = await response?.json();
+            setData(data?.todos);
+        } catch(err) {
+            console.log(err);
+        } finally {
+            setLoading(false);
+        }
     };
+    console.log('run');
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    return [counters, updateCounters];
+    return {
+        data,
+        loading
+    };
 }
+
 
 export default Test;
