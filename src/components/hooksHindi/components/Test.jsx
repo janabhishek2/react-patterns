@@ -1,18 +1,31 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react';
 
-function Test() {
-    const [value, setValue] = useState(0);
-
-    myHook();
+export default function Test() {
+    const {
+        count: counter,
+        increment,
+        decrement
+    } = useCounter(0);
 
     return (
-        <div>Test</div>
-    )
-}
+    <>
+        <button onClick={decrement}>-</button>
+        {counter}
+        <button onClick={increment}>+</button>
+    </>);
+};
 
-function myHook() {
-    const [x, setx] = useState(0);
-    console.log("my Hook");
-}
+const useCounter = (initialCount) => {
 
-export default Test
+    const [count, setCount] = useState(initialCount);
+
+    const increment = () => {
+        setCount(count + 1);
+    };
+    const decrement = () => {
+        setCount(count - 1);
+    }
+    return {
+        count, increment, decrement
+    }
+}
