@@ -1,52 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useReducer } from 'react'
 
-const Test = () => {
-    const {
-        data = [], loading
-    } = useNetwork("https://dummyjson.com/todos");
+function Test() {
+    const [value, setValue] = useMyState(3);
+    const handleClick = () => {
+        setValue(4);
+    };
 
-    const [count, setCount] = useState(0);
-    if(loading) {
-        return <h1>Loading!!</h1>
-    }
     return (
-       <ul>
-        {
-            (data || []).map(item => {
-                return <li onClick={() => setCount(count + 1)}>{item.todo}</li>
-            })
-        }
-       </ul>
+        <div>
+            {value}
+            <button onClick={handleClick}>Click me</button>
+        </div>
     )
-};
-
-const useNetwork = (url = '') => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
-
-    const fetchData = async () => {
-        try{
-            setLoading(true);
-            const response = await fetch(url);
-            if(!response.ok) throw new Error('api call error');
-            const data = await response?.json();
-            setData(data?.todos);
-        } catch(err) {
-            console.log(err);
-        } finally {
-            setLoading(false);
-        }
-    };
-    console.log('run');
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    return {
-        data,
-        loading
-    };
 }
 
+const useMyState = (initialValue) => {
 
-export default Test;
+    const reducer = (state, action) => {
+        switch(action.type) {
+            case 'update': {
+                return action?.payload
+            }
+            default: {
+                return state
+            }
+        }
+    };
+    const [state, dispatch] = useReducer(reducer, initialValue);
+
+    const handleChange = function(value) {
+        dispatch({
+            type: "update",
+            payload: value
+        })
+    };
+
+    return [state, handleChange];
+};
+
+export default Test
