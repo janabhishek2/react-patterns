@@ -1,41 +1,54 @@
 import React, { useReducer } from 'react'
 
 function Test() {
-    const [value, setValue] = useMyState(3);
-    const handleClick = () => {
-        setValue(4);
+    const [value1, setValue1] = useMyState(3);
+    const [value2, setValue2] = useMyState(5);
+
+    const handleClick1 = () => {
+        setValue1(value1 + 1);
     };
+    const handleClick2 = () => {
+        setValue2(value2 +1);
+    }
 
     return (
-        <div>
-            {value}
-            <button onClick={handleClick}>Click me</button>
-        </div>
+        <>
+            <div>
+                {value1}
+                <button onClick={handleClick1}>Click me</button>
+            </div>
+            <div>
+                {value2}
+                <button onClick={handleClick2}>Click me</button>
+            </div>
+        </>
     )
 }
 
+let states = [];
+let index = 0;
+let defaultValue;
+
 const useMyState = (initialValue) => {
+    let callId = index++;
+    const [, forceUpdate] = useReducer(() => ({}));
 
-    const reducer = (state, action) => {
-        switch(action.type) {
-            case 'update': {
-                return action?.payload
-            }
-            default: {
-                return state
-            }
-        }
-    };
-    const [state, dispatch] = useReducer(reducer, initialValue);
+    const renderer = () => {
+        forceUpdate({});
+    }
 
-    const handleChange = function(value) {
-        dispatch({
-            type: "update",
-            payload: value
-        })
+    const handleUpdate = function(newValue) {
+        states[callId][0] = newValue;
+        renderer();
     };
 
-    return [state, handleChange];
+    if(states[callId]) {
+        return states[callId];
+    }
+
+    const tuple = [initialValue, handleUpdate];
+    states[callId] = tuple;
+    return states[callId];
 };
 
 export default Test
