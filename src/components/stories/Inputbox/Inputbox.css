@@ -1,0 +1,22 @@
+.inputbox {
+    border: 1px solid black;
+    min-height: 2rem;
+    border-radius: 20px;
+    padding: 0 0.5rem;
+}
+
+.inputbox:hover {
+    cursor: default;
+}
+
+.small {
+    width: 20%;
+}
+
+.medium {
+    width: 30%;
+}
+
+.large {
+    width: 40%;
+}
