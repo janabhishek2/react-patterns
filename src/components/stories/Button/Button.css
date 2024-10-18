@@ -1,0 +1,36 @@
+.button {
+    border: none;
+    color: white;
+    padding: 1rem;
+    border-radius: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.primary {
+    color: white;
+    background-color: blue;
+}
+
+.secondary {
+    color: white;
+    background-color: black;
+}
+
+.tertiary {
+    color: white;
+    background-color: grey;
+}
+
+.success {
+    color: white;
+    background-color: green;
+}
+
+.danger {
+    background-color: red;
+    color: white;
+}
