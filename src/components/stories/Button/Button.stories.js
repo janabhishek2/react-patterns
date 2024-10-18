@@ -6,8 +6,8 @@ export default {
     component: Button
 };
 
-const Primary = function() {
-    return (<Button variant="primary">Primary</Button>);
+const Primary = function({ children }) {
+    return (<Button variant="primary">{children || "Primary"}</Button>);
 }
 
 const Secondary = function() {
