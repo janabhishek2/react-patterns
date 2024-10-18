@@ -29,3 +29,12 @@ const Danger = function() {
 export {
     Primary, Secondary, Tertiary, Success, Danger
 };
+
+const Template = (ss) => <Button {...ss} />;
+
+export const PrimaryA = Template.bind({});
+
+PrimaryA.args= {
+    variant: "primary",
+    children: "Primary Args"
+};
