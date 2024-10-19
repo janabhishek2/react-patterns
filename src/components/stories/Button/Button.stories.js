@@ -1,9 +1,11 @@
 import React from 'react';
+import Center from '../Center/Center';
 import Button from './Button';
 
 export default {
     name: "Button",
-    component: Button
+    component: Button,
+    decorators: [(story) => <Center>{story()}</Center>]
 };
 
 const Template = (args) => <Button {...args} />;
