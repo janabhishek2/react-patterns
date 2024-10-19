@@ -6,35 +6,26 @@ export default {
     component: Button
 };
 
-const Primary = function({ children }) {
-    return (<Button variant="primary">{children || "Primary"}</Button>);
-}
+const Template = (args) => <Button {...args} />;
 
-const Secondary = function() {
-    return (<Button variant="secondary">Secondary</Button>);
-}
+const Primary = Template.bind({});
+Primary.args = {
+    variant: "primary",
+    children: "Primary Label"
+};
 
-const Tertiary = function() {
-    return (<Button variant="tertiary">Tertiary</Button>);
-}
+const Secondary = Template.bind({});
+Secondary.args = {
+    variant: "secondary",
+    children: "Secondary label"
+};
 
-const Success = function() {
-    return (<Button variant="success">Success</Button>);
-}
-
-const Danger = function() {
-    return (<Button variant="danger">Danger</Button>);
-}
+const Tertiary = Template.bind({});
+Tertiary.args = {
+    ...Primary.args,
+    children: "Tertiary"
+};
 
 export {
-    Primary, Secondary, Tertiary, Success, Danger
-};
-
-const Template = (ss) => <Button {...ss} />;
-
-export const PrimaryA = Template.bind({});
-
-PrimaryA.args= {
-    variant: "primary",
-    children: "Primary Args"
-};
+    Primary, Secondary, Tertiary
+}
