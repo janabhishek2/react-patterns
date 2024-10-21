@@ -3,7 +3,12 @@ import { Button as ChakraButton } from '@chakra-ui/react';
 
 export default {
     title: "ChakraButton",
-    component: ChakraButton
+    component: ChakraButton,
+    argTypes: {
+        colorScheme: {
+            control: "text"
+        }
+    }
 };
 
 const Template = (args) => <ChakraButton {...args} />;
