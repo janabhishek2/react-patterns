@@ -6,7 +6,10 @@ export default {
     component: ChakraButton,
     argTypes: {
         colorScheme: {
-            control: "text"
+            control: "color"
+        },
+        onClick: {
+            action: "clicked"
         }
     }
 };
