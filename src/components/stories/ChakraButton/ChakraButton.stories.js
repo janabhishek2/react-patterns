@@ -25,7 +25,10 @@ TealButton.args = {
 const RedButton = Template.bind({});
 RedButton.args = {
     colorScheme: "red",
-    children: "Red button"
+    children: "Red button",
+    onClick: () => {
+        console.log("Red button clicked!");
+    }
 }
 
 export { TealButton, RedButton };
