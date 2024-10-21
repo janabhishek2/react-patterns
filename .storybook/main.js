@@ -16,3 +16,5 @@ const config = {
     },
 };
 export default config;
+
+// config for storybook (addons/where to find stories etc)..

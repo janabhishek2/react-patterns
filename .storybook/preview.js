@@ -23,3 +23,5 @@ const preview = {
 };
 
 export default preview;
+
+// config for individual stories.. (decorators)
