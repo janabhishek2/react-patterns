@@ -3,7 +3,11 @@ import Heading from './Heading';
 
 export default {
     title: "Components/Heading",
-    component: Heading
+    component: Heading,
+    argTypes: {
+        level: { control: "radio" },
+        children: { control: "text" }
+    }
 };
 
 
@@ -14,7 +18,7 @@ function Default(args) {
 const Heading3 = Default.bind({});
 Heading3.args = {
     level: 3,
-    children: "Hello"
+    children: "Default Heading"
 }
 
 export {
