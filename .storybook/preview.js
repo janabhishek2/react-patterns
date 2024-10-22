@@ -15,9 +15,7 @@ const preview = {
     },
     decorators: [(story)=> {
         return (
-            <ChakraProvider>
-                {story()}
-            </ChakraProvider>
+            story()
         )
     },(storyFn, context) => withConsole()(storyFn)(context)]
 };
