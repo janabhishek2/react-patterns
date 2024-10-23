@@ -1,0 +1,20 @@
+{
+    "name": "react-patterns-monorepo",
+    "version": "1.0.0",
+    "workspaces": [
+        "packages/*"
+    ],
+    "private": "true",
+    "main": "index.js",
+    "repository": "git@github.com:janabhishek2/react-patterns.git",
+    "author": "Abhishek Jan <janabhishek2@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "lerna": "^8.1.8"
+    },
+    "scripts": {
+        "start": "lerna run start",
+        "new-version": "lerna version --conventional-commits --yes",
+        "diff": "lerna diff"
+    }
+}
