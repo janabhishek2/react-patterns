@@ -10,17 +10,12 @@ export default {
     }
 };
 
-
-function Default(args) {
-    return <Heading {...args}>{args.children}</Heading>
-};
-
-const Heading3 = Default.bind({});
-Heading3.args = {
-    level: 3,
-    children: "Default Heading"
-}
-
-export {
-    Heading3
+export const SampleStory = {
+    render: ({ children, ...rest}) => {
+        return <Heading {...rest}>{children}</Heading>
+    },
+    args: {
+        level: 3,
+        children: "Testing"
+    }
 }
