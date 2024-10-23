@@ -10,9 +10,7 @@
     "test:c": "jest --colors --coverage",
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --config webpack.config.js --hot",
-    "lint": "prettier ./src/**/* --write",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "lint": "prettier ./src/**/* --write"
   },
   "keywords": [],
   "private": true,

@@ -15,6 +15,7 @@
     "scripts": {
         "start": "lerna run start --scope=package1",
         "new-version": "lerna version --conventional-commits --yes",
-        "diff": "lerna diff"
+        "diff": "lerna diff",
+        "storybook": "lerna run storybook --scope=package1"
     }
 }
