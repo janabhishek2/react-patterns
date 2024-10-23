@@ -1,3 +1,4 @@
 1. npx lerna init --> to initialise project monorepo
 2. npx lerna clean -y --> to clean the node_modules inside repos.
 3. npx lerna bootstrap --hoist --> move all deps of packages to top.
+4. lerna: tool for managing monorepositories using workspaces
