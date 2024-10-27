@@ -1,8 +1,9 @@
 import React from 'react';
+import "@react-patterns/scss/lib/Button.css";
 
 function Button() {
   return (
-    <button>
+    <button className='dse-button-container '>
         Button
     </button>
   )
