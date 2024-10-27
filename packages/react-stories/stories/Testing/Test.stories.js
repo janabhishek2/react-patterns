@@ -1,7 +1,5 @@
 // import { Button } from "@react-patterns/react/src/index";
-import { Button } from "@react-patterns/react/src/index";
-
-console.log(Button);
+import { Button } from "@react-patterns/react";
 
 import React from 'react';
 
