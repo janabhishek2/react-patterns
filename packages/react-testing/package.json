@@ -1,8 +1,9 @@
 {
-  "name": "@react-patterns/package1",
+  "name": "@react-patterns/react-testing",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "private": true,
   "files": [
     "dist"
   ],
