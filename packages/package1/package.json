@@ -1,8 +1,11 @@
 {
-  "name": "package1",
+  "name": "@react-patterns/package1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "test:w": "jest --watch",
@@ -13,7 +16,6 @@
     "lint": "prettier ./src/**/* --write"
   },
   "keywords": [],
-  "private": true,
   "workspaces": [
     "packages/*"
   ],
