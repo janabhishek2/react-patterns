@@ -1,5 +1,5 @@
 {
-    "name": "@react-patters/core",
+    "name": "@react-patterns/core",
     "version": "1.0.0",
     "workspaces": {
         "packages": ["packages/*"],
@@ -17,6 +17,6 @@
         "start": "lerna run start --scope=package1",
         "new-version": "lerna version --conventional-commits --yes",
         "diff": "lerna diff",
-        "storybook": "lerna run storybook --scope=package1"
+        "storybook": "lerna run storybook"
     }
 }

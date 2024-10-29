@@ -9,3 +9,13 @@
         height: $value;
     }
 }
+
+@each $size, $spaceValue in $spacing {
+    .dse-border-#{$size} {
+        border-width: $spaceValue
+    }
+
+    .dse-border-radius-#{$size} {
+        border-radius: $spaceValue
+    }
+}
