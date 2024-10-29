@@ -14,7 +14,9 @@ function Color(props) {
 }
 
 Color.propTypes = {
-    hexCode: PropTypes.string
+    hexCode: PropTypes.oneOf(["#000", "#fff", "#ddd"]),
+    width: PropTypes.string,
+    height: PropTypes.string
 }
 
 export default Color
