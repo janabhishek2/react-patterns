@@ -1,7 +1,7 @@
 import React from 'react';
 import '@react-patterns/scss/lib/Utilities.css';
 import PropTypes from 'prop-types';
-import { SPACING } from '../../foundation/Spacing';
+import { SPACING } from '@react-patterns/react-foundation';
 
 function Color(props) {
     const { hexCode, width = "sm", height= "sm"} = props;
