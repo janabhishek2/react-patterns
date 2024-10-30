@@ -1,4 +1,4 @@
-import SPACING from './Spacing';
+import {SPACING} from './Spacing';
 
 export {
     SPACING

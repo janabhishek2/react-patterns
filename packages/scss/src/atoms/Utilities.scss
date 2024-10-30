@@ -19,3 +19,18 @@
         border-radius: $spaceValue
     }
 }
+
+@each $size, $value in $spacing {
+    .dse-margin-left-#{$size} {
+        margin-left: $value;
+    }
+    .dse-margin-right-#{$size} {
+        margin-right: $value;
+    }
+    .dse-margin-top-#{$size} {
+        margin-top: $value;
+    }
+    .dse-margin-bottom-#{$size} {
+        margin-bottom: $value;
+    }
+}
