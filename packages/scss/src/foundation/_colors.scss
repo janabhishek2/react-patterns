@@ -34,3 +34,7 @@ $form-bg: var(--dse-form-bg, $white) !default;
 $form-error-color: var(--dse-form-error-color, $red) !default;
 $form-error-border: var(--dse-form-error-border, $red) !default;
 $form-border-focus-color: var(--dse-form-border-focus-color, $green) !default;
+
+// Select
+
+$select-overlay-color: var(--dse-select-overlay-color, $white) !default;

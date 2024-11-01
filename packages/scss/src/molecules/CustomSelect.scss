@@ -1,0 +1,39 @@
+@import "foundation/all";
+
+.dse-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    &__label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include padding("xs");
+        border: 1px solid $white-dark;
+        background-color: $white;
+        font-family: $body-font-family;
+        font-size: $fs-lg;
+        cursor: pointer;
+    }
+
+    &__overlay {
+        @include padding("none");
+        @include margin("none");
+        z-index: 99;
+        position: absolute;
+        list-style-type: none;
+        border: 1px solid $white-dark;
+        background-color: $white;
+        font-family: $body-font-family;
+        font-size: $fs-lg;
+        width: 100%;
+    }
+
+    &__list-item {
+        @include padding("xs");
+        border-color: $blue;
+        border-radius: 1px;
+    }
+}

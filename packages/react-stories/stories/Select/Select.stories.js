@@ -22,7 +22,10 @@ const DEFAULT_COLOR_OPTIONS = [
 ]
 
 const DefaultSelect = {
-    render: (props) => <Select {...props} />,
+    render: (props) => <div>
+        <Select {...props} />
+        Hello
+    </div>,
     args: {
         onOptionSelect: (option, index) => {
             console.log(option, index);
