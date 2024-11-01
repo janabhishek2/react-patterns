@@ -4,27 +4,34 @@ import "@react-patterns/scss/lib/CustomSelect.css";
 import Down from "./Down";
 import Up from "./Up";
 import Tick from "./Tick";
+import Text from "@react-patterns/react/src/atoms/Text";
 
 const Select = (props) => {
-    const { onOptionSelect: optionSelectCallback, options, label } = props;
+    const { onOptionSelect: optionSelectCallback, options, label, defaultSelected = null } = props;
 
     /* States for the Select */
 
     const [open, setIsOpen] = useState(false);
     const triggerbuttonRef = useRef(null);
     const [triggerButtonHeight, setTriggerButtonHeight] = useState(0);
-    const [selectedOption, setSelectedOption] = useState({});
+    const [selectedOption, setSelectedOption] = useState(defaultSelected ? options.find(item => item.value.toLowerCase() === defaultSelected) : null);
 
     /* Event handlers */
 
     const onOptionSelect = (option, index) => {
         setSelectedOption(option);
-        optionSelectCallback(option, index);
+        setIsOpen(false);
+
+        if(optionSelectCallback) {
+            optionSelectCallback(option, index);
+        }
     };
 
     const toggleOpen = () => {
         setIsOpen(!open);
     };
+
+    /* Side Effects */
 
     useEffect(() => {
         if (triggerbuttonRef?.current) {
@@ -32,6 +39,13 @@ const Select = (props) => {
         }
     }, [triggerbuttonRef?.current]);
 
+    
+    /* Function variables */
+    let selectedOptionLabel = "";
+    if(selectedOption) {
+        selectedOptionLabel = selectedOption?.label;
+    }
+    
     return (
         <div className="dse-select">
             <button
@@ -39,7 +53,11 @@ const Select = (props) => {
                 className="dse-select__label"
                 onClick={toggleOpen}
             >
-                <span>{label}</span>
+                <Text>
+                {
+                    selectedOption ? selectedOptionLabel : label
+                }
+                </Text>
                 <span>
                     {open ? (
                         <Up width="1rem" height="1rem" />
@@ -86,12 +104,14 @@ Select.propTypes = {
     onOptionSelect: PropTypes.func,
     options: PropTypes.array,
     label: PropTypes.string,
+    defaultSelected: PropTypes.string
 };
 
 Select.defaultProps = {
     onOptionSelect: () => {},
     options: [],
     label: "Select",
+    defaultSelected: null
 };
 
 export default Select;
