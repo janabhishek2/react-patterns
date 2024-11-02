@@ -8,10 +8,6 @@
     "dist"
   ],
   "scripts": {
-    "test": "jest",
-    "test:w": "jest --watch",
-    "test:us": "jest --updateSnapshot",
-    "test:c": "jest --colors --coverage",
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --config webpack.config.js --hot",
     "lint": "prettier ./src/**/* --write"

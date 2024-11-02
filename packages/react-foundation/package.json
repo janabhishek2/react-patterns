@@ -2,5 +2,14 @@
   "name": "@react-patterns/react-foundation",
   "version": "1.0.0",
   "main": "src/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "jest": "^29.7.0"
+  }
 }

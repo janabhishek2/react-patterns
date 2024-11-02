@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test foundations contains the correct Spacing snapshot 1`] = `
+{
+  "lg": "lg",
+  "md": "md",
+  "sm": "sm",
+  "xl": "xl",
+  "xs": "xs",
+  "xxl": "xxl",
+  "xxs": "xxs",
+  "xxxl": "xxxl",
+  "xxxs": "xxxs",
+}
+`;
+
+exports[`Snapshot test foundations contains the correct TextSizes snapshot 1`] = `
+{
+  "base": "base",
+  "lg": "lg",
+  "sm": "sm",
+  "xl": "xl",
+  "xs": "xs",
+}
+`;

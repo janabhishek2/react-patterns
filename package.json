@@ -17,6 +17,7 @@
         "start": "lerna run start --scope=package1",
         "new-version": "lerna version --conventional-commits --yes",
         "diff": "lerna diff",
-        "storybook": "lerna run storybook"
+        "storybook": "lerna run storybook",
+        "test": "yarn lerna run test"
     }
 }
