@@ -54,6 +54,7 @@ const Select = (props) => {
                 ref={triggerbuttonRef}
                 className="dse-select__label"
                 onClick={toggleOpen}
+                data-testid="selectButtonTrigger"
             >
                 <Text>
                 {
@@ -108,6 +109,7 @@ const Select = (props) => {
                                 }
                                 onClick={() => onOptionSelect(option, index)}
                                 key={value}
+                                role="menuitemradio"
                             >
                                 <span className="dse-select__list-item__label">
                                     <Color hexCode={value.toLowerCase()} width="sm" height="sm"></Color>
