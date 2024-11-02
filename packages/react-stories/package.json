@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@storybook/addon-essentials": "^8.3.6",
