@@ -6,7 +6,7 @@ export default {
     component: Select
 };
 
-const DEFAULT_COLOR_OPTIONS = [
+export const DEFAULT_COLOR_OPTIONS = [
     {
         label: "Pink",
         value: "Pink"
