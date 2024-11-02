@@ -37,7 +37,7 @@ const Select = (props) => {
 
     useEffect(() => {
         if (triggerbuttonRef?.current) {
-            setTriggerButtonHeight(triggerbuttonRef?.current?.offsetHeight);
+            setTriggerButtonHeight((triggerbuttonRef?.current?.offsetHeight|| 0) + 10);
         }
     }, [triggerbuttonRef?.current]);
 
