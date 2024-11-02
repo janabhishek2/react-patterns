@@ -29,6 +29,28 @@ const SelectWithOptions = {
     }
 };
 
+const SelectWithPinkSelected = {
+    render: (props) => <Select {...props} />,
+    args: {
+        options: DEFAULT_COLOR_OPTIONS,
+        label: "Select a color",
+        defaultSelected: "pink"
+    }
+}
+
+const SelectWithRenderOptions = {
+    render: (props) => <Select {...props} />,
+    args: {
+        options: DEFAULT_COLOR_OPTIONS,
+        label: "Select a color",
+        renderOption: function ({ option, isSelected, getOptionRecommendedProps = () => ({}) }) {
+            return <li {...getOptionRecommendedProps()}>{option.label + " " +  (isSelected && "Selected!!")}</li>
+        }
+    }
+}
+
 export {
-    SelectWithOptions
+    SelectWithOptions,
+    SelectWithPinkSelected,
+    SelectWithRenderOptions
 };
