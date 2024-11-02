@@ -35,6 +35,26 @@ const DefaultSelect = {
     }
 };
 
+const SelectWithRenderOption = {
+    render: (props) => <Select {...props} />,
+    args: {
+        onOptionSelect: (option, index) => {
+            console.log(option, index);
+        },
+        options: DEFAULT_COLOR_OPTIONS,
+        label: "Select a color",
+        renderOption: function(renderOptionProps) {
+            const {
+                option,
+                isSelected,
+                getOptionRecommendedProps = () => ({})
+            } = renderOptionProps;
+            return <li {...getOptionRecommendedProps()}>{option?.label}</li>
+        }
+    }
+}
+
 export {
-    DefaultSelect
+    DefaultSelect,
+    SelectWithRenderOption
 }

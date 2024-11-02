@@ -9,7 +9,7 @@ import Color from "@react-patterns/react/src/atoms/Color";
 import Margin from "@react-patterns/react/src/atoms/Margin";
 
 const Select = (props) => {
-    const { onOptionSelect: optionSelectCallback, options, label, defaultSelected = null } = props;
+    const { onOptionSelect: optionSelectCallback, options, label, defaultSelected = null, renderOption } = props;
 
     /* States for the Select */
 
@@ -75,8 +75,30 @@ const Select = (props) => {
                         top: triggerButtonHeight,
                     }}
                 >
+                
                     {options.map((option, index) => {
                         const { label, value } = option;
+                        const isSelected = selectedOption?.value === value;
+
+                        {/* Render props pattern */}
+                        if(renderOption) {
+                            {/* Get props pattern in getOptionRecommendedProps */}
+                            let renderOptionProps = {
+                                option,
+                                isSelected,
+                                getOptionRecommendedProps: (overrideProps = {}) => {
+                                    return {
+                                        className: isSelected ? "dse-select__list-item--selected" : "dse-select__list-item",
+                                        key: value,
+                                        onClick: () => onOptionSelect(option, index),
+                                        ...overrideProps
+                                    }
+                                }
+                            };
+                            return renderOption(renderOptionProps);
+                        }
+
+                        
                         return (
                             <li
                                 className={
@@ -109,14 +131,16 @@ Select.propTypes = {
     onOptionSelect: PropTypes.func,
     options: PropTypes.array,
     label: PropTypes.string,
-    defaultSelected: PropTypes.string
+    defaultSelected: PropTypes.string,
+    renderOption: PropTypes.func
 };
 
 Select.defaultProps = {
     onOptionSelect: () => {},
     options: [],
     label: "Select",
-    defaultSelected: null
+    defaultSelected: null,
+    renderOption: undefined
 };
 
 export default Select;
