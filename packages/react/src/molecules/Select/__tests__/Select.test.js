@@ -18,11 +18,11 @@ let DEFAULT_COLOR_OPTIONS = [
 ]
 
 describe('Select Test cases', () => { 
-    test('render the component', () => {
+    test('render the component snapshot', () => {
         const { asFragment } = render(<Select options={DEFAULT_COLOR_OPTIONS} label="Select a color" />);
         expect(asFragment()).toMatchSnapshot();
     });
-    test('render the component and display options - after clicking the button', () => {
+    test('after clicking the button, should display the correct number of options', () => {
         const { asFragment, getByTestId, getAllByRole } = render(<Select options={DEFAULT_COLOR_OPTIONS} label="Select a color" />);
         
         // Click the trigger
@@ -32,5 +32,20 @@ describe('Select Test cases', () => {
         expect(getAllByRole("menuitemradio")).toHaveLength(3);
         expect(asFragment()).toMatchSnapshot();
     });
+
+    test('should call "onOptionSelect" with option and index if passed', () => {
+        const optionSelectMock = jest.fn();
+        const { asFragment, getByTestId, getAllByRole } = render(<Select options={DEFAULT_COLOR_OPTIONS} label="Select a color" onOptionSelect={optionSelectMock}/>);
+    
+         // Click the trigger
+         fireEvent.click(getByTestId("selectButtonTrigger"));
+
+        //  Select a color ex pink
+
+        fireEvent.click(getAllByRole("menuitemradio")[0]);
+
+        expect(optionSelectMock).toHaveBeenCalled();
+        expect(optionSelectMock).toHaveBeenCalledWith(DEFAULT_COLOR_OPTIONS[0], 0);
+    })
 });
 
