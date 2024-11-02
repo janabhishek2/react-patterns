@@ -5,6 +5,8 @@ import Down from "./Down";
 import Up from "./Up";
 import Tick from "./Tick";
 import Text from "@react-patterns/react/src/atoms/Text";
+import Color from "@react-patterns/react/src/atoms/Color";
+import Margin from "@react-patterns/react/src/atoms/Margin";
 
 const Select = (props) => {
     const { onOptionSelect: optionSelectCallback, options, label, defaultSelected = null } = props;
@@ -85,7 +87,10 @@ const Select = (props) => {
                                 onClick={() => onOptionSelect(option, index)}
                                 key={value}
                             >
-                                <span>{label}</span>
+                                <span className="dse-select__list-item__label">
+                                    <Color hexCode={value.toLowerCase()} width="sm" height="sm"></Color>
+                                    <Margin left="sm">{label}</Margin>
+                                </span>
                                 {selectedOption?.value === value && (
                                     <span>
                                         <Tick width="1.5rem" height="1rem"  />
