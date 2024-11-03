@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import "@react-patterns/scss/lib/CustomSelect.css";
-import Down from "./Down";
-import Up from "./Up";
-import Tick from "./Tick";
+import Down from "./Down.jsx";
+import Up from "./Up.jsx";
+import Tick from "./Tick.jsx";
 import Text from "@react-patterns/react/src/atoms/Text";
 import Color from "@react-patterns/react/src/atoms/Color";
 import Margin from "@react-patterns/react/src/atoms/Margin";
