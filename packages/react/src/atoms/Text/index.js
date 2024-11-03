@@ -1,1 +1,1 @@
-export { default } from './Text.jsx';
+export { default } from './Text.js';

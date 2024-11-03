@@ -9,5 +9,5 @@ Object.defineProperty(exports, "default", {
     return _Text["default"];
   }
 });
-var _Text = _interopRequireDefault(require("./Text.jsx"));
+var _Text = _interopRequireDefault(require("./Text.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }

@@ -9,5 +9,5 @@ Object.defineProperty(exports, "default", {
     return _Color["default"];
   }
 });
-var _Color = _interopRequireDefault(require("./Color.jsx"));
+var _Color = _interopRequireDefault(require("./Color.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }

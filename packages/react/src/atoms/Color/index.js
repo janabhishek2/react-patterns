@@ -1,1 +1,1 @@
-export { default } from './Color.jsx';
+export { default } from './Color.js';

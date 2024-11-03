@@ -9,5 +9,5 @@ Object.defineProperty(exports, "default", {
     return _Margin["default"];
   }
 });
-var _Margin = _interopRequireDefault(require("./Margin.jsx"));
+var _Margin = _interopRequireDefault(require("./Margin.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }

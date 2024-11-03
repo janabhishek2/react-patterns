@@ -1,1 +1,1 @@
-export { default } from './Margin.jsx';
+export { default } from './Margin.js';
