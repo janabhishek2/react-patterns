@@ -9,7 +9,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _reactFoundation = require("@react-patterns/react-foundation");
 require("@react-patterns/scss/lib/Utilities.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-console.log(Object.keys(_reactFoundation.SPACING));
 var Margin = function Margin(props) {
   var _props$left = props.left,
     left = _props$left === void 0 ? 'none' : _props$left,

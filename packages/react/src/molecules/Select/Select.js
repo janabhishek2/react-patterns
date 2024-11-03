@@ -4,9 +4,9 @@ import "@react-patterns/scss/lib/CustomSelect.css";
 import Down from "./Down.js";
 import Up from "./Up.js";
 import Tick from "./Tick.js";
-import Text from "@react-patterns/react/src/atoms/Text";
-import Color from "@react-patterns/react/src/atoms/Color";
-import Margin from "@react-patterns/react/src/atoms/Margin";
+import Text from "@react-patterns/react/lib/atoms/Text";
+import Color from "@react-patterns/react/lib/atoms/Color";
+import Margin from "@react-patterns/react/lib/atoms/Margin";
 
 const Select = (props) => {
     const { onOptionSelect: optionSelectCallback, options, label, defaultSelected = null, renderOption } = props;
