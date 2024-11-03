@@ -1,37 +1,46 @@
 {
-    "name": "@react-patterns/core",
-    "version": "1.0.0",
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ],
-        "nohoist": [
-            "**/normalize-scss"
-        ]
-    },
-    "private": "true",
-    "main": "index.js",
-    "repository": "git@github.com:janabhishek2/react-patterns.git",
-    "author": "Abhishek Jan <janabhishek2@gmail.com>",
-    "license": "MIT",
-    "devDependencies": {
-        "commitizen": "^4.3.1",
-        "cz-conventional-changelog": "^3.3.0",
-        "lerna": "^8.1.8"
-    },
-    "scripts": {
-        "start": "lerna run start --scope=package1",
-        "new-version": "lerna version --conventional-commits --yes",
-        "diff": "lerna diff",
-        "storybook": "lerna run storybook",
-        "test": "lerna run test",
-        "build": "lerna run build",
-        "publish": "yarn test && yarn build && lerna publish",
-        "commit": "yarn git-cz"
-    },
-    "config": {
-        "commitizen": {
-            "path": "cz-conventional-changelog"
-        }
+  "name": "@react-patterns/core",
+  "version": "1.0.0",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/normalize-scss"
+    ]
+  },
+  "private": "true",
+  "main": "index.js",
+  "repository": "git@github.com:janabhishek2/react-patterns.git",
+  "author": "Abhishek Jan <janabhishek2@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.6",
+    "lerna": "^8.1.8"
+  },
+  "scripts": {
+    "start": "lerna run start --scope=package1",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff",
+    "storybook": "lerna run storybook",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "publish": "yarn test && yarn build && lerna publish",
+    "commit": "yarn git-cz",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "hooks": {
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
 }
