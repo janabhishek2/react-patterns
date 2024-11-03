@@ -2,8 +2,12 @@
     "name": "@react-patterns/core",
     "version": "1.0.0",
     "workspaces": {
-        "packages": ["packages/*"],
-        "nohoist": ["**/normalize-scss"]
+        "packages": [
+            "packages/*"
+        ],
+        "nohoist": [
+            "**/normalize-scss"
+        ]
     },
     "private": "true",
     "main": "index.js",
@@ -11,6 +15,8 @@
     "author": "Abhishek Jan <janabhishek2@gmail.com>",
     "license": "MIT",
     "devDependencies": {
+        "commitizen": "^4.3.1",
+        "cz-conventional-changelog": "^3.3.0",
         "lerna": "^8.1.8"
     },
     "scripts": {
@@ -20,6 +26,12 @@
         "storybook": "lerna run storybook",
         "test": "lerna run test",
         "build": "lerna run build",
-        "publish": "yarn test && yarn build && lerna publish"
+        "publish": "yarn test && yarn build && lerna publish",
+        "commit": "yarn git-cz"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
     }
 }
