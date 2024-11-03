@@ -18,6 +18,8 @@
         "new-version": "lerna version --conventional-commits --yes",
         "diff": "lerna diff",
         "storybook": "lerna run storybook",
-        "test": "yarn lerna run test"
+        "test": "lerna run test",
+        "build": "lerna run build",
+        "publish": "yarn test && yarn build && lerna publish"
     }
 }
