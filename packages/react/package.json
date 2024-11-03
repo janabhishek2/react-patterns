@@ -14,7 +14,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "webpack --config ./webpack/webpack.config.js",
+    "build": "rm -rf lib && babel src -d lib",
     "dev": "yarn build --watch",
     "test": "jest",
     "start-storybook": "start-storybook -p 6006",
