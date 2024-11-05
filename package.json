@@ -32,7 +32,8 @@
     "publish": "yarn test && yarn build && lerna publish",
     "commit": "yarn git-cz",
     "prepare": "husky",
-    "test:chromatic": "lerna run chromatic"
+    "test:chromatic": "lerna run chromatic",
+    "build:storybook":"yarn build && lerna run build-storybook"
   },
   "config": {
     "commitizen": {
