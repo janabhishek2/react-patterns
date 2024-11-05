@@ -15,4 +15,4 @@ Basic react boilerplate with react, react-dom, jest and react-testing-library se
 
 http://localhost:9000/
 
-Changes in readme
+Storybook link: https://react-patterns-storybook-deployment.netlify.app/
