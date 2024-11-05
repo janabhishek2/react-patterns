@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: "Install Dependencies"
         run: yarn install
@@ -21,6 +23,6 @@ jobs:
       - name: "Run automated tests"
         run: yarn run test
       - name: "Run chromatic tests"
-        env: 
+        env:
           CHROMATIC_SECRET_TOKEN: ${{ secrets.CHROMATIC_SECRET_TOKEN }}
         run: yarn run test:chromatic
