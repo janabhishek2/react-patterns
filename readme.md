@@ -1,18 +1,3 @@
-# React Boilerplate
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e3c555f8-3b22-4a36-8faa-e7a13aa9a009/deploy-status)](https://app.netlify.com/sites/react-patterns-storybook-deployment/deploys)
 
-## About the project
-
-Basic react boilerplate with react, react-dom, jest and react-testing-library setup.
-
-#### Useful Commands: 
-
-> Run server: npm start  
-> Run tests: npm run test  
-> Update snapshots: npm run test:us  
-> Test in watch mode: npm run test:w  
-
-## Accessing the UI
-
-http://localhost:9000/
-
-Storybook link: https://react-patterns-storybook-deployment.netlify.app/
+Storybook: https://react-patterns-storybook-deployment.netlify.app/
