@@ -1,0 +1,22 @@
+name: Build & Test CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Install Dependencies"
+        run: yarn install
+      - name: "Make build"
+        run: yarn run build
+      - name: "Run automated tests"
+        run: yarn run test
