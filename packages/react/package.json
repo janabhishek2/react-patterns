@@ -19,7 +19,7 @@
     "test": "jest",
     "start-storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "chromatic --project-token=chpt_6f1bcf53e3c50d1"
+    "chromatic": "chromatic --project-token=$CHROMATIC_SECRET_TOKEN"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.9",

@@ -20,3 +20,7 @@ jobs:
         run: yarn run build
       - name: "Run automated tests"
         run: yarn run test
+      - name: "Run chromatic tests"
+        env: 
+          CHROMATIC_SECRET_TOKEN: ${{ secrets.CHROMATIC_SECRET_TOKEN }}
+        run: yarn run test:chromatic
