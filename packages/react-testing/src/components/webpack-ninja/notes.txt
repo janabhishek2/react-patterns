@@ -1,0 +1,4 @@
+1. Webpack works on dependency graph.
+2. Dependency graph means linking all the js,css, png, assets etc required to bundle the application.
+3. webpack is a module bunder, it resolves all dependencies and bundles them into chunks of js/css. ( ex: bundle.js, vendor.js )
+4. 
