@@ -1,12 +1,11 @@
-let arr = [1, 2, 3];
-let element = 4;
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
 
-// create a pure append function?
+// creates new array does not modify existing arr
+const newArr = arr1.concat(arr2);
 
-const append = (arr, item) => {
-    return [...arr, item];
-};
+// new array is created in this case
+const newArr1 = [...arr1, ...arr2];
 
-const newArr = append(arr, element);
-
-console.log(newArr, arr);
+// arr1 is modified
+// arr1.push(...arr2);
