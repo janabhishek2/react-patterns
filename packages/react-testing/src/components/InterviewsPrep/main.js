@@ -1,6 +1,12 @@
 let arr = [1, 2, 3];
 let element = 4;
 
-arr.push(element);
+// create a pure append function?
 
-console.log(arr);
+const append = (arr, item) => {
+    return [...arr, item];
+};
+
+const newArr = append(arr, element);
+
+console.log(newArr, arr);
