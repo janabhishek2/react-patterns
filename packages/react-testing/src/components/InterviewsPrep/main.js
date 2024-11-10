@@ -14,9 +14,17 @@ const curry = (func) => {
   }
 };
 
-const curriedSum = curry((a,b,c) => a+b+c);
+let mapper = (item) => item.id;
+const items = [
+  {
+    id: 1,
+    name: "ahe"
+  },
+  {
+    id: 2,
+    name: "nf"
+  }
+];
+const getIds = Array.prototype.map.bind(items, mapper);
 
-const sum = curriedSum(1,2,3,4,5,6);
-console.log(sum);
-
-// curried(a1,a2,a3) = curry((a,b,c) => a+b+c);
+console.log(getIds());
