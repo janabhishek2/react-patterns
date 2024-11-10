@@ -1,20 +1,13 @@
-// remove all duplicates from arr
+// write range(1,3) --> 1,2,3
 
-const books = [
-    {
-        author: "Vaibhav Sachdeva"
-    },
-    {
-        author: "Marie Luan"
-    },
-    {
-        author: "Abhishek Jan"
-    },
-];
+// const range = (start, end) => {
+//     for(let i = start; i<=end; i++) {
+//         console.log(i);
+//     }
+// };
 
-books.sort((book1, book2) => {
-    console.log( book1?.author.split(" ")[1], book2?.author.split(" ")[1]);
-    return book1?.author.split(" ")[1] < book2?.author.split(" ")[1] ? -1 : 1;
-});
+const range = (start, end) => [...Array(end - start).keys().map(item => item + start)];
 
-console.log(books);
+const range41to50 = range(41, 50);
+
+console.log(range41to50);
