@@ -1,12 +1,20 @@
 // remove all duplicates from arr
 
-const arr = [1,3,1,1,1,1,2];
+const books = [
+    {
+        author: "Vaibhav Sachdeva"
+    },
+    {
+        author: "Marie Luan"
+    },
+    {
+        author: "Abhishek Jan"
+    },
+];
 
-// Using includes and reduce
+books.sort((book1, book2) => {
+    console.log( book1?.author.split(" ")[1], book2?.author.split(" ")[1]);
+    return book1?.author.split(" ")[1] < book2?.author.split(" ")[1] ? -1 : 1;
+});
 
-const newArr = arr.reduce((acc, element) => {
-    // reduce returns acc at each iteration of array
-   return acc.includes(element) ? acc : [...acc, element];
-}, []);
-
-console.log(newArr);
+console.log(books);
