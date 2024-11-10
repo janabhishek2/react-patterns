@@ -8,7 +8,7 @@ let users = [
 ];
 
 const isNameExists = (name, users) => {
-    return users.some(user => user.name === name);
+    return !!users.find(user => user.name === name);
 };
 
-console.log(isNameExists("John", users));
+console.log(isNameExists("Joh1n", users));
