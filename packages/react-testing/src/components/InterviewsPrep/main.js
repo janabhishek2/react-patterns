@@ -14,17 +14,29 @@ const curry = (func) => {
   }
 };
 
-let mapper = (item) => item.id;
-const items = [
+let items = [
   {
     id: 1,
-    name: "ahe"
+    name: "Abhishek"
   },
   {
     id: 2,
-    name: "nf"
+    name: "George"
+  },
+  {
+    id: 3,
+    name: "Styka"
   }
 ];
-const getIds = Array.prototype.map.bind(items, mapper);
 
-console.log(getIds());
+const curriedMap = curry((fn, items) => {
+  return items.map(fn);
+});
+
+// curry the map function to get all ids in an array ?
+
+let getIdsFunction = item => item?.id;
+const getIds = curriedMap(getIdsFunction);
+
+const ids = getIds(items);
+console.log(ids);
