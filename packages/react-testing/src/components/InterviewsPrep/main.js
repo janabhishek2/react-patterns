@@ -2,12 +2,6 @@
 
 const arr = [1,3,1,1,1,1,2];
 
-// use sets
-const elementsSet = new Set();
-arr.forEach(element => {
-    elementsSet.add(element);
-})
+const newArr = [...new Set(arr)];
 
-for(let item of elementsSet) {
-    console.log(item);
-}
+console.log(newArr);
