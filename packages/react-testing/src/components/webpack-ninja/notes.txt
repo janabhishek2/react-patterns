@@ -3,3 +3,7 @@
 3. webpack is a module bunder, it resolves all dependencies and bundles them into chunks of js/css. ( ex: bundle.js, vendor.js )
 4. IIFE: loads up code after it is called. This helps to not pollute the global namespace.
 5. Bind all functions to html element to solve the onclick issue when compiling js and html with webpack.
+6. CommonJS modules: nodeJS syntax for import/export: uses require() and module.exports.
+7. ES modules: ES2015 syntax: uses import() and export().
+8. AMD exports: uses define and require.
+9. CSS exports: uses @import to import a file.
