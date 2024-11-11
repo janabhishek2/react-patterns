@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 const items = [
     "apples",
     "oranges",
@@ -9,9 +11,9 @@ const handleClick = () => {
     h1Element.textContent = "Text content change";
 
     const ulElement = document.getElementById("foodItems");
-    items.forEach((item) => {
+    _.forEach(items, (item) => {
         const liElement = document.createElement("li");
         liElement.textContent = item;
         ulElement.appendChild(liElement);
-    })
+    });
 }

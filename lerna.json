@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/react-testing/src/components/webpack-ninja/*"
   ],
   "version": "2.0.0",
   "npmClient": "yarn",

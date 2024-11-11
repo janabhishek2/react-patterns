@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "packages/react-testing/src/components/webpack-ninja/*"
     ],
     "nohoist": [
       "**/normalize-scss"
     ]
   },
-  "private": "true",
+  "private": true,
   "main": "index.js",
   "repository": "git@github.com:janabhishek2/react-patterns.git",
   "author": "Abhishek Jan <janabhishek2@gmail.com>",
@@ -33,7 +34,7 @@
     "commit": "yarn git-cz",
     "prepare": "husky",
     "test:chromatic": "lerna run chromatic",
-    "build:storybook":"yarn build && lerna run build-storybook"
+    "build:storybook": "yarn build && lerna run build-storybook"
   },
   "config": {
     "commitizen": {
