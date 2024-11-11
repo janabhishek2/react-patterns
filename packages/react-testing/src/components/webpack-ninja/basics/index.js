@@ -1,12 +1,8 @@
 import _ from "lodash";
 
-const items = [
-    "apples",
-    "oranges",
-    "bananas"
-]
+const items = ["apples", "oranges", "bananas"];
 
-const handleClick = () => {
+document.getElementById("btnElement").addEventListener("click", () => {
     const h1Element = document.getElementById("welcomeText");
     h1Element.textContent = "Text content change";
 
@@ -16,4 +12,4 @@ const handleClick = () => {
         liElement.textContent = item;
         ulElement.appendChild(liElement);
     });
-}
+});
