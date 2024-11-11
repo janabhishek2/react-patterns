@@ -1,5 +1,7 @@
 import _ from "lodash";
+import { add, subtract } from './functions';
 
+console.log(subtract(add(3,4),6));
 const items = ["apples", "oranges", "bananas"];
 
 document.getElementById("btnElement").addEventListener("click", () => {
