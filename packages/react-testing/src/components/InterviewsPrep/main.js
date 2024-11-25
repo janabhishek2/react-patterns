@@ -1,13 +1,10 @@
-// write range(1,3) --> 1,2,3
+// shuffle an array
 
-// const range = (start, end) => {
-//     for(let i = start; i<=end; i++) {
-//         console.log(i);
-//     }
-// };
+const shuffle = items => items.map(item => ({
+    value: item,
+    sort: Math.random()
+})).sort((item1, item2) => item1.sort - item2.sort).map(item => item.value);
 
-const range = (start, end) => [...Array(end - start).keys().map(item => item + start)];
+const arr = [1, 2, 3, 4];
 
-const range41to50 = range(41, 50);
-
-console.log(range41to50);
+console.log(shuffle(arr));

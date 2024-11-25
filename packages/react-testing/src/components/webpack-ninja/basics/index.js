@@ -6,7 +6,7 @@ const items = ["apples", "oranges", "bananas"];
 
 document.getElementById("btnElement").addEventListener("click", () => {
     const h1Element = document.getElementById("welcomeText");
-    h1Element.textContent = "Text content changedss";
+    h1Element.textContent = "Text content changedss"; 
 
     const ulElement = document.getElementById("foodItems");
     _.forEach(items, (item) => {

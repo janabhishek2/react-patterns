@@ -7,3 +7,4 @@
 7. ES modules: ES2015 syntax: uses import() and export().
 8. AMD exports: uses define and require.
 9. CSS exports: uses @import to import a file.
+10. webpack-dev-server: Used to run server locally. Used to detect changes in src/index.js and make changes accordingly to UI.

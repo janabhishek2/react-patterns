@@ -10,7 +10,10 @@ module.exports = {
     devServer: {
         static: "dist",
         open: true,
-        port: 5002
+        port: 5002,
+        client: {
+            progress: true
+        }
     },
     mode: "development",
     plugins: [
