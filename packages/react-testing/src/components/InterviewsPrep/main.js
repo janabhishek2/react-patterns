@@ -1,10 +1,14 @@
-// shuffle an array
+const arr = [1, 2, 3, 1, 1];
 
-const shuffle = items => items.map(item => ({
-    value: item,
-    sort: Math.random()
-})).sort((item1, item2) => item1.sort - item2.sort).map(item => item.value);
+arr.sort((a,b) => a-b);
 
-const arr = [1, 2, 3, 4];
+let element = arr[0];
 
-console.log(shuffle(arr));
+let ans = arr.reduce((acc, curr) => {
+    if(curr === element) {
+        acc = acc + 1;
+    }
+    return acc;
+}, 0);
+
+console.log(ans);
