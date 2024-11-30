@@ -1,14 +1,8 @@
 const arr = [1, 2, 3, 1, 1];
 
-arr.sort((a,b) => a-b);
+// use math.min to find min value
 
-let element = arr[0];
+const min = Math.min(...arr);
 
-let ans = arr.reduce((acc, curr) => {
-    if(curr === element) {
-        acc = acc + 1;
-    }
-    return acc;
-}, 0);
-
-console.log(ans);
+const filteredArray = arr.filter(item => item === min);
+console.log(filteredArray.length);
