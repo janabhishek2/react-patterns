@@ -1,41 +1,53 @@
-class Employee {
-    salary = null;
-    constructor(name, id) {
-        this._name = name;
-        this._id = id;
-    }
-
-    get details() {
-        return `Employee has name: ${this._name}, id: ${this._id} and salary as ${this.salary}$`;
-    }
-
-    get salary() {
-        return this.salary;
-    }
-
-    set salary(sal) {
-        this.salary = sal;
-    }
+const employee = {
+    name: "Abhishek",
+    id: 123,
+    salary: 300
 };
 
-class Manager extends Employee {
-    constructor(name, id) {
-        super(name, id);
-    }
-
-    department = null;
-
-    set department(dept) {
-        this.department = dept;
-    }
-
-    get department() {
-        return this.department;
-    }
+const manager = {
+    department: "CSD"
 }
 
-const manager = new Employee("Rakesh", 23);
+manager.__proto__ = employee;
 
-manager.department = "CSD";
+// class Employee {
+//     salary = null;
+//     constructor(name, id) {
+//         this._name = name;
+//         this._id = id;
+//     }
 
-console.log(manager.department);
+//     get details() {
+//         return `Employee has name: ${this._name}, id: ${this._id} and salary as ${this.salary}$`;
+//     }
+
+//     get salary() {
+//         return this.salary;
+//     }
+
+//     set salary(sal) {
+//         this.salary = sal;
+//     }
+// };
+
+// class Manager extends Employee {
+//     constructor(name, id) {
+//         super(name, id);
+//     }
+
+//     department = null;
+
+//     set department(dept) {
+//         this.department = dept;
+//     }
+
+//     get department() {
+//         return this.department;
+//     }
+// }
+
+// const manager = new Employee("Rakesh", 23);
+
+// manager.department = "CSD";
+
+// console.log(manager.department);
