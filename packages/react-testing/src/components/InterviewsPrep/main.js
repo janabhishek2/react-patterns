@@ -18,7 +18,24 @@ class Employee {
     }
 };
 
-const e1 = new Employee("Abhishek", 123);
-e1.salary = 300;
+class Manager extends Employee {
+    constructor(name, id) {
+        super(name, id);
+    }
 
-console.log(e1.details);
+    department = null;
+
+    set department(dept) {
+        this.department = dept;
+    }
+
+    get department() {
+        return this.department;
+    }
+}
+
+const manager = new Employee("Rakesh", 23);
+
+manager.department = "CSD";
+
+console.log(manager.department);
