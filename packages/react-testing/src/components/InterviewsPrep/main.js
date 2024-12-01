@@ -1,15 +1,15 @@
-class Item {
-    title = 'ball';
-    getCan() {
-        return 'can';
+class Employee {
+    salary = null;
+    constructor(name, id) {
+        this._name = name;
+        this._id = id;
     }
-    getItem ()  {
-       const f = () => {
-        console.log(this);
-       }
-       f();
+
+    get details() {
+        return `Employee has name: ${this._name}, id: ${this._id} and salary as ${this.salary}`;
     }
 };
 
-const item = new Item();
-item.getItem();
+const e1 = new Employee("Abhishek", 123);
+
+console.log(e1.details);
