@@ -1,8 +1,15 @@
-const arr = [1, 2, 3, 1, 1];
+class Item {
+    title = 'ball';
+    getCan() {
+        return 'can';
+    }
+    getItem ()  {
+       const f = () => {
+        console.log(this);
+       }
+       f();
+    }
+};
 
-// use math.min to find min value
-
-const min = Math.min(...arr);
-
-const filteredArray = arr.filter(item => item === min);
-console.log(filteredArray.length);
+const item = new Item();
+item.getItem();
