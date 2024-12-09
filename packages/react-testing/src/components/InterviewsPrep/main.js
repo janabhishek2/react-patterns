@@ -1,20 +1,27 @@
+const shallowComparison = (obj1, obj2) => {
 
-const debouncedFunction = function(func, delay) {
-    let timeout = null;
-    return function(...args) {
-        timeout && clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            func.apply(this, args);
-        }, delay);
-    }
+    // if length of keys not equal return false
+    if(Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+
+    let isEqual = true;
+    Object.entries(obj1).forEach(([key1, value1]) => {
+        if(obj2?.[key1] !== value1) {
+            isEqual = false;
+            return;
+        }
+    });
+    return isEqual;
+};
+
+const obj1 = {
+    a: 1,
+    b: 2,
 }
 
-const handleApiCall = (value) => {
-    console.log(`api call for:`, value);
-}
-const debouncedApiCall = debouncedFunction(handleApiCall, 2000);
+const obj2 = {
+    b: 2,
+    a: 1,
+};
 
-const handleChange = () => {
-   const element = document.getElementById("name");
-   debouncedApiCall(element.value);
-}
+const equal = shallowComparison(obj1, obj2);
+console.log(equal);
