@@ -1,19 +1,20 @@
 
 const debouncedFunction = function(func, delay) {
     let timeout = null;
-    return function() {
+    return function(...args) {
         timeout && clearTimeout(timeout);
         timeout = setTimeout(() => {
-            func();
+            func.apply(this, args);
         }, delay);
     }
 }
 
+const handleApiCall = (value) => {
+    console.log(`api call for:`, value);
+}
+const debouncedApiCall = debouncedFunction(handleApiCall, 2000);
 
-const greet = () => console.log("Hello");
-const debouncedGreet = debouncedFunction(greet, 5000);
-
-debouncedGreet();
-debouncedGreet();
-debouncedGreet();
-debouncedGreet();
+const handleChange = () => {
+   const element = document.getElementById("name");
+   debouncedApiCall(element.value);
+}
