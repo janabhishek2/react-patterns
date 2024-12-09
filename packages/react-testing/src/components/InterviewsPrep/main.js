@@ -1,8 +1,19 @@
-const commonModule = require('./common.js');
 
-const name = {
-    firstName: "Abhishek",
-    lastName: "Jan"
-};
+const debouncedFunction = function(func, delay) {
+    let timeout = null;
+    return function() {
+        timeout && clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func();
+        }, delay);
+    }
+}
 
-console.log(commonModule);
+
+const greet = () => console.log("Hello");
+const debouncedGreet = debouncedFunction(greet, 5000);
+
+debouncedGreet();
+debouncedGreet();
+debouncedGreet();
+debouncedGreet();
