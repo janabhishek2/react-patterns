@@ -1,27 +1,11 @@
-const shallowComparison = (obj1, obj2) => {
+const regex1 = /foo/g;
+const str1 = 'foo foo foo sd';
+const ans = regex1.exec(str1);
 
-    // if length of keys not equal return false
-    if(Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+console.log(ans, regex1.lastIndex);
 
-    let isEqual = true;
-    Object.entries(obj1).forEach(([key1, value1]) => {
-        if(obj2?.[key1] !== value1) {
-            isEqual = false;
-            return;
-        }
-    });
-    return isEqual;
-};
-
-const obj1 = {
-    a: 1,
-    b: 2,
-}
-
-const obj2 = {
-    b: 2,
-    a: 1,
-};
-
-const equal = shallowComparison(obj1, obj2);
-console.log(equal);
+// while ((array1 = regex1.exec(str1)) !== null) {
+//   console.log(`Found ${array1[0]}. Next starts at ${regex1.lastIndex}.`);
+//   // Expected output: "Found foo. Next starts at 9."
+//   // Expected output: "Found foo. Next starts at 19."
+// }
