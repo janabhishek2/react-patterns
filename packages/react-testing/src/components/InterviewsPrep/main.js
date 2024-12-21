@@ -1,11 +1,10 @@
-const regex1 = /foo/g;
-const str1 = 'foo foo foo sd';
-const ans = regex1.exec(str1);
+const regex = /(\d{3})-(\d{4})/g;
 
-console.log(ans, regex1.lastIndex);
+const str = "111-2222 and 222-3344 and 444-2231 and 123-12332";
 
-// while ((array1 = regex1.exec(str1)) !== null) {
-//   console.log(`Found ${array1[0]}. Next starts at ${regex1.lastIndex}.`);
-//   // Expected output: "Found foo. Next starts at 9."
-//   // Expected output: "Found foo. Next starts at 19."
-// }
+let result = regex.exec(str);
+
+while(result !== null) {
+    console.log(result);
+    result = regex.exec(str);
+}
