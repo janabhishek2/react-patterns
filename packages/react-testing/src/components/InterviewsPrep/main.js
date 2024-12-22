@@ -6,7 +6,6 @@ const getValue = () => {
     // use variables of outer function to act like cache
     let cache = {};
     return function(input) {
-        debugger;
        if(input in cache) {
         return cache[input];
        }
