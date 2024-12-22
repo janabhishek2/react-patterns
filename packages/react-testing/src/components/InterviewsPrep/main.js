@@ -1,17 +1,19 @@
-// Count vowels
+// string to title case
 
-const str = "abcdio";
-let vowels = new Set("aeiou");
-
-const numVowels = (str) => {
-    let total = 0;
-    Array.from(str).forEach(char => {
-        if(vowels.has(char)) {
-            total++;
-        }
-    })
-    return total;
+const toTitleCase = (str) => {
+    let newStrArray = Array.from(str.toLowerCase());
+    newStrArray[0] = newStrArray[0].toUpperCase();
+    return newStrArray.join('');
 };
 
-const ans = numVowels(str);
+const getWordsToTitleCase = (str) => {
+    const words = str.split(" ");
+    return words.map((item) => {
+        return toTitleCase(item);
+    }).join(" ");
+}
+
+const str = "I'm a little tea pot";
+const ans = getWordsToTitleCase(str);
+
 console.log(ans);
