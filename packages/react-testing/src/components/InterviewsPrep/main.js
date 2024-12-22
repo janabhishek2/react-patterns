@@ -1,14 +1,17 @@
-// Anagrams another approach
+// Count vowels
 
-const isAnagram = (str1, str2) => {
-    let string1 = Array.from(str1).sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)).join("").trim();
-    let string2 = Array.from(str2).sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)).join("").trim();
+const str = "abcdio";
+let vowels = new Set("aeiou");
 
-    return string1 === string2;
-}
+const numVowels = (str) => {
+    let total = 0;
+    Array.from(str).forEach(char => {
+        if(vowels.has(char)) {
+            total++;
+        }
+    })
+    return total;
+};
 
-let str1 = "dormitory";
-let str2 = "dirty room";
-
-const ans = isAnagram(str1, str2);
+const ans = numVowels(str);
 console.log(ans);
