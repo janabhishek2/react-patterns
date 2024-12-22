@@ -1,19 +1,10 @@
 // string to title case
 
-const toTitleCase = (str) => {
-    let newStrArray = Array.from(str.toLowerCase());
-    newStrArray[0] = newStrArray[0].toUpperCase();
-    return newStrArray.join('');
-};
-
-const getWordsToTitleCase = (str) => {
-    const words = str.split(" ");
-    return words.map((item) => {
-        return toTitleCase(item);
-    }).join(" ");
+const convertToTitleCase = (str) => { 
+    return str.toLowerCase().split(" ").map(item => item[0].toUpperCase() + item.slice(1)).join(" ");
 }
 
 const str = "I'm a little tea pot";
-const ans = getWordsToTitleCase(str);
+const ans = convertToTitleCase(str);
 
 console.log(ans);
