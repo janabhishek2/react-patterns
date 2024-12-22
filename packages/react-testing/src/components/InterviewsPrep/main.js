@@ -2,9 +2,7 @@
 
 const isPalindrome = (str) => {
     // O(n) solution
-    return str.split("").every((item, index) => {
-        return item === str[str.length - index - 1];
-    })
+    return str === str.split("").reverse().join("");
 };
 
 const str = "abcba";
