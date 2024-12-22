@@ -1,20 +1,12 @@
-// fibonacci
+// palindrome
 
-const fibonacchiNthTermGen = () => {
-    let cache = {};
-    return function Fib(n) {
-        if(n <= 1){
-            return n;
-        }
-        // if item is in cache then return it, else save it to cache and return it
-        else if(cache?.[n]) return cache?.[n];
-        else {
-            return cache[n] = Fib(n-1) + Fib(n-2);
-        }
-    }
-}
+const isPalindrome = (str) => {
+    // O(n) solution
+    return str.split("").every((item, index) => {
+        return item === str[str.length - index - 1];
+    })
+};
 
-const getFib = fibonacchiNthTermGen();
-
-const fib1 = getFib(6);
-console.log(fib1);
+const str = "abcba";
+const ans = isPalindrome(str);
+console.log(ans);
