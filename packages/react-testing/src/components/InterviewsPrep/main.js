@@ -1,30 +1,14 @@
-// anagram
+// Anagrams another approach
 
-const str1 = "listen";
-const str2 = "silent";
+const isAnagram = (str1, str2) => {
+    let string1 = Array.from(str1).sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)).join("").trim();
+    let string2 = Array.from(str2).sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)).join("").trim();
 
-const shallowCompare = (obj1, obj2) => {
-   const keys1 = Object.keys(obj1);
-   const keys2 = Object.keys(obj2);
-
-   if(keys1.length !== keys2.length) return false;
-
-   return keys1.every((key) => {
-    return obj1[key] === obj2[key]
-   })
+    return string1 === string2;
 }
-const createHashing = (str) => {
-    const hashTable = {};
-    Array.from(str).forEach(item => {
-        if(item !== " "){
-            hashTable[item] = (hashTable?.[item] || 0) + 1;
-        }
-    })
-    return hashTable;
-};
 
-const hash1 = createHashing(str1);
-const hash2 = createHashing(str2);
+let str1 = "dormitory";
+let str2 = "dirty room";
 
-const isEqual = shallowCompare(hash1, hash2);
-console.log(isEqual);
+const ans = isAnagram(str1, str2);
+console.log(ans);
