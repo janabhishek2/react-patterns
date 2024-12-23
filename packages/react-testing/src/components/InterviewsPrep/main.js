@@ -19,10 +19,10 @@ const backendErrors = {
     }
 };
 
-const str = Object.keys(backendErrors).reduce((acc, curr) => {
-    let currString = `${curr}: `;
-    currString += backendErrors[curr].errors.map(item => item.message).join(", ");
-    acc.push(currString);
+const str = Object.entries(backendErrors).reduce((acc, curr) => {
+    debugger;
+    const message = curr[1].errors.map(item => item.message).join(", ");
+    acc.push(`${curr[0]}: ${message}`);
     return acc;
 }, []);
 
