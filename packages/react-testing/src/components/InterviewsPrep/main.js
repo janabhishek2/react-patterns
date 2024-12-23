@@ -1,18 +1,22 @@
-// Flatten arrays
-
-const flattenArray = (array) => {
-    return array.reduce((acc, curr)=> {
-        let flattened = curr;
-        if(Array.isArray(curr)) {
-            flattened = flattenArray(curr);
-            return [...acc, ...flattened]
-        } else {
-            return [...acc, curr];
-        }
-    }, []);
+// replace params
+const initUrl = "/posts/:postId/comments/:commentId";
+const replaceParamsInUrl = (url, array) => {
+    let newUrl = url;
+    array.forEach((item) => {
+        const { from, to } = item;
+        const regex = new RegExp(`:${from}`);
+        newUrl = newUrl.replace(regex, to);
+    });
+    return newUrl
 };
 
-const arr = [1, 2, 3, 4, [5,6, [7,8]]];
-const res = flattenArray(arr);
+const resultUrl = replaceParamsInUrl(initUrl, [
+    {
+        from: "postId", to: "1"
+    },
+    {
+        from: "commentId", to: "3"
+    }
+]);
 
-console.log(res);
+console.log(resultUrl);
