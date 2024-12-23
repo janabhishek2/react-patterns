@@ -1,14 +1,10 @@
 // replace params
 const initUrl = "/posts/:postId/comments/:commentId";
-const replaceParamsInUrl = (url, array) => {
-    let newUrl = url;
-    array.forEach((item) => {
-        const { from, to } = item;
-        const regex = new RegExp(`:${from}`);
-        newUrl = newUrl.replace(regex, to);
-    });
-    return newUrl
-};
+const replaceParamsInUrl = (url, arrayOfParams) => {
+    return arrayOfParams.reduce((acc, curr) => {
+        return acc.replace(`:${curr.from}`, curr.to)
+    }, url);
+}
 
 const resultUrl = replaceParamsInUrl(initUrl, [
     {
