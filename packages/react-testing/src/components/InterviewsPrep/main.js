@@ -1,39 +1,18 @@
-// mapping data
-const loc = [
-    {
-        location_key: [2, 3, 4],
-        auto_assign:1
-    },
-    {
-        location_key: [8,9,10],
-        auto_assign:1
-    }
-];
+// Flatten arrays
 
-const bulkConfig = [
-    {
-        dataValues: {
-            config_key: 100
+const flattenArray = (array) => {
+    return array.reduce((acc, curr)=> {
+        let flattened = curr;
+        if(Array.isArray(curr)) {
+            flattened = flattenArray(curr);
+            return [...acc, ...flattened]
+        } else {
+            return [...acc, curr];
         }
-    },
-    {
-        dataValues: {
-            config_key: 200
-        }
-    }
-];
+    }, []);
+};
 
-const newData = loc.map(({ location_key, auto_assign }, loc_index)=> {
-    return location_key.map((loc_key) => {
-        return ({
-            location_key: loc_key,
-            auto_assign,
-            config_key: bulkConfig[loc_index]?.dataValues?.config_key
-        });
-    })
-}).reduce((acc, curr) => {
-    acc = [...acc, ...curr];
-    return acc;
-}, []);
+const arr = [1, 2, 3, 4, [5,6, [7,8]]];
+const res = flattenArray(arr);
 
-console.log(newData);
+console.log(res);
