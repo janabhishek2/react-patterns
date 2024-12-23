@@ -1,18 +1,29 @@
-// replace params
-const initUrl = "/posts/:postId/comments/:commentId";
-const replaceParamsInUrl = (url, arrayOfParams) => {
-    return arrayOfParams.reduce((acc, curr) => {
-        return acc.replace(`:${curr.from}`, curr.to)
-    }, url);
-}
-
-const resultUrl = replaceParamsInUrl(initUrl, [
-    {
-        from: "postId", to: "1"
+// concat errors
+const backendErrors = {
+    email: {
+        errors: [
+            {
+                message: "Can't be blank"
+            }
+        ]
     },
-    {
-        from: "commentId", to: "3"
+    password: {
+        errors: [
+            {
+                message: "Must contain symbols in different case"
+            },
+            {
+                message: "Must be at least 8 symbols length"
+            }
+        ]
     }
-]);
+};
 
-console.log(resultUrl);
+const str = Object.keys(backendErrors).reduce((acc, curr) => {
+    let currString = `${curr}: `;
+    currString += backendErrors[curr].errors.map(item => item.message).join(", ");
+    acc.push(currString);
+    return acc;
+}, []);
+
+console.log(str);
