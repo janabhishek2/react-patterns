@@ -23,15 +23,17 @@ const bulkConfig = [
     }
 ];
 
-let data = [];
 const newData = loc.map(({ location_key, auto_assign }, loc_index)=> {
-    location_key.forEach((loc_key) => {
-        data.push({
+    return location_key.map((loc_key) => {
+        return ({
             location_key: loc_key,
             auto_assign,
             config_key: bulkConfig[loc_index]?.dataValues?.config_key
-        })
+        });
     })
-});
+}).reduce((acc, curr) => {
+    acc = [...acc, ...curr];
+    return acc;
+}, []);
 
-console.log(data);
+console.log(newData);
