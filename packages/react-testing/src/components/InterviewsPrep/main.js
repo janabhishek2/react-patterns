@@ -20,9 +20,9 @@ const backendErrors = {
 };
 
 const str = Object.entries(backendErrors).reduce((acc, curr) => {
-    debugger;
     const message = curr[1].errors.map(item => item.message).join(", ");
-    acc.push(`${curr[0]}: ${message}`);
+    const capitalizedName = curr[0].charAt(0).toUpperCase() + curr[0].slice(1);
+    acc.push(`${capitalizedName}: ${message}`);
     return acc;
 }, []);
 
