@@ -1,29 +1,58 @@
-// concat errors
-const backendErrors = {
-    email: {
-        errors: [
-            {
-                message: "Can't be blank"
-            }
-        ]
-    },
-    password: {
-        errors: [
-            {
-                message: "Must contain symbols in different case"
-            },
-            {
-                message: "Must be at least 8 symbols length"
-            }
-        ]
+// Object flattening
+
+const typeOf = (object) => {
+    const regex = /\[object (.*)\]/;
+    const typeOfString = Object.prototype.toString.call(object).toLowerCase();
+    return regex.exec(typeOfString)[1];
+}
+const flattenObject = (object, outerKey = undefined) => {
+    let newObject = {};
+    if(outerKey) {
+        Object.keys(object).forEach(key => {
+            if(typeOf(object[key]) === "object") {
+                let tempObject = flattenObject(object[key], `${outerKey}.${key}`);
+                newObject = {
+                    ...newObject,
+                    ...tempObject
+                }
+            } else {
+                newObject[`${outerKey}.${key}`] = object[key];
+            }   
+        });
+        return newObject;
+    } else {
+        Object.keys(object).forEach(key => {
+            debugger;
+            let temp = typeOf(object[key]);
+            if(typeOf(object[key]) === "object") {
+                let tempObject = flattenObject(object[key], key);
+                newObject = {
+                    ...newObject,
+                    ...tempObject
+                }
+            } else {
+                newObject[key] = object[key];
+            }   
+        });
+        return newObject;
     }
 };
 
-const str = Object.entries(backendErrors).reduce((acc, curr) => {
-    const message = curr[1].errors.map(item => item.message).join(", ");
-    const capitalizedName = curr[0].charAt(0).toUpperCase() + curr[0].slice(1);
-    acc.push(`${capitalizedName}: ${message}`);
-    return acc;
-}, []);
+const o = { 
+    a: 1,
+    b: {
+        c: {
+            d: [2,3,4],
+            e: 5,
+        },
+        f: {
+            g: 6,
+            h: 7
+        },
+        i: 8
 
-console.log(str);
+    }
+};
+const flattenedObject = flattenObject(o);
+
+console.log(flattenedObject);
