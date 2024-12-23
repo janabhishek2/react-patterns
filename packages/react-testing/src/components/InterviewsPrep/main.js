@@ -1,25 +1,37 @@
-// convert time from 12 to 24 hrs
-
-const convertTo24Hours = (time) => {
-    debugger;
-    const timeRegex = /(.*):(\d{1,2})(.*)/;
-    
-    const values = timeRegex.exec(time);
-    
-    let hour = Number(values[1]);
-    let min = Number(values[2]);
-    let timeOfDay = values[3];
-
-    if(timeOfDay === "AM") {
-        hour = hour%12;
-    } else if(timeOfDay === "PM" && hour !== 12) {
-        hour = hour + 12;
+// mapping data
+const loc = [
+    {
+        location_key: [2, 3, 4],
+        auto_assign:1
+    },
+    {
+        location_key: [8,9,10],
+        auto_assign:1
     }
-    return `${hour}:${min}`;
-    
-};
+];
 
-const time = "10:02PM";
-const ans = convertTo24Hours(time);
+const bulkConfig = [
+    {
+        dataValues: {
+            config_key: 100
+        }
+    },
+    {
+        dataValues: {
+            config_key: 200
+        }
+    }
+];
 
-console.log(ans);
+let data = [];
+const newData = loc.map(({ location_key, auto_assign }, loc_index)=> {
+    location_key.forEach((loc_key) => {
+        data.push({
+            location_key: loc_key,
+            auto_assign,
+            config_key: bulkConfig[loc_index]?.dataValues?.config_key
+        })
+    })
+});
+
+console.log(data);
