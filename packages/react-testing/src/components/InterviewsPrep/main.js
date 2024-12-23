@@ -22,7 +22,6 @@ const flattenObject = (object, outerKey = undefined) => {
         return newObject;
     } else {
         Object.keys(object).forEach(key => {
-            debugger;
             let temp = typeOf(object[key]);
             if(typeOf(object[key]) === "object") {
                 let tempObject = flattenObject(object[key], key);
