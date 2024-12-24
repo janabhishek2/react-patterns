@@ -1,16 +1,16 @@
-// fetch api
+// async function which executes a callback after completing async tasks
 
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
-
-const getData = () => {
-    fetch(apiUrl)
-    .then(response => {
-        console.log(response);
-        return response.json();
-    })
-    .then(response => {
-        console.log(response);
-    })
+const asyncFunction = async (callback) => {
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, 2000);
+    });
+    callback();
 };
 
-getData();
+const callback = function() {
+    console.log("Print the callback!");
+};
+
+asyncFunction(callback);
