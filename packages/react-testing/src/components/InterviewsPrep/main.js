@@ -1,16 +1,41 @@
-// async function which executes a callback after completing async tasks
+// parallel async funcitons
 
-const asyncFunction = async (callback) => {
-    await new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(true);
-        }, 2000);
-    });
-    callback();
+const async1 = (callback) => {
+    console.log('run1');
+    setTimeout(() => {
+        callback(1);
+    }, 3000);
+}
+const async2 = (callback) => {
+    console.log('run2');
+    setTimeout(() => {
+        callback(2);
+    }, 2000);
+}
+const async3 = (callback) => {
+    console.log('run3');
+    setTimeout(() => {
+        callback(3);
+    }, 1000);
+}
+
+const parallelAsync = (asyncFuncs = [], callback) => {
+    let resultsArray = new Array(asyncFuncs.length);
+    let resultsCount = 0;
+    asyncFuncs.forEach(async (func, index) => {
+        await func((value) => {
+            resultsArray[index] = value;
+            resultsCount++;
+            // Wait for all results to be resolved then execute callback;
+            if(resultsCount >= asyncFuncs.length) {
+                callback(resultsArray);
+            }
+        });
+    })
 };
 
-const callback = function() {
-    console.log("Print the callback!");
-};
+const callback = (arr) => {
+    console.log(arr);
+}
 
-asyncFunction(callback);
+parallelAsync([async1, async2, async3], callback);
