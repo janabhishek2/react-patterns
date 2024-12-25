@@ -1,41 +1,22 @@
 // parallel async funcitons
 
-const async1 = (callback) => {
-    console.log('run1');
-    setTimeout(() => {
-        callback(1);
-    }, 3000);
-}
-const async2 = (callback) => {
-    console.log('run2');
-    setTimeout(() => {
-        callback(2);
-    }, 2000);
-}
-const async3 = (callback) => {
-    console.log('run3');
-    setTimeout(() => {
-        callback(3);
-    }, 1000);
-}
-
-const parallelAsync = (asyncFuncs = [], callback) => {
-    let resultsArray = new Array(asyncFuncs.length);
-    let resultsCount = 0;
-    asyncFuncs.forEach(async (func, index) => {
-        await func((value) => {
-            resultsArray[index] = value;
-            resultsCount++;
-            // Wait for all results to be resolved then execute callback;
-            if(resultsCount >= asyncFuncs.length) {
-                callback(resultsArray);
-            }
-        });
-    })
+const asyncFunc = (callback) => {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => callback(json))
 };
 
-const callback = (arr) => {
-    console.log(arr);
+const promisifyAndRemoveCallback = (asyncFunc) => {
+    return new Promise((resolve) => {
+        asyncFunc((data) => {
+            resolve(data);
+        });
+    })
 }
 
-parallelAsync([async1, async2, async3], callback);
+const test = async () => {
+    const newMethod = await promisifyAndRemoveCallback(asyncFunc);
+    console.log(newMethod);
+};
+
+test();
