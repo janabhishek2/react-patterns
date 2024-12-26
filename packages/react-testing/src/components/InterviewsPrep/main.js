@@ -79,4 +79,16 @@ const mapAndCombine = async () => {
     }
 };
 
-mapAndCombine();
+const mapAndCombineAlt = async () => {
+    const [users, statuses] = await Promise.all([getUsers(), getUserStatus()]);
+    const mappedUsers = users.map((user) => {
+        const userStatus = statuses.find(status => status.id === user.id);
+        return {
+            ...user,
+            ...userStatus
+        }
+    });
+    console.log(mappedUsers);
+}
+
+mapAndCombineAlt();
