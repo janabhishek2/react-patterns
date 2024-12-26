@@ -1,94 +1,33 @@
-// map data recevied from 2 promises;
+// request manager implementation
 
-const users = [
-    {
-        id: 1,
-        name: "Abhishek"
-    },
-    {
-        id: 2,
-        name: "John"
-    }
-];
-
-const userStatus = [
-    {
-        id: 1,
-        isActive: true
-    },
-    {
-        id: 2,
-        isActive: false
-    }
-];
-
-const getUsers = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(users);
-        }, 1000);
-    })
-};
-
-const getUserStatus = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(userStatus);
-        }, 3000);
-    })
-};
-
-const getParallelRequests = (reqs) => {
-    const data = new Array(reqs.length);
-    let counter = 0;
-    return new Promise((resolve) => {
-        reqs.forEach(async (req, index) => {
-            const reqData = await req();
-            data[index] = reqData;
-            counter++;
-
-            if(counter >= reqs.length) {
-                resolve(data);
-            }
-        });
-    })
-};
-
-const mapAndCombine = async () => {
-    try{
-        const [users, userStatus] = await getParallelRequests([getUserStatus, getUsers]);
-        let newUsers = {};
-        users.forEach(user => {
-            newUsers[user.id] = user;
-        });
-        let newUserStatus ={}
-        userStatus.forEach(userStatus => {
-            newUserStatus[userStatus.id] = userStatus;
-        });
-        let newData = [];
-        Object.keys(newUsers).forEach(userId => {
-            let data = {
-                ...newUsers[userId],
-                ...newUserStatus[userId]
-            };
-            newData.push(data);
-        });
-        console.log(newData);
-    } catch(err) {
-        console.log(err);
-    }
-};
-
-const mapAndCombineAlt = async () => {
-    const [users, statuses] = await Promise.all([getUsers(), getUserStatus()]);
-    const mappedUsers = users.map((user) => {
-        const userStatus = statuses.find(status => status.id === user.id);
-        return {
-            ...user,
-            ...userStatus
+const fetchRequest = () => {
+    // Init delay of 1000ms
+    let delay = 0;
+    return function fetchInternal(url, attempts = 1) {
+        if(attempts > 0) {
+            setTimeout(() => {
+                return fetch(url, {
+                    method: "GET"
+                })
+                .then(res => res.json())
+                .catch((err) => {
+                    attempts = attempts - 1;
+                    delay += 1000;
+                    fetchInternal(url, attempts);
+                })
+            }, delay);
         }
-    });
-    console.log(mappedUsers);
-}
+    }
+};
 
-mapAndCombineAlt();
+const func = async function() {
+    try{
+        let getRequest = fetchRequest();
+        const res = await getRequest('https://jsonplaceholder.typicode.com/todos', 10);
+        console.log(res);
+    } catch(err) {
+        console.log(err.message);
+    }
+};
+
+func();
