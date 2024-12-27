@@ -1,22 +1,12 @@
-// Highlight all chars with length>=8 with yellow background.
+// Add link back to source of text: https://forcemipsum.com/
 
-// TODO
-// 1. gather the input from <p/> tag.
-// 2. Split it based on " ". Convert to array
-// 3. Check for individual words in array with length greater than 8.
-// 4. merge all with a span.
+const body = document.body;
 
-const pElement = document.getElementsByTagName("p")[0];
-let pText = pElement.innerHTML;
-pElement.innerHTML = null;
+const link = document.createElement("a");
+link.href = "https://forcemipsum.com/";
+link.target = "_blank";
 
-// manipulate data;
-let newSpanElements = pText.split(" ").map(item => {
-    const spanElement = document.createElement("span");
-    if(item.length >= 8) {
-        spanElement.style.backgroundColor = "yellow";
-    }
-    spanElement.innerText = `${item} `;
-    pElement.append(spanElement);
-});
+link.innerHTML = "Go on, click me!"
+
+body.append(link);
 
