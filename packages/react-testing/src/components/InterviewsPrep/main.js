@@ -1,12 +1,18 @@
-// Add link back to source of text: https://forcemipsum.com/
+// Split each sentence in a separate line.
+// Sentence: each set of words terminated by period
 
-const body = document.body;
+const sentenceRegex = /(.?)+\.\s+/g;
+const pElement = document.querySelector("p");
+let pText = pElement.innerText;
+pElement.innerHTML = null;
 
-const link = document.createElement("a");
-link.href = "https://forcemipsum.com/";
-link.target = "_blank";
+let sentences = pText.split(". ");
 
-link.innerHTML = "Go on, click me!"
+// Put sentences on separate lines
 
-body.append(link);
-
+sentences.forEach(sentence => {
+    // append div to pElement
+    const sentenceEl = document.createElement("div");
+    sentenceEl.innerText = `${sentence}.`;
+    pElement.append(sentenceEl);
+});
