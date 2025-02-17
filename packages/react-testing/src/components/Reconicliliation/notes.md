@@ -5,6 +5,9 @@
 {
     type: Input, // component
     props: {
-        key: "one"
-    }
+       ... 
+    },
+    key: "one"
 }   
+
+4. We should not re-mount heavy react components, only lighter ones are ok.

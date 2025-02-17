@@ -12,7 +12,7 @@ function Reconc() {
     ];
     const [toggle, setToggle] = useState(false);
 
-    // if we not use key here then react will not knpw when it needs to re-mount the components, it will simply re-render.
+    // if we not use key here then react will not knpw when it needs to re-mount the components on the re-render of parent.
     const inputs = data.map(( item,index ) =>(<Input hint={item.hint} key={index} />));
     
     // re-mount -> state is reset and component is remounted.
