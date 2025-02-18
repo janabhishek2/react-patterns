@@ -2,10 +2,10 @@ import { createRoot } from 'react-dom/client';
 
 import React from "react";
 import './index.css';
-import Reconc from './components/Reconicliliation/Reconc';
+import PerformantContext from './components/PerformantContext';
 
 function App() {
-    return <Reconc />;
+    return <PerformantContext />;
 }
 
 const root = createRoot(document.getElementById("root"))
