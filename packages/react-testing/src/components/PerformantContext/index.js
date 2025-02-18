@@ -1,1 +1,1 @@
-export { default } from './PerformantContext';
+export { default } from './PerformantContext.jsx';
