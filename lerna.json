@@ -3,7 +3,7 @@
     "packages/*",
     "packages/react-testing/src/components/webpack-ninja/*"
   ],
-  "version": "2.1.0",
+  "version": "2.2.0",
   "npmClient": "yarn",
   "stream": true,
   "command": {
