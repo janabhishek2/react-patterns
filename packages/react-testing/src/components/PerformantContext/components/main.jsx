@@ -10,7 +10,7 @@ const MainDiv = styled.div`
   transition: margin-left 0.3s;
 `;
 
-const Main = ({ collapsed }) => {
+const Main = () => {
   return (
     <MainDiv>
       <h1>Main Content</h1>
