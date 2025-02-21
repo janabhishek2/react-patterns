@@ -9,7 +9,6 @@ import Text from './atoms/Text';
 /* Molecules import */
 import Select from './molecules/Select';
 
-
 /* All atoms and molecules exported */
 
 export {
