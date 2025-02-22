@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Sidebar from "./components/sidebar";
 import Main from "./components/main";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from 'react';
+import NavigationContextProvider from "./context/nav-context";
 
 const Container = styled.div`
   display: flex;
@@ -11,12 +12,20 @@ const Container = styled.div`
 
 export default function PerformantContext() {
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <Container>
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed}/>
-      <Main collapsed={collapsed} />
-    </Container>
+    <NavigationContextProvider>
+      <Container>
+        <Sidebar/>
+        <Main />
+      </Container>
+    </NavigationContextProvider>
   );
 }

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "./button";
 import React from 'react';
+import { useNavigationContext } from "../context/nav-context";
 
 const SidebarDiv = styled.div`
   width: ${(props) => (props.collapsed ? "60px" : "200px")};
@@ -13,10 +14,11 @@ const SidebarDiv = styled.div`
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 `;
 
-const Sidebar = ({ collapsed, setCollapsed }) => {
+const Sidebar = () => {
+  const { collapsed } = useNavigationContext();
   return (
     <SidebarDiv collapsed={collapsed}>
-      <Button collapsed={collapsed} setCollapsed={setCollapsed}/>
+      <Button/>
       <div>Sidebar Content</div>
     </SidebarDiv>
   );

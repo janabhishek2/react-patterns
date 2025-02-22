@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
+import { useNavigationContext } from "../context/nav-context";
 
 const BottomBlock = styled.div`
   display: grid;
@@ -9,8 +10,10 @@ const BottomBlock = styled.div`
   margin-top: 20px;
   text-align: center;
 `;
-const Blocks = ({ collapsed }) => {
-  console.log('re-render blocks');
+const Blocks = () => {
+  
+  console.log('render blocks');
+  const { collapsed } = useNavigationContext();
   return (
     <>
       <BottomBlock collapsed={collapsed}>
@@ -22,4 +25,4 @@ const Blocks = ({ collapsed }) => {
   );
 };
 
-export default Blocks;
+export default React.memo(Blocks);

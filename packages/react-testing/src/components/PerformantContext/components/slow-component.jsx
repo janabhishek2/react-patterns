@@ -9,14 +9,13 @@ const pauseExecution = (milliseconds) => {
 };
 
 // Component that simulates a slow operation
-export const SlowComponent = (() => {
-  console.log('render slow');
+export const SlowComponent = React.memo(() => {
   pauseExecution(500); // Pause for 500 milliseconds
   return null;
 });
 
 // Another component that simulates a slow operation
-export const AnotherSlowComponent = (() => {
+export const AnotherSlowComponent = React.memo(() => {
   pauseExecution(700); // Pause for 500 milliseconds
   return null;
 });

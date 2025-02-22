@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
+import { useNavigationContext } from "../context/nav-context";
 
 const ToggleButton = styled.button`
   margin-bottom: 20px;
@@ -11,10 +12,9 @@ const ToggleButton = styled.button`
   cursor: pointer;
 `;
 
-const Button = ({ collapsed, setCollapsed }) => {
-  return <ToggleButton onClick={() =>{
-    setCollapsed(!collapsed)
-  }}>{collapsed ? ">": "<"}</ToggleButton>;
+const Button = () => {
+  const { collapsed, toggle } = useNavigationContext();
+  return <ToggleButton onClick={toggle}>{collapsed ? ">": "<"}</ToggleButton>;
 };
 
 export default Button;

@@ -17,7 +17,7 @@ const Main = () => {
       <p>This is the main content area.</p>
       <SlowComponent />
       <AnotherSlowComponent />
-      <Blocks collapsed={collapsed}/>
+      <Blocks/>
     </MainDiv>
   );
 };
