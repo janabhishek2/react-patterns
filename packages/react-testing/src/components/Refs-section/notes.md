@@ -3,3 +3,4 @@
 3. ref is an mutable object which is maintained across re-renders.
 4. initial state of ref can be accessed using ref.current.
 5. ref is like useMemo hook on that object. useRef({a: 1}); similar to useMemo(() => ({ a: 1 }), []);
+6. diff bw state and ref: refs update synchronously(at the same time) and state updates async.
