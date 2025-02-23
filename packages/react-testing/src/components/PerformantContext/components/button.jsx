@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-import { useNavigationContext } from "../context/nav-context";
+import { useNavigationContextData, useNavigationContextFunctions } from "../context/nav-context";
 
 const ToggleButton = styled.button`
   margin-bottom: 20px;
@@ -13,8 +13,16 @@ const ToggleButton = styled.button`
 `;
 
 const Button = () => {
-  const { collapsed, toggle } = useNavigationContext();
+  const { collapsed } = useNavigationContextData();
+  const { toggle } = useNavigationContextFunctions();
+
   return <ToggleButton onClick={toggle}>{collapsed ? ">": "<"}</ToggleButton>;
 };
+
+export const CloseButton = React.memo(() => {
+  console.log('render the close!');
+  const { close } = useNavigationContextFunctions();
+  return <ToggleButton onClick={close}>close button</ToggleButton>
+});
 
 export default Button;

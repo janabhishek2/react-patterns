@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
-import { useNavigationContext } from "../context/nav-context";
+import { useNavigationContextData } from "../context/nav-context";
+import { CloseButton } from "./button";
 
 const BottomBlock = styled.div`
   display: grid;
@@ -10,16 +11,16 @@ const BottomBlock = styled.div`
   margin-top: 20px;
   text-align: center;
 `;
+
 const Blocks = () => {
-  
-  console.log('render blocks');
-  const { collapsed } = useNavigationContext();
+  const { collapsed } = useNavigationContextData();
   return (
     <>
       <BottomBlock collapsed={collapsed}>
         <div>one</div>
         <div>two</div>
         <div>three</div>
+        <CloseButton />
       </BottomBlock> 
     </>
   );
