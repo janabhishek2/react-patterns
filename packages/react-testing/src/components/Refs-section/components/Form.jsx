@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 export default function() {
     
-    const [value, setValue] = useState("");
+    const ref = useRef("");
 
     console.log('render');
+
     const handleSubmit = () => {
+        console.log(ref.current);
         console.log("balab");
     };
 
     const handleChange = (e) => {
-        setValue(e.target.value)
+        ref.current = e.target.value;
     };
 
     return (
