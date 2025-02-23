@@ -1,8 +1,11 @@
 import React from 'react'
+import Form from './components/Form'
 
 function Refs() {
   return (
-    <div>Refs</div>
+    <>
+      <Form />
+    </>
   )
 }
 
