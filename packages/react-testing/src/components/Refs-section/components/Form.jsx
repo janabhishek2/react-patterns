@@ -1,20 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { usePrevious } from '../hooks/usePrevious';
 
 export default function() {
     
-    const ref = useRef(0);
-
     const [value, setValue] = useState("");
 
+    const prevValue = usePrevious(value);
+    console.log(prevValue, value);
     const handleSubmit = () => {
         console.log("balab");
     };
-
-    useEffect(() => {
-        ref.current++;
-    });
-
-    console.log(ref.current);
 
     const handleChange = (e) => {
         setValue(e.target.value);
