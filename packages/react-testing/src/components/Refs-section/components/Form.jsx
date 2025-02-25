@@ -9,7 +9,6 @@ export default function() {
     const userNameRef = useRef(null);
     const passwordRef = useRef(null);
 
-    console.log(userNameRef);
     const handleUserNameChange = (val) => {
         setUsername(val);
     };
@@ -26,9 +25,9 @@ export default function() {
 
     return(
         <>
-        <Input type="text" name="username" ref={userNameRef} placeholder='username' inputChange={handleUserNameChange} label="Username" />
-        <Input type="password" name="password" placeholder='password' inputChange={handlePassChange} label="Password" />
-        <button onClick={submit}>Submit</button>
+            <Input type="text" name="username" ref={userNameRef} placeholder='username' inputChange={handleUserNameChange} label="Username" />
+            <Input type="password" name="password" placeholder='password' inputChange={handlePassChange} label="Password" />
+            <button onClick={submit}>Submit</button>
         </>
     )
 }

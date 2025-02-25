@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-function Input(props) {
+function Input(props, ref) {
     const {
         type,
         name,
         label,
         placeholder,
         inputChange,
-        ref
     } = props;
 
     return (
@@ -18,4 +17,4 @@ function Input(props) {
     )
 }
 
-export default Input
+export default forwardRef(Input);
