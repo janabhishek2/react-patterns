@@ -8,3 +8,5 @@
 8. refs can be used to count the re-renders.
 9. refs are used to store prev state value using usePrevious hook.
 10. Always access ref.current inside a useEffect or a callback function. Reason: ref is not mounted instantly, ref.current is accessible when ref is mounted to real dom.
+11. To pass ref to components down in tree, we can not use the keyword ref. Use any other name for prop ref or use forwardRef hoc.
+12. forwardRef is a hoc which pprovides additional ref prop to the component. newProps -> (props, ref).
