@@ -1,22 +1,27 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function() {
     
-    const ref = useRef("");
+    const ref = useRef(0);
 
-    const [test, setTest] = useState(false);
+    const [value, setValue] = useState("");
 
     const handleSubmit = () => {
-        console.log(ref.current);
         console.log("balab");
     };
 
+    useEffect(() => {
+        ref.current++;
+    });
+
+    console.log(ref.current);
+
     const handleChange = (e) => {
-        ref.current = e.target.value;
+        setValue(e.target.value);
     };
 
     // length will be updated only when component will re-render due to any state change.
-    const length = ref.current?.length ?? 0;
+    const length = value?.length ?? 0;
 
     return (
         <>
@@ -25,8 +30,6 @@ export default function() {
             </label>
             <input type="text" onChange={handleChange} />
             <button onClick={handleSubmit}>Submit</button>
-            <div/>
-            <button onClick={() => setTest(!test)}>update state</button>
             <span>Length is: {length}</span>
         </>
         )
