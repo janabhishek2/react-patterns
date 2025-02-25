@@ -7,3 +7,4 @@
 7. When to use refs: a.Will that value will be used to render a component? b.Will that value be passed as a prop to the component. If both negative, then use ref.
 8. refs can be used to count the re-renders.
 9. refs are used to store prev state value using usePrevious hook.
+10. Always access ref.current inside a useEffect or a callback function. Reason: ref is not mounted instantly, ref.current is accessible when ref is mounted to real dom.

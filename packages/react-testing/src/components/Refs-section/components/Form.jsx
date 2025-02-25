@@ -2,30 +2,30 @@ import React, { useEffect, useRef, useState } from 'react';
 import { usePrevious } from '../hooks/usePrevious';
 
 export default function() {
-    
-    const [value, setValue] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    const prevValue = usePrevious(value);
-    console.log(prevValue, value);
-    const handleSubmit = () => {
-        console.log("balab");
+    const userNameRef = useRef(null);
+    const passwordRef = useRef(null);
+
+    const handleChange = ({ target: { name, value }}) => {
+        if(name === "username") {
+            setUsername(value);
+        } else {
+            setPassword(value);
+        }
+    };
+    const submit = () => {
+        userNameRef.current.focus();
+        // passwordRef.current.focus();
+        console.log("HuiHui");
     };
 
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    };
-
-    // length will be updated only when component will re-render due to any state change.
-    const length = value?.length ?? 0;
-
-    return (
+    return(
         <>
-            <label htmlFor="name">
-                Name: 
-            </label>
-            <input type="text" onChange={handleChange} />
-            <button onClick={handleSubmit}>Submit</button>
-            <span>Length is: {length}</span>
+        <input type="text" name="username" ref={userNameRef} placeholder='username' onChange={handleChange} />
+        <input type="text" name="password" ref={passwordRef} placeholder='password' onChange={handleChange} />
+        <button onClick={submit}>Submit</button>
         </>
-        )
+    )
 }
