@@ -1,27 +1,14 @@
-const fs = require('fs');
-const path = require('path');
+const arr = [1, 2, 3, [4, 5], [6, [7,8]]];
 
-// console.log(fs.rm(path.resolve(__dirname, "translations"), {
-//     recursive: true,
-//     force: true
-// }, (err) => {
-//     console.log(err);
-// }));
-
-let translations = {
-    a: 1,
-    b: 2 
+function flattenedArray(arr) {
+  return arr.reduce((acc, curr) => {
+    if(Array.isArray(curr)) {
+      return acc.concat(flattenedArray(curr));
+    } else {
+      return acc.concat(curr);
+    }
+  }, []);
 };
 
-let pathToTranslationsFolder = path.resolve(__dirname, "translations");
-
-try {
-    if (!fs.existsSync(pathToTranslationsFolder)) {
-      fs.mkdirSync(pathToTranslationsFolder);
-    }
-    // create a translation.json file and write contents to file.
-    let content = JSON.stringify(translations);
-    fs.writeFileSync(path.resolve(__dirname, "translations", "translation-en.json"), content, )
-  } catch (err) {
-    console.error(err);
-  }
+const flat = flattenedArray(arr);
+console.log(flat);
