@@ -1,24 +1,20 @@
-// Execution context: area in memory where js is executed.
-// every function gets an execution context
-// global execution context remains same.
-
-
-function getMemoisedSumFunction() {
+function getMemoisedFunction(fn) {
     let result = {};
-    return function sum(...args) {
-        let joinedArgs = args.join(",");
-        if(result[joinedArgs]) {
-            return result[joinedArgs];
+    return function(...args) {
+        if(result[args]) {
+            return result[args];
         }
-        console.log("here", result);
-        return result[joinedArgs] = args.reduce((acc, curr) => {
-            return acc + curr;
-        }, 0);
+        return result[args] = fn(...args);
     }
 }
 
-const sumFn = getMemoisedSumFunction();
-console.log(sumFn(3, 4));
-console.log(sumFn(3, 4, 1));
-console.log(sumFn(3, 4, 2));
-// console.log(sum());
+const fibonacci = (n) => {
+    if(n<=1) return n;
+    else return fibonacci(n-1) + fibonacci(n-2);
+}
+
+const memoisedFib = getMemoisedFunction(fibonacci);
+
+console.log(memoisedFib(10));
+console.log(memoisedFib(10));
+console.log(memoisedFib(10));
