@@ -15,6 +15,14 @@ const fibonacci = (n) => {
 
 const memoisedFib = getMemoisedFunction(fibonacci);
 
+console.time("fib1");
 console.log(memoisedFib(10));
+console.timeLog("fib1");
+
+console.time("fib2");
 console.log(memoisedFib(10));
+console.timeLog("fib2");
+
+console.time("fib3");
 console.log(memoisedFib(10));
+console.timeLog("fib3");
