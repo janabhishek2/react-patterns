@@ -1,28 +1,30 @@
-function getMemoisedFunction(fn) {
-    let result = {};
-    return function(...args) {
-        if(result[args]) {
-            return result[args];
-        }
-        return result[args] = fn(...args);
-    }
+// Event loop
+
+// JS is single threaded
+
+// problems: if any heavy task is there then the thread is busy calculating response of it, and
+// application / browser can get stuck.
+
+// Call stack: The call stack is used to run the code and push functions as they are executed 
+// The call stack represents the various func calls and their respective line numbers. ( LIFO ) 
+
+debugger;
+const a = 1;
+const b = 2;
+const c = a + b;
+console.log(c);
+
+one();
+function one() {
+    console.log("one");
+    two();
 }
 
-const fibonacci = (n) => {
-    if(n<=1) return n;
-    else return fibonacci(n-1) + fibonacci(n-2);
+function two() {
+    console.log("two");
+    three();
 }
 
-const memoisedFib = getMemoisedFunction(fibonacci);
-
-console.time("fib1");
-console.log(memoisedFib(10));
-console.timeLog("fib1");
-
-console.time("fib2");
-console.log(memoisedFib(10));
-console.timeLog("fib2");
-
-console.time("fib3");
-console.log(memoisedFib(10));
-console.timeLog("fib3");
+function three() {
+    console.log("three");
+}
