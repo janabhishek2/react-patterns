@@ -1,15 +1,19 @@
-console.log(1);
+// Set-timeout: used to schedule a callback, that gets added to task queue after specified time,
+// Gets executed once call stack is empty.
 
-setTimeout(() => {
-    console.log(2);
-}, 1000);
+// JS code always runs to completion before any DOM manipulation is done.
+function demo() {
+    const boxR = document.getElementsByClassName("box-r")[0];
 
-console.log(3);
+    boxR.addEventListener('click', function(e) {
+        requestAnimationFrame(() => {
+            this.style.backgroundColor = "aqua";
+        })
+        this.style.backgroundColor = "purple";
+    })
+    // boxR.style.backgroundColor = "purple";
+}
 
-// apis are just a medium in which 2 different systems communicate with each other using a fixed syntax.
-// WebApis are used to connect JS runtime with browser.
-// Webapi: take complex task like setTimeout etc from JS runtime to browser, and then put the callbacks in task queue.
-// Browsers run the code via webapis and return code to the task queue ( not call stack )
-// The JS runtime will schedule a time to take up process from task queue and execute it.
+// RAF --> CSS calculation --> Layout --> Paint.
 
-// Browsers run on multiple threads, JS can not..
+demo();
