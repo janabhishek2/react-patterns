@@ -7,12 +7,14 @@
     <title>Document</title>
     <style>
         .box-r{ 
+            position: relative;
             width: 100px;
             height: 100px;
             background-color: red;
         }
 
         .box-t {
+            position: relative;
             width: 100px;
             height: 100px;
             background-color: teal;
@@ -21,6 +23,12 @@
 </head>
 <body>
     
+    <button onclick="move()">
+        Move with RAF
+    </button>
+    <button onclick="moveWithSetTimeout()">
+        Move with setTimeout
+    </button>
     <div class="box-r"></div>
     <div class="box-t"></div>
     <script src="./ExecutionContext.js"></script>

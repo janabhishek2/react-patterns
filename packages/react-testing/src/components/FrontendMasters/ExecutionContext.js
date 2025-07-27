@@ -1,24 +1,16 @@
-// Set-timeout: used to schedule a callback, that gets added to task queue after specified time,
-// Gets executed once call stack is empty.
-
-// JS code always runs to completion before any DOM manipulation is done.
-function demo() {
+function move() {
     const boxR = document.getElementsByClassName("box-r")[0];
+    let left = parseInt(boxR.style.left) || 0;
 
-    boxR.addEventListener('click', function(e) {
-        requestAnimationFrame(() => {
-            this.style.backgroundColor = "aqua";
-        })
-        this.style.backgroundColor = "purple";
-    })
-    // boxR.style.backgroundColor = "purple";
+    // move by 1px;
+    boxR.style.left = `${left + 1}px`;
+    requestAnimationFrame(move);
 }
 
-// RAF --> CSS calculation --> Layout --> Paint.
-
-demo();
-
-// Browsers take 16ms to update the DOM after the code is run.
-// 60 frames are shown in 1000sec, 1 frame is shown in 1000/60 = 16ms.
-
-// if a function takes more than 12-14ms, then it is considered slow.
+function moveWithSetTimeout() {
+    const boxT = document.getElementsByClassName("box-t")[0];
+    let left = parseInt(boxT.style.left) || 0;
+    // move by 1px;
+    boxT.style.left = `${left + 1}px`;
+    setTimeout(moveWithSetTimeout, 7);
+}
