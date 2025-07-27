@@ -1,30 +1,15 @@
-// Event loop
+console.log(1);
 
-// JS is single threaded
+setTimeout(() => {
+    console.log(2);
+}, 1000);
 
-// problems: if any heavy task is there then the thread is busy calculating response of it, and
-// application / browser can get stuck.
+console.log(3);
 
-// Call stack: The call stack is used to run the code and push functions as they are executed 
-// The call stack represents the various func calls and their respective line numbers. ( LIFO ) 
+// apis are just a medium in which 2 different systems communicate with each other using a fixed syntax.
+// WebApis are used to connect JS runtime with browser.
+// Webapi: take complex task like setTimeout etc from JS runtime to browser, and then put the callbacks in task queue.
+// Browsers run the code via webapis and return code to the task queue ( not call stack )
+// The JS runtime will schedule a time to take up process from task queue and execute it.
 
-debugger;
-const a = 1;
-const b = 2;
-const c = a + b;
-console.log(c);
-
-one();
-function one() {
-    console.log("one");
-    two();
-}
-
-function two() {
-    console.log("two");
-    three();
-}
-
-function three() {
-    console.log("three");
-}
+// Browsers run on multiple threads, JS can not..
