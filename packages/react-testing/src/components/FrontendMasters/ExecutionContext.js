@@ -14,3 +14,8 @@ function moveWithSetTimeout() {
     boxT.style.left = `${left + 1}px`;
     setTimeout(moveWithSetTimeout, 7);
 }
+
+// Task queues has 4 priority queue:
+// micro-task > RAF > rendering pipeline > macro-task
+// micro-task includes promises, catch, then finally etc.
+// Macro task includes setTimeout, setInterval etc.
