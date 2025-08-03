@@ -1,42 +1,10 @@
-const STATES = {
-    PENDING: "PENDING",
-    FULFILLED: "FULFILLED",
-    REJECTED: "REJECTED"
-}
-class MyPromise {
-    #thenHandlers = [];
-    #catchHandlers = [];
-    #state = STATES.PENDING;
-    constructor(callback) {
-        callback(this.#resolve, this.#reject);
-    }
-    #resolve = (value) => {
-        this.#state = STATES.FULFILLED;
-        this.#thenHandlers.forEach((thenCallbackFn) => {
-            thenCallbackFn(value);
-        })
-    }
-    #reject = (value) => {
-        this.#state = STATES.REJECTED;
-        this.#catchHandlers.forEach((catchHandler) => {
-            catchHandler(value);
-        });
-    }
-    then = (thenCallback) => {
-        this.#thenHandlers.push(thenCallback);
-    }
-    catch = (catchCallback) => {
-        this.#catchHandlers.push(catchCallback);
-    }
-    finally() {
+const p1 = new Promise(function(resolve, reject) {
+    setTimeout(() => resolve(1), 3000);
+})
 
-    }
-}
-
-const myP = new MyPromise(function(resolve, reject){
-   resolve(3);
-});
-
-myP.then((res) => {
-    console.log(res);
+p1.then((result) => {
+    console.log(result);
+    return 2;
+}).then((result2) => {
+    console.log(result2);
 })

@@ -10,3 +10,5 @@ Promises have 2 phases: creation and consumption.
 In creation phase we specify the async task ( contract ) in the function and upon either call resolve / reject if that task was completed.
 In consumption phase: we consume promise using then/catch to handle the resolved or rejected states.
 Creating a promise class : maintain states, implement then, catch, finally. Resolve and reject are internal fns which change internal states of promise from pending to resolved/rejected. When resolve is called, then call the then callbacks.
+A then block returns a resolved promise.!
+Promise.all([p1,p2]) resolves all promises in async way. Max time: max time among all promises
