@@ -5,33 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .box-r{ 
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background-color: red;
-        }
-
-        .box-t {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background-color: teal;
-        }
-    </style>
 </head>
 <body>
-    
-    <button onclick="move()">
-        Move with RAF
-    </button>
-    <button onclick="moveWithSetTimeout()">
-        Move with setTimeout
-    </button>
-    <h1>Hello</h1>
-    <div class="box-r"></div>
-    <div class="box-t"></div>
+    <input type="text" id="num1" placeholder="Enter num 1"/> +
+    <input type="text" id="num2" placeholder="Enter num 2"/>
+
+    <button id="sum" onclick="onAdd()">Add</button>
+
+    <div>Result is: </div>
+    <div id="result"></div>
+
+    <!-- <script>
+
+        function useState(val) {
+            let value = val;
+            function setValue(newValue) {
+                const result = document.getElementById("result");
+                result.innerText = newValue
+                value = newValue;
+            }
+            return {
+                value,
+                setValue
+            }
+        }
+        const { value, setValue } = useState(0);
+
+        function onAdd() {
+            const num1 = Number(document.getElementById("num1").value);
+            const num2 = Number(document.getElementById("num2").value);
+
+            setValue(num1 + num2);
+        }
+    </script> -->
+
     <script src="./ExecutionContext.js"></script>
 </body>
 </html>

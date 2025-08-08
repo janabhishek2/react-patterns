@@ -2,16 +2,12 @@ import { createRoot } from 'react-dom/client';
 
 import React from "react";
 import './index.css';
-import Popover from './components/Popover';
+import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
+
 
 function App() {
     return (<div className='wrapper'>
-        <Popover>
-        <Popover.PopoverTrigger label="Popover trigger" />
-        <Popover.PopoverContent>
-            This is the popover content
-        </Popover.PopoverContent>
-    </Popover>
+        <Tutorial />
     </div>)
 }
 
