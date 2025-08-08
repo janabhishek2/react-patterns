@@ -7,24 +7,43 @@ function Form() {
         phone: ""
     };
 
-    const formReducerFn = (prevState, currState) => {
-        return  {
-            ...prevState,
-            ...currState
+    const formReducerFn = (state, action) => {
+        switch(action.type) {
+
+            case "fname":
+            case "age":
+            case "phone": {
+                return {
+                    ...state,
+                    ...action.payload
+                }
+            }
+
+
+            default: {
+                return state;
+            }
         }
     };
 
-    const [form, setForm] = useReducer(formReducerFn, InitialState);
+    const [form, dispatch] = useReducer(formReducerFn, InitialState);
 
     const handleFnameChange = (e) => {
-        setForm({ fname: e.target.value });
+        dispatch({
+            type: "fname",
+            payload: { fname: e.target.value }
+        })
     } 
     const handleAgeChange = (e) => {
-        setForm({ age: e.target.value });
+        dispatch({
+            type: "age",
+            payload: { age: e.target.value }
+        })
     }
     const handlePhoneChange = (e) => {
-        setForm({ 
-            phone: e.target.value
+        dispatch({
+            type: "phone",
+            payload: { phone: e.target.value }
         })
     };
 
