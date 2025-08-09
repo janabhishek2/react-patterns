@@ -1,40 +1,67 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 
 function HooksDemo() {
-    const [value, setValue] = useState2(33);
-    const [value2, setValue2] = useState2(9);
 
-    const handlePlus = () => {
-        setValue(value+1);
+    const [value, setValue] = useState(0);
+
+   useMyEffect(() => {
+    console.log("Inside effect");
+    return () => {
+        console.log("Cleanup function");
     }
-    const handleMinus = () => {
-        setValue(value - 1);
+   }, [value])
+
+    const handleClick = () => {
+        setValue(value + 1);
     }
 
-    const handlePlus2 = () => {
-        setValue2(value2+1);
-    }
-    const handleMinus2 = () => {
-        setValue2(value2 - 1);
-    }
-    return <div>
-        <button onClick={handlePlus}>+</button>
-        {value}
-        <button onClick={handleMinus}>-</button>
+    return (<div>
+        <button onClick={handleClick}>Click me</button>
         <br/>
-        <button onClick={handlePlus2}>+</button>
-        {value2}
-        <button onClick={handleMinus2}>-</button>
-    </div>
+        This is the value: {value}
+    </div>)
 }
 
-function useState2(initialValue) {
-    const reducer = (prev, next) => {
-        return next;
+const hasDepsChanged = (prev, curr) => {
+
+    if(prev.length !== curr.length ) return true;
+    let hasDepsChanged = false;
+    prev.forEach((prevDepItem, prevIndex) => {
+        const isEqual = Object.is(prevDepItem, curr?.[prevIndex]);
+        if(!isEqual) {
+           hasDepsChanged  =true;
+           return;
+        }
+    })
+
+    return hasDepsChanged;
+}
+
+function useMyEffect(callback, depsArray = []) {
+    const initialCallRef = useRef(true);
+    const prevDepsArray = useRef([]);
+    const cleanupRef = useRef(null);
+    if(initialCallRef.current) {
+        const returnCallback = callback();
+        initialCallRef.current = false;
+        if(returnCallback) {
+            cleanupRef.current = returnCallback;
+        }
+        return;
     }
-    let [value, setValue] = useReducer(reducer, initialValue);
-    return [value, setValue];
-    
+
+    let depsChanged = true;
+    if(depsArray.length) {
+        depsChanged = hasDepsChanged(prevDepsArray.current, depsArray);
+    }
+   
+    if(depsChanged) {
+        if(typeof cleanupRef.current === "function") cleanupRef.current();
+        callback();
+    }
+
+    prevDepsArray.current = [...depsArray];
+    return;
 }
 
 export default HooksDemo;
