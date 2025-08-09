@@ -1,47 +1,28 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react';
 
 function HooksDemo() {
-    const { counters, update } = useState2();
+    const [value, setValue] = useState2(33);
 
-    const handleIncrement1 = () => {
-        update({ counter1: counters.counter1 + 1 })
-    };
-    const handleDecrement1 = () => {
-        update({ counter1: counters.counter1 - 1 })
-    };
-    const handleIncrement2 = () => {
-        update({ counter2: counters.counter2 + 1 })
-    };
-    const handleDecrement2 = () => {
-        update({ counter2: counters.counter2 - 1 })
-    };
-
-    return (<div>
-        <button onClick={handleDecrement1}>-</button>
-        {counters.counter1}
-        <button onClick={handleIncrement1}>+</button>
-
-        <br/>
-
-        <button onClick={handleDecrement2}>-</button>
-        {counters.counter2}
-        <button onClick={handleIncrement2}>+</button>
-    </div>)
+    const handlePlus = () => {
+        setValue(value+1);
+    }
+    const handleMinus = () => {
+        setValue(value - 1);
+    }
+    return <div>
+        <button onClick={handlePlus}>+</button>
+        {value}
+        <button onClick={handleMinus}>-</button>
+    </div>
 }
 
-function useState2() {
-    const [counters, setCounters] =  useState({ counter1: 0, counter2: 3});
-    const update = (newCounterObj) => {
-        setCounters({
-            ...counters,
-            ...newCounterObj
-        });
+function useState2(initialValue) {
+    const reducer = (prev, next) => {
+        return next;
     }
-    return {
-        counters,
-        update
-    }
+    let [value, setValue] = useReducer(reducer, initialValue);
+    return [value, setValue];
+    
 }
 
-
-export default HooksDemo
+export default HooksDemo;
