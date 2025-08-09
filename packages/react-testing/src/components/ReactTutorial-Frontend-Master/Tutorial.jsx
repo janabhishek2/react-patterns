@@ -1,9 +1,9 @@
 import React from 'react'
-import Form from './Form'
+import HooksDemo from './HooksDemo'
 
 function Tutorial() {
   return (
-    <Form />
+    <HooksDemo />
   )
 }
 
