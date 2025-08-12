@@ -11,4 +11,11 @@ HOOKS
 1. Hook is a function which lets you use reacts state and lifecycle features from a functional component.
 2. We have to use react built in methods setState() etc to trigger re-render of UI using reactive variables. Directly changing vars wont work.
 
+useSyncExternalStore
+1. Sometimes we need to sync external store data, browser api with react state.
+2. useSyncExternalStore takes as args 2 paramss.
+3. subscribe fn: which takes in a notify function param which needs to be triggered when something inside store changes!!. Set it to a listener variable.
+4. getStoreDataFn: this fn returns the current store data.
+5. Whenever listener is called state changes and component re-render.
+
 

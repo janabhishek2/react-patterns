@@ -1,67 +1,34 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react'
+import { todosStore } from './todoStore'
+
 
 function HooksDemo() {
+    const todos = useSyncExternalStore(todosStore.subscribe, todosStore.getSnapshot);
 
-    const [value, setValue] = useState(0);
-
-   useMyEffect(() => {
-    console.log("Inside effect");
-    return () => {
-        console.log("Cleanup function");
-    }
-   }, [value])
-
-    const handleClick = () => {
-        setValue(value + 1);
-    }
+    console.log(todos);
+    const handleAddTodo = () => {
+        todosStore.addTodo();
+    };
 
     return (<div>
-        <button onClick={handleClick}>Click me</button>
-        <br/>
-        This is the value: {value}
+            <button onClick={handleAddTodo}>Add a todo</button>
+            <ul>
+                {
+                    todos.map((item) => {
+                        return (
+                            <li>{item.text}</li>
+                        )
+                    })
+                }
+            </ul>
     </div>)
 }
 
-const hasDepsChanged = (prev, curr) => {
+function Score() {
 
-    if(prev.length !== curr.length ) return true;
-    let hasDepsChanged = false;
-    prev.forEach((prevDepItem, prevIndex) => {
-        const isEqual = Object.is(prevDepItem, curr?.[prevIndex]);
-        if(!isEqual) {
-           hasDepsChanged  =true;
-           return;
-        }
-    })
-
-    return hasDepsChanged;
+    return (<div>
+        Score is: {score}
+    </div>)
 }
 
-function useMyEffect(callback, depsArray = []) {
-    const initialCallRef = useRef(true);
-    const prevDepsArray = useRef([]);
-    const cleanupRef = useRef(null);
-    if(initialCallRef.current) {
-        const returnCallback = callback();
-        initialCallRef.current = false;
-        if(returnCallback) {
-            cleanupRef.current = returnCallback;
-        }
-        return;
-    }
-
-    let depsChanged = true;
-    if(depsArray.length) {
-        depsChanged = hasDepsChanged(prevDepsArray.current, depsArray);
-    }
-   
-    if(depsChanged) {
-        if(typeof cleanupRef.current === "function") cleanupRef.current();
-        callback();
-    }
-
-    prevDepsArray.current = [...depsArray];
-    return;
-}
-
-export default HooksDemo;
+export default HooksDemo
