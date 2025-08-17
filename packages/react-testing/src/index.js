@@ -6,6 +6,7 @@ import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
 
 
 function App() {
+
     return (<div className='wrapper'>
         <Tutorial />
     </div>)

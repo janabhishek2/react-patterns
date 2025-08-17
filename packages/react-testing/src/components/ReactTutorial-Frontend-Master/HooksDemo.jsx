@@ -1,33 +1,27 @@
-import React, { useEffect, useState, useSyncExternalStore } from 'react'
-import { todosStore } from './todoStore'
-
+import React, { useState, useEffect } from 'react'
 
 function HooksDemo() {
-    const todos = useSyncExternalStore(todosStore.subscribe, todosStore.getSnapshot);
 
-    console.log(todos);
-    const handleAddTodo = () => {
-        todosStore.addTodo();
-    };
+    const [count, setCount] = useState(0);
+    const [padding, setPadding] = useState(20);
 
+    useEffect(() => {
+        for(let i = 0; i<100000000; i++) {
+          
+        }
+      
+        setPadding(padding + 30);
+    
+    }, [count]);
+
+    const handleClick = () => {
+        setCount(count + 1);
+    }
+    
     return (<div>
-            <button onClick={handleAddTodo}>Add a todo</button>
-            <ul>
-                {
-                    todos.map((item) => {
-                        return (
-                            <li>{item.text}</li>
-                        )
-                    })
-                }
-            </ul>
-    </div>)
-}
-
-function Score() {
-
-    return (<div>
-        Score is: {score}
+        <div>{count}</div>
+        <h1 style={{ paddingTop: `${padding}px`}}>This is a text</h1>
+        <button onClick={handleClick}>Click Me!</button>
     </div>)
 }
 
