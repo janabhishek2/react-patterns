@@ -7,6 +7,7 @@ const PROMISE_STATE = {
 
 class MyPromise {
     #state = PROMISE_STATE.PENDING;
+    #value = null;
     #thenCallbacks = [];
     #catchCallbacks = [];
 
@@ -14,16 +15,29 @@ class MyPromise {
         callback(this.#onSuccess, this.#onFail);
     }
 
+    #runCallbacks = (value) => {
+        if(this.#state === PROMISE_STATE.FULFILLED) {
+            this.#thenCallbacks.forEach((thenCallback) => {
+                thenCallback(value);
+            })
+        } else {
+            this.#catchCallbacks.forEach((catchCallback) => {
+                catchCallback(value);
+            })
+        }
+       
+    }
+
     #onSuccess = (value) => {
-        this.#thenCallbacks.forEach((thenCallback) => {
-            thenCallback(value);
-        })
+        this.#state = PROMISE_STATE.FULFILLED;
+        this.#value = value;
+        this.#runCallbacks(value);
     }
 
     #onFail = () => {
-        this.#catchCallbacks.forEach((catchCallback) => {
-            catchCallback(value);
-        })
+        this.#state = PROMISE_STATE.REJECTED;
+        this.#value = value;
+        this.#runCallbacks(value);
     }
 
     then = (thenCallback) => {
@@ -37,10 +51,17 @@ class MyPromise {
 
 const p = new MyPromise(function(resolve, reject) {
     setTimeout(() => {
-        resolve("I am successful !!");
-    }, 3000);
+        resolve("Resolved");
+    })
 });
 
 p.then((response) => {
     console.log(response);
+});
+
+// We can have multiple consumer for a promise.
+p.then((resp) => {
+    console.log(resp + 2);
 })
+
+p.then
