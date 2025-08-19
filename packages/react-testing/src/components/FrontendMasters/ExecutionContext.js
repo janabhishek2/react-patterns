@@ -15,15 +15,17 @@ class MyPromise {
         callback(this.#onSuccess, this.#onFail);
     }
 
-    #runCallbacks = (value) => {
+    #runCallbacks = () => {
         if(this.#state === PROMISE_STATE.FULFILLED) {
             this.#thenCallbacks.forEach((thenCallback) => {
-                thenCallback(value);
+                thenCallback(this.#value);
             })
+            this.#thenCallbacks = [];
         } else {
             this.#catchCallbacks.forEach((catchCallback) => {
-                catchCallback(value);
+                catchCallback(this.#value);
             })
+            this.#catchCallbacks = [];
         }
        
     }
@@ -31,21 +33,24 @@ class MyPromise {
     #onSuccess = (value) => {
         this.#state = PROMISE_STATE.FULFILLED;
         this.#value = value;
-        this.#runCallbacks(value);
+        this.#runCallbacks();
     }
 
     #onFail = () => {
         this.#state = PROMISE_STATE.REJECTED;
         this.#value = value;
-        this.#runCallbacks(value);
+        this.#runCallbacks();
     }
 
     then = (thenCallback) => {
         this.#thenCallbacks.push(thenCallback);
+
+        this.#runCallbacks();
     }
 
     catch = (catchCallback) => {
         this.#catchCallbacks.push(catchCallback);
+        this.#runCallbacks();
     }
 }
 
@@ -60,8 +65,8 @@ p.then((response) => {
 });
 
 // We can have multiple consumer for a promise.
-p.then((resp) => {
-    console.log(resp + 2);
-})
-
-p.then
+setTimeout(() => {
+    p.then((resp) => {
+        console.log(resp + 2);
+    });
+}, 2000);
