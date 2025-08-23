@@ -12,7 +12,12 @@ class MyPromise {
     #catchCallbacks = [];
 
     constructor(callback) {
-        callback(this.#onSuccess, this.#onFail);
+        // try{
+        //     callback(this.#onSuccess, this.#onFail);
+        // }catch(err) {
+        //     this.#onFail(err);
+        // }
+       callback(this.#onSuccess, this.#onFail);
     }
 
     #runCallbacks = () => {
@@ -36,37 +41,40 @@ class MyPromise {
         this.#runCallbacks();
     }
 
-    #onFail = () => {
+    #onFail = (value) => {
         this.#state = PROMISE_STATE.REJECTED;
         this.#value = value;
+
+        if(this.#catchCallbacks.length === 0) throw new Error("Please provide a catch block for handling rejected promises !!");
         this.#runCallbacks();
     }
 
-    then = (thenCallback) => {
-        this.#thenCallbacks.push(thenCallback);
+    then = (thenCallback, catchCallback) => {
+        if(thenCallback){
+            this.#thenCallbacks.push(thenCallback);
+        }
+        
+        if(catchCallback) {
+            this.#catchCallbacks.push(catchCallback);
+        }
 
         this.#runCallbacks();
+        // return this;
     }
 
     catch = (catchCallback) => {
-        this.#catchCallbacks.push(catchCallback);
-        this.#runCallbacks();
+        this.then(undefined, catchCallback);
     }
 }
 
-const p = new MyPromise(function(resolve, reject) {
-    setTimeout(() => {
-        resolve("Resolved");
+const p = new Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
+        resolve(3);
     })
-});
+})
 
-p.then((response) => {
-    console.log(response);
+p.then(res => {
+    console.log(res);
+}).then(res => {
+    console.log(res);
 });
-
-// We can have multiple consumer for a promise.
-setTimeout(() => {
-    p.then((resp) => {
-        console.log(resp + 2);
-    });
-}, 2000);
