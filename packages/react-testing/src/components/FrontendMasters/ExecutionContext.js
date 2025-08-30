@@ -12,42 +12,61 @@ const p2 = new Promise(function(resolve, reject) {
 
 const p3 = new Promise(function(resolve, reject) {
     setTimeout(() => {
-        resolve(3);
-    }, 1000);
+        reject("huihui");
+    }, 3000);
 })
 
-// const allPromises = Promise.all([p1, p2, p3]);
-// allPromises.then((data) => {
-//     console.log(data);
-// }).catch((err) => {
+// const allSettled = Promise.allSettled([p1, p2, p3]);
+// allSettled.then((res) => {
+//     console.log(res);
+// }).catch(err => {
 //     console.log(err);
-// });
+// })
 
-const allResolved = function(promises) {
-    if(!Array.isArray(promises)) {
-        throw new Error("err");
-    }
+// [
+//     {
+//         "status": "fulfilled",
+//         "value": 1
+//     },
+//     {
+//         "status": "fulfilled",
+//         "value": 2
+//     },
+//     {
+//         "status": "rejected",
+//         "reason": "huihui"
+//     }
+// ]
+
+const allSettled = function(promises) {
     return new Promise(function(resolve, reject) {
-
-        const allPromiseValues = new Array(promises.length).fill(undefined);
+        if(promises.length === 0) {
+            resolve([])
+        }
         let completed = 0;
-        promises.forEach(async (promise, index) => {
-            promise.then((data)=> {
-                allPromiseValues[index] = data;
+        const promiseValues = [];
+        promises.forEach((promise, index) => {
+            promise.then((data) => {
+                promiseValues[index] = {
+                    status: "fulfilled",
+                    value: data
+                };
+            }).catch((err) => {
+                promiseValues[index] = {
+                    status: "rejected",
+                    reason: err
+                };
+            }).finally(() => {
                 completed++;
                 if(completed === promises.length) {
-                    resolve(allPromiseValues);
+                    resolve(promiseValues)
                 }
-            }).catch((err) => {
-                reject(err);
             })
         });
     });
-    
 }
 
-const resolvedValues = allResolved([p1, p2, p3]);
-
-resolvedValues.then((data) => {
-    console.log(data);
+const values = allSettled([p1, p2, p3]);
+values.then((res) => {
+    console.log(res);
 });
