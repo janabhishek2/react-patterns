@@ -48,3 +48,11 @@ useEffect tips:
 4. To reset all states of a child component do not use useEffect, use the key prop from parent component.
 5. For connecting to external data source like document, localstorage etc; use syncExternalStore hook.
 6. For api calls: create a custom hook / use 3rd party libs to create custom hooks and use in components. (reason: react 18 mount/unmount and then mount component  in dev mode, also components should have visual logic only.)
+
+React dev tools
+1. 2 sections: components and profiler.
+2. component helps to debug the various components that cause the dom to render.
+3. profiler helps to deubug each render using flamegraph and ranked chart.
+
+Promise.all polyFill
+1. Promise.all is 
