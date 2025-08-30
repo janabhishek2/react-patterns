@@ -1,80 +1,53 @@
-// Promise polyfills
-const PROMISE_STATE = {
-    FULFILLED: "FULFILLED",
-    REJECTED: "REJECTED",
-    PENDING: "PENDING"
-};
+const p1 = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        resolve(1);
+    }, 1000);
+});
 
-class MyPromise {
-    #state = PROMISE_STATE.PENDING;
-    #value = null;
-    #thenCallbacks = [];
-    #catchCallbacks = [];
-
-    constructor(callback) {
-        // try{
-        //     callback(this.#onSuccess, this.#onFail);
-        // }catch(err) {
-        //     this.#onFail(err);
-        // }
-       callback(this.#onSuccess, this.#onFail);
-    }
-
-    #runCallbacks = () => {
-        if(this.#state === PROMISE_STATE.FULFILLED) {
-            this.#thenCallbacks.forEach((thenCallback) => {
-                thenCallback(this.#value);
-            })
-            this.#thenCallbacks = [];
-        } else {
-            this.#catchCallbacks.forEach((catchCallback) => {
-                catchCallback(this.#value);
-            })
-            this.#catchCallbacks = [];
-        }
-       
-    }
-
-    #onSuccess = (value) => {
-        this.#state = PROMISE_STATE.FULFILLED;
-        this.#value = value;
-        this.#runCallbacks();
-    }
-
-    #onFail = (value) => {
-        this.#state = PROMISE_STATE.REJECTED;
-        this.#value = value;
-
-        if(this.#catchCallbacks.length === 0) throw new Error("Please provide a catch block for handling rejected promises !!");
-        this.#runCallbacks();
-    }
-
-    then = (thenCallback, catchCallback) => {
-        if(thenCallback){
-            this.#thenCallbacks.push(thenCallback);
-        }
-        
-        if(catchCallback) {
-            this.#catchCallbacks.push(catchCallback);
-        }
-
-        this.#runCallbacks();
-        // return this;
-    }
-
-    catch = (catchCallback) => {
-        this.then(undefined, catchCallback);
-    }
-}
-
-const p = new Promise(function(resolve, reject) {
-    return new Promise(function(resolve, reject) {
-        resolve(3);
-    })
+const p2 = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        resolve(2);
+    }, 1000);
 })
 
-p.then(res => {
-    console.log(res);
-}).then(res => {
-    console.log(res);
+const p3 = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        resolve(3);
+    }, 1000);
+})
+
+// const allPromises = Promise.all([p1, p2, p3]);
+// allPromises.then((data) => {
+//     console.log(data);
+// }).catch((err) => {
+//     console.log(err);
+// });
+
+const allResolved = function(promises) {
+    if(!Array.isArray(promises)) {
+        throw new Error("err");
+    }
+    return new Promise(function(resolve, reject) {
+
+        const allPromiseValues = new Array(promises.length).fill(undefined);
+        let completed = 0;
+        promises.forEach(async (promise, index) => {
+            promise.then((data)=> {
+                allPromiseValues[index] = data;
+                completed++;
+                if(completed === promises.length) {
+                    resolve(allPromiseValues);
+                }
+            }).catch((err) => {
+                reject(err);
+            })
+        });
+    });
+    
+}
+
+const resolvedValues = allResolved([p1, p2, p3]);
+
+resolvedValues.then((data) => {
+    console.log(data);
 });

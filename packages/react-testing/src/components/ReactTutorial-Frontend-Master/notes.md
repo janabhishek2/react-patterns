@@ -55,4 +55,4 @@ React dev tools
 3. profiler helps to deubug each render using flamegraph and ranked chart.
 
 Promise.all polyFill
-1. Promise.all is 
+1. Promise.all is used to run all promises in async fashion, returns a promise, when all the promises are resolved, then the returned promise gets resolved, if one of them fails the returned promise is rejected.
