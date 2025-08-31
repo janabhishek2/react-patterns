@@ -4,15 +4,20 @@ const handleScroll1 = (e) => {
     console.log("Scroll is called");
 }
 
-const throttledFunction = (callback, interval) => {
-    let updatedDate = new Date();
+const throttledFunction = (callback, interval, options = {}) => {
+    let updatedDate = 0;
+    const { leading = true } = options;
     return () => {
-        const difference = Date.now() - updatedDate.getTime();
+        // First invocation
+        if(!leading && updatedDate == 0) {
+            updatedDate = Date.now();
+        }
+        const difference = Date.now() - updatedDate;
         if(difference >= interval) {
             callback();
-            updatedDate = new Date();
+            updatedDate = Date.now();
         }
     }
 }
 
-const handleScroll = throttledFunction(handleScroll1, 1000);
+const handleScroll = throttledFunction(handleScroll1, 3000);
