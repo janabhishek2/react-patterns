@@ -5,13 +5,12 @@ const handleScroll1 = (e) => {
 }
 
 const throttledFunction = (callback, interval) => {
-    let timeoutId = false;
+    let updatedDate = new Date();
     return () => {
-        if(!timeoutId) {
-            timeoutId = setTimeout(() => {
-                callback();
-                timeoutId = null;
-            }, interval);
+        const difference = Date.now() - updatedDate.getTime();
+        if(difference >= interval) {
+            callback();
+            updatedDate = new Date();
         }
     }
 }
