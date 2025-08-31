@@ -6,7 +6,8 @@ const handleScroll1 = (e) => {
 
 const throttledFunction = (callback, interval, options = {}) => {
     let updatedDate = 0;
-    const { leading = true } = options;
+    let timeoutId = null;
+    const { leading = true, trailing = true } = options;
     return () => {
         // First invocation
         if(!leading && updatedDate == 0) {
@@ -16,8 +17,13 @@ const throttledFunction = (callback, interval, options = {}) => {
         if(difference >= interval) {
             callback();
             updatedDate = Date.now();
+        } else if(trailing && !timeoutId) {
+            timeoutId = setTimeout(() => {
+                callback();
+                timeoutId = null;
+            }, interval);
         }
     }
 }
 
-const handleScroll = throttledFunction(handleScroll1, 3000);
+const handleScroll = throttledFunction(handleScroll1, 1000);
