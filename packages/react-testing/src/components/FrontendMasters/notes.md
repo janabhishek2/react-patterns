@@ -1,3 +1,5 @@
+Promises:
+
 Callback: A function passed in another function as a argument.
 JS is single threaded, browser is multi-threaded. TO perform any async work, js handles the code to browser web api, which returns data in task queue, then js thread picks it from queue.
 Synchronous: When code is executed line by line to the end. ( order is fixed )
@@ -20,3 +22,6 @@ Promise.all
 
 Promise.allSettled
 1. Returns a promise containing resolved array, having object with properties status, value, reason to indicate if promise was resolved, rejected and what is the value/reject reason/err.
+
+Throttling
+
