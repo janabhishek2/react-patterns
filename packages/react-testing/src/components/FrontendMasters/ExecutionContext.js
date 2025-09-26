@@ -1,27 +1,51 @@
+// Polyfill of set-timeout
 
-function debounce(callback, delay) {
-    let id = null;
-    return function(...args) {
-        let self = this;
-        if(id) {
-            clearTimeout(id);
+// Use requestIdleCallback to mimic the functionality of setTimeout. It creates a low priority callback.
+//  The callback will be run when main thread is empty.
+
+window.timerId = 1231;
+window.setTimeout = function(callback, delay, ...args) {
+    const timerId = window.timerId++;
+    const time = Date.now() + delay;
+    window.timers = {
+        ...window.timers,
+        [timerId] : {
+            callback,
+            time,
+            args: [...args]
         }
-        id = setTimeout(() => {
-            callback.apply(self, args);
-        }, delay)
+    }
+
+    if(Object.keys(window.timers).length === 1) {
+        requestIdleCallback(processTimers);
     }
 }
 
-const apiCallFn = (value) => {
-    console.log("Api is called with", value);
+function processTimers() {
+    const executeTimer = function(timerId) {
+        const { callback, time, args } = window.timers[timerId];
+        if(Date.now() >= time) {
+            callback(...args)
+            delete window.timers[timerId];
+        } else {
+           requestIdleCallback(processTimers);
+        }
+    }
+    Object.keys(window.timers).forEach(executeTimer);
+};
+
+window.clearTimeout = function(id) {
+    delete window.timers?.[id];
 }
 
-const o = {
-    a: 1,
-    debouncedApiCall: debounce(apiCallFn, 2000)
-}
+window.setTimeout(function(name) {
+    console.log(name);
+}, 1000, "silver surfer");
 
-const handleChange = (e) => {
-    const inputElement = document.getElementById("fname");
-    o.debouncedApiCall(inputElement.value);
-}
+window.setTimeout(function(name) {
+    console.log(name);
+}, 2000, "silver surfer 1");
+
+window.setTimeout(function(name) {
+    console.log(name);
+}, 3000, "silver surfer 2");
