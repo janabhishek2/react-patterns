@@ -1,12 +1,34 @@
 const original = {
     name: "mdn",
+    a: {
+        b: 1,
+        c: 4
+    }
 }
 
-original.itself = original;
+const isObject = obj => typeof obj === "object" && !Array.isArray(obj);
 
-// Structured clone takes care of inner objects and circular references.
-const copiedObj = structuredClone(original);
+function deepClone(obj) {
+    const returnedObj = {};
 
-// const copiedObj = {...original}; // Does not modify circular ref, inner objects: uses same references for both
+    const curreObjectKeys = Object.keys(obj);
+    curreObjectKeys.forEach((key) => {
+        const value = obj?.[key];
+        if(isObject(value)) {
+            // Call this method recursively
+            returnedObj[key] = {...deepClone(value)}
+        } else {
+            // Push in return obj
+            returnedObj[key] = value;
+        }
+    });
 
-console.log(copiedObj);
+    return returnedObj;
+   
+};
+
+const ans = deepClone(original);
+
+original.a.b = 10;
+
+console.log(ans, original);
