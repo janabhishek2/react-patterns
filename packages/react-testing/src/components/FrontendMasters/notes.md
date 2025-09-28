@@ -25,3 +25,8 @@ Promise.allSettled
 
 Throttling
 
+WeakMaps/WeakSets/Sets/Maps
+1. Set is used to story items of any type ( arr | obj | primitives);
+2. Map is used to store key value pairs. Both set and map are iterable.
+3. WeakMap is used to store weak reference to object, if any object references are deleted from outside, it will be deleted inside weakmap as well. We can not iterate over the objects in real time.
+4. Similar for ws.
