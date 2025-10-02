@@ -1,12 +1,25 @@
-const wm = new WeakMap();
+const states = [];
+let hookIndex = 0;
 
-let obj = {
-    name: "Abhishek"
-};
+const useState = (initialValue) => {
+    if(states[hookIndex] ){
+        return states[hookIndex++]
+    }
+    let value = initialValue;
+    const updateValue = (newVal) => {
+        tuple[0] = newVal
+    }
 
-wm.set(obj, 1);
+    const tuple = [value, updateValue];
+    states[hookIndex++] = tuple;
+    return tuple;
+}
 
-obj = null;
+function Person() {
+    const [s1, setS1] = useState(3);
+}
 
-// WeakMap will not have obj inside it.
-console.log(wm);
+Person();
+Person();
+
+console.log(states);

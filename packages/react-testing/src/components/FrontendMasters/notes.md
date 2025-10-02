@@ -30,3 +30,28 @@ WeakMaps/WeakSets/Sets/Maps
 2. Map is used to store key value pairs. Both set and map are iterable.
 3. WeakMap is used to store weak reference to object, if any object references are deleted from outside, it will be deleted inside weakmap as well. We can not iterate over the objects in real time.
 4. Similar for ws.
+
+React.memo and re-renders
+1. We can prevent re-renders by separating concerns for components ( not calling non-prop-changing components in the same file ): move all state changing components to one file and rest to other.
+2. Child-pattern to prevent re-render: Pass the component which needs not to be re-rendered via children prop from parent.
+
+React.useState polyfill
+1. use useReducer to re-render if state changes.
+2. maintain states and hookIndex to track re-renders
+
+useId
+1. use useId hook to provide a unique id.
+2. not to be used in functions/loops etc.
+
+Portals
+1. Used to teleport a component to a specific place in the DOM.
+2. createportal(jsx, document.body);
+
+Higher order function
+1. A function which takes another function as argument or which returns a function or both.
+2. Examples: array map, filter, reduce, forEach etc.
+3. Useful for extension of a regular function. (example map is used to extend a callback function to return a new array of items based on a conversion callback fn.)
+
+Higer order component
+1. Higher order component takes an existing component as props and returns a new component.
+
