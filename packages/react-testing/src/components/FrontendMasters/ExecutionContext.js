@@ -1,11 +1,14 @@
-const box = document.querySelector(".box");
-
-const resizeCallback = (entries) => {
-    const boxElement = entries[0];
-    const isSmall = boxElement.contentRect.width < 800;
-    boxElement.target.style.backgroundColor = isSmall ? "blue" : "red";
+Object.prototype.myCreate = function(protoObject, options) {
+    function Factory() {};
+    Factory.prototype = protoObject;
+    const newObj = new Factory;
+    options && Object.defineProperties(newObj, options);
+    return newObj;
 }
-const resizeObserver = new ResizeObserver(resizeCallback);
+const ans = Object.myCreate({ a: 1 }, {
+    name: {
+        value: "Abhishek",
+    }
+});
 
-resizeObserver.observe(box);
-
+console.log(ans, Object.keys(ans));
