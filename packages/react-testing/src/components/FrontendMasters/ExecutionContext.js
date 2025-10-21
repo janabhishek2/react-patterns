@@ -1,25 +1,36 @@
-const states = [];
-let hookIndex = 0;
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        if(entry.isIntersecting) observer.unobserve(entry.target);
+    });
+}, {
+    threshold: 1
+});
 
-const useState = (initialValue) => {
-    if(states[hookIndex] ){
-        return states[hookIndex++]
+const lastCardObserver = new IntersectionObserver((entries) => {
+    const lastCard = entries[0];
+    if(lastCard.isIntersecting) {
+        loadMoreCards();
+        lastCardObserver.unobserve(lastCard.target);
+        lastCardObserver.observe(document.querySelector(".card:last-child"));
     }
-    let value = initialValue;
-    const updateValue = (newVal) => {
-        tuple[0] = newVal
-    }
+});
 
-    const tuple = [value, updateValue];
-    states[hookIndex++] = tuple;
-    return tuple;
-}
+lastCardObserver.observe(document.querySelector(".card:last-child"));
 
-function Person() {
-    const [s1, setS1] = useState(3);
-}
+const loadMoreCards = () => {
+    const cardContainer = document.querySelector(".card-container");
 
-Person();
-Person();
+    new Array(10).fill(1).forEach((item) => {
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.textContent = "New Card!";
+        observer.observe(cardDiv);
+        cardContainer.appendChild(cardDiv);
+    })
+};
 
-console.log(states);
+const cards = document.querySelectorAll(".card") ?? [];
+cards.forEach((card) => {
+    card && observer.observe(card);
+});

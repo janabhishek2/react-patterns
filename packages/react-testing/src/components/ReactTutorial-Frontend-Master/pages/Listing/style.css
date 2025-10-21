@@ -1,0 +1,17 @@
+.card {
+    border: 1px solid black;
+    border-radius: .25rem;
+    padding: 2rem;
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+}

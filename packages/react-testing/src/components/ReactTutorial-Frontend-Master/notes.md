@@ -56,3 +56,7 @@ React dev tools
 
 Promise.all polyFill
 1. Promise.all is used to run all promises in async fashion, returns a promise, when all the promises are resolved, then the returned promise gets resolved, if one of them fails the returned promise is rejected.
+
+Suspense
+1. Suspense is used to render a suspended component ( laxy-loaded | code-splitted ) component.
+2. If we have multiple suspense in a single component--> 1.Suspended Comp1 --> Susp comp2 (with no fallback) --> This means if only a single suspense is used for multiple child components, it will use suspense of parent component.
