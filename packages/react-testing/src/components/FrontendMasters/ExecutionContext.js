@@ -1,36 +1,11 @@
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        entry.target.classList.toggle("show", entry.isIntersecting);
-        if(entry.isIntersecting) observer.unobserve(entry.target);
-    });
-}, {
-    threshold: 1
-});
+const box = document.querySelector(".box");
 
-const lastCardObserver = new IntersectionObserver((entries) => {
-    const lastCard = entries[0];
-    if(lastCard.isIntersecting) {
-        loadMoreCards();
-        lastCardObserver.unobserve(lastCard.target);
-        lastCardObserver.observe(document.querySelector(".card:last-child"));
-    }
-});
+const resizeCallback = (entries) => {
+    const boxElement = entries[0];
+    const isSmall = boxElement.contentRect.width < 800;
+    boxElement.target.style.backgroundColor = isSmall ? "blue" : "red";
+}
+const resizeObserver = new ResizeObserver(resizeCallback);
 
-lastCardObserver.observe(document.querySelector(".card:last-child"));
+resizeObserver.observe(box);
 
-const loadMoreCards = () => {
-    const cardContainer = document.querySelector(".card-container");
-
-    new Array(10).fill(1).forEach((item) => {
-        const cardDiv = document.createElement("div");
-        cardDiv.classList.add("card");
-        cardDiv.textContent = "New Card!";
-        observer.observe(cardDiv);
-        cardContainer.appendChild(cardDiv);
-    })
-};
-
-const cards = document.querySelectorAll(".card") ?? [];
-cards.forEach((card) => {
-    card && observer.observe(card);
-});
