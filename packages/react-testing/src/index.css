@@ -4,7 +4,8 @@ body, html {
 }
 
 .wrapper {
-    min-height: 300px;
+    max-width: 800px;
+    margin: auto;
     display: flex;
     justify-content: center;
     /* align-items: center; */
