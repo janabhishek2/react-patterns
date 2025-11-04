@@ -8,6 +8,7 @@ function Tutorial(props) {
 
     const handleChange = (e) => {
         setSearch(e.target.value);
+        // Low priority update
         startTransition(() => {
             setList([...new Array(100)]);
         })
