@@ -1,39 +1,52 @@
-import React, { lazy, useEffect, useState } from 'react';
-import Listing from './pages/Listing';
-import Details from './pages/Details/Details';
-import Cart from './pages/Cart';
-import { useGetNetworkCall } from './network/useNetwork';
-import ErrorBoundary from './pages/ErrorBoundary';
+import React, { useState, useTransition } from "react";
+import PropTypes from "prop-types";
 
-function Tutorial() {
+function Tutorial(props) {
+    const [isTransitionPending, startTransition] = useTransition();
+    const [search, setSearch] = useState("");
+    const [list, setList] = useState([]);
 
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isCartPage, setIsCartPage] = useState(false);
+    const handleChange = (e) => {
+        setSearch(e.target.value);
+        startTransition(() => {
+            setList([...new Array(100)]);
+        })
+    };
 
-  const { data, isLoading } = useGetNetworkCall();
-  
-  useEffect(() => {
-    if(data) {
-      import("./helper").then((res) => {
-        const { sayHello } = res;
-        sayHello();
-      });
+    const renderList = () =>
+        list.map((list, key) => {
+            return <Item data={key} key={key} />;
+        });
+
+    return (
+        <>
+            {/* input */}
+            <div>
+                <input type="text" value={search} onChange={handleChange} />
+            </div>
+
+            {isTransitionPending && <span>Loading!..</span>}
+            {!isTransitionPending && (
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                    }}
+                >
+                    {renderList()}
+                </div>
+            )}
+        </>
+    );
+}
+
+function Item(props) {
+    const { data } = props;
+    const startTime = performance.now();
+    while (performance.now() - startTime < 10) {
+        null;
     }
-  }, [data]);
-
-  const handleProductSelect = (prd) => {
-    setSelectedProduct(prd);
-  }
-
-  const handleBack = () => {
-    console.log("Back click");
-  }
-
-  return (<ErrorBoundary>
-    {!selectedProduct && <Listing todos={data} isLoading={isLoading} onSelect={handleProductSelect}/>}
-    {/* {selectedProduct && <Details onBack={handleBack}/>}
-    { isCartPage && <Cart />} */}
-  </ErrorBoundary>)
-};
+    return <div>{data * Math.random()}</div>;
+}
 
 export default Tutorial;
