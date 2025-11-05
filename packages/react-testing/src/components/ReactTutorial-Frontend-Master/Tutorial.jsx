@@ -1,23 +1,35 @@
-import React, { useState, useTransition } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+
+function debounce(fn, delay) {
+    let timeoutId = null;
+    return function (...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+                fn(...args);
+            }, delay);
+    };
+}
+
+function throttle(fn, delay) {
+  let lastExec = Date.now();
+  return function(...args) {
+    const diff = Date.now() - lastExec;
+    if(diff >= delay) {
+      lastExec = Date.now();
+      fn(...args);
+    }
+  }
+}
 
 function Tutorial(props) {
-    const [isTransitionPending, startTransition] = useTransition();
     const [search, setSearch] = useState("");
-    const [list, setList] = useState([]);
+    const [query, setQuery] = useState("");
 
+    const setDebouncedQuery = React.useCallback(throttle(setQuery, 3000), []);
     const handleChange = (e) => {
-        setSearch(e.target.value);
-        // Low priority update
-        startTransition(() => {
-            setList([...new Array(100)]);
-        })
-    };
-
-    const renderList = () =>
-        list.map((list, key) => {
-            return <Item data={key} key={key} />;
-        });
+      setSearch(e.target.value);
+      setDebouncedQuery(e.target.value);
+    }
 
     return (
         <>
@@ -26,28 +38,18 @@ function Tutorial(props) {
                 <input type="text" value={search} onChange={handleChange} />
             </div>
 
-            {isTransitionPending && <span>Loading!..</span>}
-            {!isTransitionPending && (
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {renderList()}
-                </div>
-            )}
+            <Item data={query} />
         </>
     );
 }
 
-function Item(props) {
+const Item = React.memo(function (props) {
     const { data } = props;
     const startTime = performance.now();
-    while (performance.now() - startTime < 10) {
+    while (performance.now() - startTime < 100) {
         null;
     }
-    return <div>{data * Math.random()}</div>;
-}
+    return <div>Filtered data: {data}</div>;
+});
 
 export default Tutorial;
