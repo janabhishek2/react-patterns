@@ -1,7 +1,6 @@
-window.addEventListener("load", () => {
-    console.log("load event");
-});
+const btns = document.getElementsByTagName("button");
 
-window.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMContentLoaded event")
-})
+const buttonElement = btns[0];
+
+buttonElement.style.color = "red";
+buttonElement.style.backgroundColor = "grey";
