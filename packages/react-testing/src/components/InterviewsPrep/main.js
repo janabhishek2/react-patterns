@@ -1,6 +1,5 @@
-const btns = document.getElementsByTagName("button");
+const btn = document.getElementsByTagName("button")[0];
 
-const buttonElement = btns[0];
+btn.classList.add("new-class");
 
-buttonElement.style.color = "red";
-buttonElement.style.backgroundColor = "grey";
+console.log(btn.className);

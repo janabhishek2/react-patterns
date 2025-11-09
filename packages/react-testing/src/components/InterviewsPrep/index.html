@@ -2,11 +2,19 @@
 <html>
   <head>
     <title>This is the title of the webpage</title>
+    <style>
+      button[data-variant="warning"] {
+        color: red;
+      }
+      body::after {
+        content: "Hello"
+      }
+    </style>
   </head>
+  
   <body>
     <form>
-      <input type="text" placeholder="First name" />
-      <button onclick="">Submit Name</button>
+      <button>Hello</button>
     </form>
     <script src="./main.js"></script>
   </body>
