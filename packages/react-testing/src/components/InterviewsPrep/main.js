@@ -1,10 +1,10 @@
-const btn = document.getElementsByTagName("button")[0];
+const btn = document.querySelector("button");
 
-// Change height and width normally
-// btn.style.height = "80px";
-// btn.style.width = "150px";
+function test() {
+   console.log("jo")
+}
 
-btn.style.color = "red";
+btn.addEventListener("click", test);
 
-// Using cssText
-btn.style.cssText += "height: 100px; width: 50px;";
+btn.removeEventListener("click", test);
+
