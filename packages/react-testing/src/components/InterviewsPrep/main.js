@@ -1,5 +1,10 @@
 const btn = document.getElementsByTagName("button")[0];
 
-btn.classList.add("new-class");
+// Change height and width normally
+// btn.style.height = "80px";
+// btn.style.width = "150px";
 
-console.log(btn.className);
+btn.style.color = "red";
+
+// Using cssText
+btn.style.cssText += "height: 100px; width: 50px;";
