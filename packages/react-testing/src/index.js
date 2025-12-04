@@ -1,14 +1,29 @@
 import { createRoot } from 'react-dom/client';
 
-import React from "react";
+import React, { useEffect } from "react";
+import { Provider, ReactReduxContext } from 'react-redux';
 import './index.css';
+import ReactRedux from './components/ReactRedux/ReactRedux';
 // import NotificationsLibrary from './components/NotificationsLibrary/main';
-import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
-
+// import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
+import store from './store/store';
+// import StopWatch from './components/StopWatch/StopWatch';
 function App() {
 
+    // useEffect(() => {
+    //     const performanceObserver = new PerformanceObserver((list) => {
+    //          const entries = list.getEntries();
+    //         entries.forEach((entry) => {
+    //             console.log("Long task detected:", entry);
+    //         });
+    //     })
+
+    //     performanceObserver.observe({ type: 'longtask', buffered: true });
+    // }, []);
     return (<div className='wrapper'>
-        <Tutorial />
+        <Provider store={store}>
+            <ReactRedux />
+        </Provider>
     </div>)
 }
 
