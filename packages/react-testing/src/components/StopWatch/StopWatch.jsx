@@ -23,8 +23,8 @@ function StopWatch() {
         intervalRef.current = null;
         setTime(0);
     };
-    const min = (time / 60).toFixed(0);
-    const sec = time % 60;
+    const min = ((time / 60).toFixed(0)).toString().padStart(2, "0");
+    const sec = (time % 60).toString().padStart(2, "0");
 
     return (
         <div>

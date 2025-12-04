@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client';
 import React, { useEffect } from "react";
 import { Provider, ReactReduxContext } from 'react-redux';
 import './index.css';
-import ReactRedux from './components/ReactRedux/ReactRedux';
+// import ReactRedux from './components/ReactRedux/ReactRedux';
 // import NotificationsLibrary from './components/NotificationsLibrary/main';
 // import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
 import store from './store/store';
-// import StopWatch from './components/StopWatch/StopWatch';
+import StopWatch from './components/StopWatch/StopWatch';
 function App() {
 
     // useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
     // }, []);
     return (<div className='wrapper'>
         <Provider store={store}>
-            <ReactRedux />
+            <StopWatch />
         </Provider>
     </div>)
 }
