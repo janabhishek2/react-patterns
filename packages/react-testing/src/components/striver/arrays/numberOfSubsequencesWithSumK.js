@@ -1,5 +1,5 @@
 let arr = [1, 2, 3,3, 4, 5, 6, 7, 8];
-let k = 6;
+let k = 12;
 
 function numberOfSubSequencesWithSumK(arr, k) {
     let sumMap = new Map();
@@ -31,3 +31,4 @@ function numberOfSubSequencesWithSumK(arr, k) {
 
 const ans = numberOfSubSequencesWithSumK(arr, k);
 console.log(ans);
+
