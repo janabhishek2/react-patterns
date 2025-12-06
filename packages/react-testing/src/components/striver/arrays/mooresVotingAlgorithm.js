@@ -9,11 +9,14 @@ function findElement(arr) {
 
     for (let i = 0; i < n; i++) {
         if (!element) {
+            // assume it is the majority element
             element = arr[i];
             count++;
         } else if (arr[i] === element) {
+            // increase count if it is found
             count++;
         } else if (arr[i] !== element) {
+            // cancel out 
             count--;
             if(count === 0) {
                 element = null;
