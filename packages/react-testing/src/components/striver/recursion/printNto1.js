@@ -1,5 +1,7 @@
 const n = 4;
 
+// functional and parameterised recursion
+
 function printOpposite(i, n) {
     if( i > n ) return;
 
