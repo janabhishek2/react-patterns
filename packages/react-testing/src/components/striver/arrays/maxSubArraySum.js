@@ -20,6 +20,8 @@ function maxSubArraySum(arr) {
         }
     }
 
+    if(maxSum < 0) return 0;
+
     return maxSum;
 }
 
