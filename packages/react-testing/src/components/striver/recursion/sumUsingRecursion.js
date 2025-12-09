@@ -13,5 +13,12 @@ function iterativeSum(i, sum) {
     iterativeSum(i-1, sum + i);
 }
 
+function recursiveSum(n) {
+    if(n === 0) return 0;
+    else return n + recursiveSum(n-1);
+}
+
 const n = 10;
-iterativeSum(n, 0);
+const ans = recursiveSum(10);
+
+console.log(ans);
