@@ -1,4 +1,4 @@
-const str = "abcbe";
+const str = "madame";
 
 const isPalindrome = (str) => {
     if(str.length === 0) return true;
