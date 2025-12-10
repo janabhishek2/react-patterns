@@ -10,21 +10,26 @@ const printSubsequences = (arr, providedSum) => {
         if(index >= (n)){
             if(sum === providedSum) {
                 console.log(temp);
+                return true
             }
-            return;
+            return false;
         }
         // Take the index
         let newSum = sum + arr[index];
         temp.push(arr[index]);
-        subsequeces(index+1, temp, newSum);
+        const take = subsequeces(index+1, temp, newSum);
+        if(take) return true;
 
         // Not take the index
         newSum = newSum - arr[index];
         temp.pop();
-        subsequeces(index+1, temp, newSum);
+        const notTake = subsequeces(index+1, temp, newSum);
+        if(notTake) return true;
+
+        return false;
     }
 
-    subsequeces(index, temp, 0);
+    return subsequeces(index, temp, 0);
 };
 
 printSubsequences(arr, 3);
