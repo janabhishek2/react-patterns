@@ -1,4 +1,4 @@
-const arr = [3, 1, 2];
+const arr = [3, 1, 2, 5, 1];
 
 const printSubsequences = (arr, providedSum) => {
 
@@ -32,4 +32,27 @@ const printSubsequences = (arr, providedSum) => {
     return subsequeces(index, temp, 0);
 };
 
-printSubsequences(arr, 3);
+const countSubsequences = (arr, providedSum) => {
+
+    let n = arr.length;
+
+    const countSubsequencesWithGivenSum = (index, currSum) => {
+        if(index >= n) {
+            if(currSum === providedSum) {
+                return 1;
+            }
+            return 0;
+        }
+
+        const l = countSubsequencesWithGivenSum(index + 1, currSum + arr[index]);
+        const r = countSubsequencesWithGivenSum(index + 1, currSum);
+
+        return l + r;
+    }
+
+    return countSubsequencesWithGivenSum(0, 0);
+}
+
+const ans = countSubsequences(arr, 6);
+console.log(ans);
+
