@@ -2,8 +2,8 @@
 
 // [2, 3, 4, 7] , sum: 7, [[2,2,3], [3,4], [7]]
 
-const arr = [2, 3, 4, 7];
-const targetSum = 7;
+const arr = [1, 1, 1, 2, 2];
+const targetSum = 3;
 
 const combinationSum = (arr, targetSum) => {
     let n = arr.length;
