@@ -1,4 +1,4 @@
-const arr = [3, 1, 2, 5, 1];
+const arr = [3, 1, -2];
 
 const printSubsequences = (arr, providedSum) => {
 
@@ -53,6 +53,6 @@ const countSubsequences = (arr, providedSum) => {
     return countSubsequencesWithGivenSum(0, 0);
 }
 
-const ans = countSubsequences(arr, 6);
+const ans = countSubsequences(arr, 1);
 console.log(ans);
 
