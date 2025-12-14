@@ -1,4 +1,4 @@
-const arr = [1, 2, 3, 4];
+const arr = [1, 2, 4, 3];;
 
 // Time: O(n! * n)
 // Space: (O(n))
@@ -58,5 +58,4 @@ function getNextPermutation(arr) {
     return allPermutations[newIndex];
 }
 
-const nextPermutation = getNextPermutation(arr);
-console.log(nextPermutation);
+console.log(dictionaryPermutations(arr));
