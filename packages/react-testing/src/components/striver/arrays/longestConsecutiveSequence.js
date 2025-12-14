@@ -1,4 +1,4 @@
-const arr = [100, 102, 100, 101, 101, 4, 3, 2, 3, 2, 1, 1, 1, 2];
+const arr = [1, 2, 3, 4, 101, 102, 103, 104, 105, 105, 106];
 
 function max(a, b) {
     return a > b ? a : b;
@@ -16,13 +16,18 @@ const getLongestSequence = (ar) => {
 
     for(let i=1;i<n;i++) {
         if(arr[i] === base+1) {
-            currLongest++;
-        } else {
             base = arr[i];
+            currLongest++;
+        } else if(arr[i] !== base) {
+            base = arr[i]; 
             longest = max(longest, currLongest)
             currLongest = 1;
+        } else {
+            null;
         }
     }
+    
+    longest = max(longest, currLongest);
 
     return longest;
 
