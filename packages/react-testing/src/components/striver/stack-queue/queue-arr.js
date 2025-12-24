@@ -66,4 +66,4 @@ q.enqueue(6);
 const elem = q.dequeue();
 console.log(elem);
 
-// q.display();
+q.display();
