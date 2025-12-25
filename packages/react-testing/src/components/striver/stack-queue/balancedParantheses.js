@@ -34,8 +34,7 @@ const checkBalancedParantheses = (arr) => {
         }
     }
 
-    if(stack.isEmpty) return true;
-    return false;
+    return stack.isEmpty;
 }
 
 const isBalanced = checkBalancedParantheses(notBalanced);
