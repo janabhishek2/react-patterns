@@ -31,5 +31,10 @@ const getNge = (arr) => {
     return nge;
 };
 
-const nge = getNge(arr);
+const getCircularNge = (arr) => {
+    let newArr = [...arr, ...arr];
+    return getNge(newArr);
+}
+
+const nge = getCircularNge(arr);
 console.log(nge);
