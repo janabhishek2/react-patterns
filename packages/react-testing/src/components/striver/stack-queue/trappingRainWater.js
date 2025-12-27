@@ -33,6 +33,7 @@ const getTrappedWater = (arr) => {
     let totalWater = 0;
 
     for(let i = 0; i < n; i++) {
+        // for each index, find the left max and right max, and if arr[i] is less then it will store water
         if(arr[i] < prefixMax[i] && arr[i] < suffixMax[i]) {
             totalWater+= min(prefixMax[i], suffixMax[i]) - arr[i];
         }
