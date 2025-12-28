@@ -28,6 +28,7 @@ class BinaryTree {
     }
 
     breadthFirstTraversal(node = this.root) {
+        if(!node) return [];
         const queue = new Queue(10);
         queue.enqueue(node);
         let ans = [];
@@ -45,17 +46,19 @@ class BinaryTree {
             !queue.isEmpty() && compute();
         }
         compute();
-        console.log(ans);
+        return ans;
     }
 }
 
 // Create a tree;
 
 const root = new Node(1);
-const left1 = new Node(100);
+const left1 = new Node(2);
 const right1 = new Node(3);
 const left2 = new Node(4);
 const right2 = new Node(5);
+const left3 = new Node(6);
+
 
 root.left = left1;
 root.right = right1;
@@ -63,6 +66,10 @@ root.right = right1;
 left1.left = left2;
 left1.right = right2;
 
+left2.left = left3;
+
 const bst = new BinaryTree(root);
 
-bst.breadthFirstTraversal();
+const bft = bst.breadthFirstTraversal();
+
+console.log(bft);
