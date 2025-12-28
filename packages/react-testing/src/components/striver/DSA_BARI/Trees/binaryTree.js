@@ -27,6 +27,15 @@ class BinaryTree {
         this.preOrder(node.right);
     }
 
+    inorder(node = this.root) {
+        if(!node) return;
+        this.inorder(node.left);
+
+        console.log(node.data);
+
+        this.inorder(node.right);
+    }
+
     breadthFirstTraversal(node = this.root) {
         if(!node) return [];
         const queue = new Queue(10);
@@ -75,26 +84,42 @@ class BinaryTree {
             curr?.left && st.push(curr.left);
         }
     }
+
+    maxHeight (node = this.root) {
+
+        function max(a, b) {
+            return a > b ? a: b;
+        }
+
+        function computeMax(node) {
+            let leftMax = node?.left ? computeMax(node?.left): 0;
+            let rightMax = node?.right ? computeMax(node?.right): 0;
+
+            return 1 + max(leftMax, rightMax);
+        }
+        return computeMax(node);
+    }
 }
 
 // Create a tree;
 
 const root = new Node(1);
-const left1 = new Node(2);
-const right1 = new Node(3);
-const left2 = new Node(4);
-const right2 = new Node(5);
-const left3 = new Node(6);
+const node2 = new Node(2);
+const node3 = new Node(3);
+const node4 = new Node(4);
+const node5 = new Node(5);
+const node6 = new Node(6);
 
+root.left = node2;
+root.right = node3;
 
-root.left = left1;
-root.right = right1;
+node3.left = node4;
+node3.right = node6;
 
-left1.left = left2;
-left1.right = right2;
-
-left2.left = left3;
+node4.left = node5;
 
 const bst = new BinaryTree(root);
 
-bst.iterativeInorder();
+const ans = bst.maxHeight();
+
+console.log(ans);
