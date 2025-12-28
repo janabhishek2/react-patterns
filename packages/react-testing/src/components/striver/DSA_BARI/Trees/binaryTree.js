@@ -1,5 +1,5 @@
 const { Queue } = require("./queue");
-
+const { Stack } = require('../../stack-queue/stack-arr');
 class Node {
     constructor(data) {
         this.data = data;
@@ -48,6 +48,18 @@ class BinaryTree {
         compute();
         return ans;
     }
+
+    iterativePreOrder(node = this.root) {
+        const st = new Stack(100);
+        st.push(node);
+    
+        while(!st.isEmpty) {
+            const temp = st.pop();
+            console.log(temp.data);
+            temp?.right && st.push(temp.right);
+            temp?.left && st.push(temp.left);
+        }
+    }
 }
 
 // Create a tree;
@@ -70,6 +82,5 @@ left2.left = left3;
 
 const bst = new BinaryTree(root);
 
-const bft = bst.breadthFirstTraversal();
+bst.iterativePreOrder();
 
-console.log(bft);
