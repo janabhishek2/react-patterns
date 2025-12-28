@@ -160,7 +160,7 @@ class BinaryTree {
             if(t) {
                 console.log(t.data);
                 st.push(t);
-                t = t.left;
+                 t = t.left;
             } else {
                 t = st.pop();
                 t = t.right;

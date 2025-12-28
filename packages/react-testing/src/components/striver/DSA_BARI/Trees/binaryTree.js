@@ -60,6 +60,21 @@ class BinaryTree {
             temp?.left && st.push(temp.left);
         }
     }
+
+    iterativeInorder(node = this.root) {
+        const st = new Stack(100);
+        st.push(node);
+
+        while(!st.isEmpty) {
+            let curr = st.pop();
+            // push curr.right to stack
+            curr?.right && st.push(curr.right);
+            // log curr
+            console.log(curr.data);
+            // push curr.left to stack
+            curr?.left && st.push(curr.left);
+        }
+    }
 }
 
 // Create a tree;
@@ -82,5 +97,4 @@ left2.left = left3;
 
 const bst = new BinaryTree(root);
 
-bst.iterativePreOrder();
-
+bst.iterativeInorder();
