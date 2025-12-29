@@ -8,6 +8,10 @@ class Node {
     }
 };
 
+function max(a, b) {
+    return a > b ? a: b;
+}
+
 class BinaryTree {
     constructor(root) {
         this.root = root;
@@ -86,11 +90,6 @@ class BinaryTree {
     }
 
     maxHeight (node = this.root) {
-
-        function max(a, b) {
-            return a > b ? a: b;
-        }
-
         function computeMax(node) {
             let leftMax = node?.left ? computeMax(node?.left): 0;
             let rightMax = node?.right ? computeMax(node?.right): 0;
@@ -98,6 +97,22 @@ class BinaryTree {
             return 1 + max(leftMax, rightMax);
         }
         return computeMax(node);
+    }
+
+    isBalancedBinaryTree(node = this.root) {
+        if(!node) return 0;
+
+        const lh = this.isBalancedBinaryTree(node.left);
+        const rh = this.isBalancedBinaryTree(node.right);
+
+        // if left subtree is disbalanced, return -1 for current node;
+        if(lh === -1 || rh === -1) return -1;
+
+        // check for balance of current node.
+        if(Math.abs(lh-rh) > 1) return -1;
+
+        // return height if left and right are balanced.
+        return 1 + Math.max(lh, rh);
     }
 }
 
@@ -120,6 +135,6 @@ node4.left = node5;
 
 const bst = new BinaryTree(root);
 
-const ans = bst.maxHeight();
+const ans = bst.isBalancedBinaryTree();
 
 console.log(ans);
