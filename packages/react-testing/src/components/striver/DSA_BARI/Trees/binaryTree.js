@@ -166,6 +166,84 @@ class BinaryTree {
 
         return areLeftSubTreesIdentical && areRightSubTreesIdentical;
     }
+
+    breadthFirstTraversal(node = this.root) {
+        const queue = new Queue(100);
+
+        queue.enqueue(node);
+        while(!queue.isEmpty()) {
+            const item = queue.dequeue();
+            
+            // print item
+            console.log(item.data);
+            // push left and right child in queue
+
+            item?.left && queue.enqueue(item.left);
+            item?.right && queue.enqueue(item.right);
+        }
+
+        return;
+    }
+
+    zigzagTraversal(node = this.root) {
+
+        const queue = new Queue(100);
+        // queue.enqueue({
+        //     flag: 0,
+        //     node
+        // });
+        let ans = [];
+
+        queue.enqueue(node);
+        let leftToRight = false;
+        const doTraversal = () => {
+            while(!queue.isEmpty()) {
+            //    const item = queue.dequeue();
+                let currQueueItems = [];
+                
+                while(!queue.isEmpty()) {
+                    currQueueItems.push(queue.dequeue());
+                }
+                
+                if(leftToRight) {
+                    ans.push(...currQueueItems.map((item => item.data)));
+                } else {
+                    let reverse = [...currQueueItems].reverse();
+                    ans.push(...reverse.map((item) => item.data))
+                }
+
+                currQueueItems.forEach((node) => {
+                   node?.left && queue.enqueue(node.left);
+                   node?.right && queue.enqueue(node.right);
+                })
+                leftToRight=!leftToRight;
+            //    ans.push(item);
+            //    const { flag, node } = item;
+            //    if(flag === 0) {
+            //         node?.left && queue.enqueue({
+            //             flag: 1,
+            //             node:  node?.left
+            //         });
+            //        node?.right && queue.enqueue({
+            //             flag: 1,
+            //             node: node?.right
+            //         })
+            //    } else {
+            //         node?.left && queue.enqueue({
+            //             flag: 0,
+            //             node:  node?.left
+            //         });
+            //         node?.right && queue.enqueue({
+            //             flag: 0,
+            //             node: node?.right
+            //         })
+            //    }
+
+            }
+        };
+        doTraversal();
+        return ans;
+    }
 }
 
 // Create a tree;
@@ -179,6 +257,7 @@ const node6 = new Node(6);
 const node7 = new Node(7);
 const node8 = new Node(8);
 const node9 = new Node(9);
+const node10 = new Node(10);
 
 root.left = node2;
 root.right = node3;
@@ -192,9 +271,10 @@ node5.left = node7;
 node6.right = node8;
 node8.right = node9;
 
+node6.left = node10;
+
 const bst = new BinaryTree(root);
 
-
-const ans = bst.areTreesIdentical(root);
+const ans = bst.zigzagTraversal();
 
 console.log(ans);
