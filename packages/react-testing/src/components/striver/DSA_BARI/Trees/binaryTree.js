@@ -115,7 +115,7 @@ class BinaryTree {
         return 1 + Math.max(lh, rh);
     }
 
-    diamaeterOfBinaryTree(node = this.root) {
+    diameterOfBinaryTree(node = this.root) {
         let maxDiameter = -1;
         let rootElWithMaxDia = null;
         const computeDiameter = (node) => {
@@ -164,6 +164,6 @@ node8.right = node9;
 
 const bst = new BinaryTree(root);
 
-const ans = bst.diamaeterOfBinaryTree();
+const ans = bst.diameterOfBinaryTree();
 
 console.log(ans);
