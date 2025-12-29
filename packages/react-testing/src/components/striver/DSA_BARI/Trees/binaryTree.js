@@ -156,6 +156,16 @@ class BinaryTree {
         computeMaxSum(node);
         return maxSum;
     }
+
+    areTreesIdentical(root1, root2) {
+        if(root1 === null && root2 === null) return true;
+        if(root1.data != root2.data) return false;
+
+        const areLeftSubTreesIdentical = this.areTreesIdentical(root1.left, root2.left);
+        const areRightSubTreesIdentical = this.areTreesIdentical(root1.right, root2.right);
+
+        return areLeftSubTreesIdentical && areRightSubTreesIdentical;
+    }
 }
 
 // Create a tree;
@@ -184,6 +194,7 @@ node8.right = node9;
 
 const bst = new BinaryTree(root);
 
-const ans = bst.maximumPathSum();
+
+const ans = bst.areTreesIdentical(root);
 
 console.log(ans);
