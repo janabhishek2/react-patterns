@@ -136,6 +136,26 @@ class BinaryTree {
         computeDiameter(node);
         return maxDiameter;
     }
+
+    maximumPathSum(node = this.root) {
+        let maxSum = 0;
+        const computeMaxSum = (node) => {
+            if(!node) return 0;
+
+            const leftSum = computeMaxSum(node.left);
+            const rightSum = computeMaxSum(node.right);
+
+            const maxSumTillNode = node.data + (leftSum > 0 ? leftSum : 0) + ( rightSum > 0 ? rightSum : 0);
+            if(maxSumTillNode > maxSum) maxSum = maxSumTillNode;
+
+            // return currSum + max(left, right) sums
+
+            return node.data + Math.max(leftSum, rightSum)
+        };
+
+        computeMaxSum(node);
+        return maxSum;
+    }
 }
 
 // Create a tree;
@@ -164,6 +184,6 @@ node8.right = node9;
 
 const bst = new BinaryTree(root);
 
-const ans = bst.diameterOfBinaryTree();
+const ans = bst.maximumPathSum();
 
 console.log(ans);
