@@ -31,3 +31,7 @@ const findSubarray = (arr, k) =>{
 
 const ans = findSubarray(arr, k);
 console.log(ans);
+
+module.exports = {
+    findSubarray
+};
