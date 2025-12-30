@@ -8,6 +8,7 @@ import './index.css';
 // import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
 import store from './store/store';
 import StopWatch from './components/StopWatch/StopWatch';
+import InfiniteScroll from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScroll';
 function App() {
 
     // useEffect(() => {
@@ -20,9 +21,9 @@ function App() {
 
     //     performanceObserver.observe({ type: 'longtask', buffered: true });
     // }, []);
-    return (<div className='wrapper'>
+    return (<div>
         <Provider store={store}>
-            <StopWatch />
+            <InfiniteScroll />
         </Provider>
     </div>)
 }
