@@ -9,6 +9,7 @@ import './index.css';
 import store from './store/store';
 import StopWatch from './components/StopWatch/StopWatch';
 import InfiniteScroll from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScroll';
+import InfiniteScrollIntersectionObserver from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScrollIntersectionObserver';
 function App() {
 
     // useEffect(() => {
@@ -23,7 +24,7 @@ function App() {
     // }, []);
     return (<div>
         <Provider store={store}>
-            <InfiniteScroll />
+            <InfiniteScrollIntersectionObserver />
         </Provider>
     </div>)
 }
