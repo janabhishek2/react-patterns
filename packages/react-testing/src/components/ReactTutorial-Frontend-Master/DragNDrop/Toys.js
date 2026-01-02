@@ -6,6 +6,8 @@ function Toys() {
     useEffect(() => {
         if(emojiRef.current && dropzoneRef.current) {
             const element = emojiRef.current;
+
+            // 3 events for dragged element
             element.addEventListener("dragstart", (e) => {
                 console.log("Start");
                 e.dataTransfer.setData("text/plain",emojiRef.current.innerHTML);
@@ -17,6 +19,7 @@ function Toys() {
                 console.log("Dragging");
             });
 
+            // 4 events for dropzone
             const dropzone = dropzoneRef.current;
             dropzone.addEventListener("dragenter", (e) => {
                 e.preventDefault();
