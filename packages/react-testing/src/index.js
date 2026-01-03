@@ -11,6 +11,7 @@ import StopWatch from './components/StopWatch/StopWatch';
 import InfiniteScroll from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScroll';
 import InfiniteScrollIntersectionObserver from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScrollIntersectionObserver';
 import Toys from './components/ReactTutorial-Frontend-Master/DragNDrop';
+import DraggableList from './components/ReactTutorial-Frontend-Master/DraggableList/DraggableList';
 function App() {
 
     // useEffect(() => {
@@ -25,7 +26,7 @@ function App() {
     // }, []);
     return (<div>
         <Provider store={store}>
-            <Toys />
+            <DraggableList />
         </Provider>
     </div>)
 }

@@ -1,0 +1,26 @@
+.wrapper {
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    padding: 0.2rem 8rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.drag-from {
+    background-color: lightcoral;
+}
+
+.drag-to {
+    background-color: lightgreen;
+}
