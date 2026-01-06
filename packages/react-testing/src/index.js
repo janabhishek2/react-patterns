@@ -12,6 +12,7 @@ import InfiniteScroll from './components/ReactTutorial-Frontend-Master/InfiniteS
 import InfiniteScrollIntersectionObserver from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScrollIntersectionObserver';
 import Toys from './components/ReactTutorial-Frontend-Master/DragNDrop';
 import DraggableList from './components/ReactTutorial-Frontend-Master/DraggableList/DraggableList';
+import GridLights from './components/ReactTutorial-Frontend-Master/GridLights/GridLights';
 function App() {
 
     // useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
     // }, []);
     return (<div>
         <Provider store={store}>
-            <DraggableList />
+            <GridLights />
         </Provider>
     </div>)
 }
