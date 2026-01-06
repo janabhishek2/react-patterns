@@ -36,4 +36,19 @@
 //    }
 // });
 
-self
+self.addEventListener("fetch", (e) => {
+    if(e.request.url.includes("camera-feed")) {
+        e.respondWith(fetch(e.request).then((response) => {
+            if(response.ok) {
+                return response;
+            } else {
+                return new Response("Huihuihui",{
+                    headers: {
+                        'Content-Type': "text/plain"
+                    }
+                })
+            }
+        })
+    );
+    }
+})
