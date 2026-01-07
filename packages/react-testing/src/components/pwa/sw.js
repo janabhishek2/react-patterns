@@ -5,14 +5,12 @@ self.addEventListener("install", (e) => {
             resolve(true);
         }, 3000);
     });
-
-    console.log("SW Installed")
     e.waitUntil(installPromise);
     // self.skipWaiting();
 })
 
 self.addEventListener("activate", (e) => {
-    console.log("SW activate")
+    // console.log("SW activate")
 })
 
 self.addEventListener("fetch", (e) => {

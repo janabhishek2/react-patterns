@@ -1,6 +1,11 @@
 if(navigator.serviceWorker) {
     navigator.serviceWorker.register('./sw.js').then((registration) => {
-        console.log("SW registered", registration);
+        registration.onupdatefound = () => {
+            let newSw = registration.installing;
+            newSw.onstatechange = () => {
+                console.log('State', newSw.state);
+            }
+        }
     })
 
 //     navigator.serviceWorker.getRegistrations().then(registrations => {
