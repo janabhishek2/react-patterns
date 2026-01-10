@@ -1,0 +1,18 @@
+.grid-row {
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.row-item {
+    width: 100px;
+    height: 100px;
+    background-color: lightyellow;
+    border: 1px solid lightsalmon;
+    border-radius: 10px;
+}
+
+.on {
+    background-color: orange;
+}
