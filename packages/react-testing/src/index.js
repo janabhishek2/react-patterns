@@ -13,6 +13,7 @@ import InfiniteScrollIntersectionObserver from './components/ReactTutorial-Front
 import Toys from './components/ReactTutorial-Frontend-Master/DragNDrop';
 import DraggableList from './components/ReactTutorial-Frontend-Master/DraggableList/DraggableList';
 import GridLights from './components/ReactTutorial-Frontend-Master/GridLights/GridLights';
+import StarRating from './components/ReactTutorial-Frontend-Master/StarRating/StarRating';
 function App() {
 
     // useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
     // }, []);
     return (<div>
         <Provider store={store}>
-            <GridLights />
+            <StarRating />
         </Provider>
     </div>)
 }

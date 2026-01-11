@@ -1,0 +1,26 @@
+.star-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.star-wrapper button {
+    padding: 0;
+    background: none;
+    border: 0;
+    margin-left: 10px;
+}
+
+.active svg {
+    fill: goldenrod;
+    stroke: darkgoldenrod;
+}
+
+.hovered svg {
+    fill: green;
+    stroke: darkgreen
+}
+
+.active.hovered svg {
+    fill: goldenrod;
+    stroke: darkgoldenrod;
+}
