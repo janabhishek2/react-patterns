@@ -14,6 +14,7 @@ import Toys from './components/ReactTutorial-Frontend-Master/DragNDrop';
 import DraggableList from './components/ReactTutorial-Frontend-Master/DraggableList/DraggableList';
 import GridLights from './components/ReactTutorial-Frontend-Master/GridLights/GridLights';
 import StarRating from './components/ReactTutorial-Frontend-Master/StarRating/StarRating';
+import FileExplorer from './components/ReactTutorial-Frontend-Master/FileExplorer/FileExplorer';
 function App() {
 
     // useEffect(() => {
@@ -26,9 +27,15 @@ function App() {
 
     //     performanceObserver.observe({ type: 'longtask', buffered: true });
     // }, []);
-    return (<div>
+    return (<div style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh"
+    }}>
         <Provider store={store}>
-            <StarRating />
+            <FileExplorer />
         </Provider>
     </div>)
 }

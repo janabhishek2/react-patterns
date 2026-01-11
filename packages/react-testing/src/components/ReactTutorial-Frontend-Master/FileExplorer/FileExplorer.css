@@ -1,0 +1,22 @@
+.explorer-wrapper {
+    
+}
+
+.tree-explorer {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    gap: 2px;
+}
+
+.file-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.file-item:hover {
+    cursor: pointer;
+    color: green;
+}
