@@ -15,6 +15,7 @@ import DraggableList from './components/ReactTutorial-Frontend-Master/DraggableL
 import GridLights from './components/ReactTutorial-Frontend-Master/GridLights/GridLights';
 import StarRating from './components/ReactTutorial-Frontend-Master/StarRating/StarRating';
 import FileExplorer from './components/ReactTutorial-Frontend-Master/FileExplorer/FileExplorer';
+import Switch from './components/ReactTutorial-Frontend-Master/Switch';
 function App() {
 
     // useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
         height: "100vh"
     }}>
         <Provider store={store}>
-            <FileExplorer />
+            <Switch />
         </Provider>
     </div>)
 }

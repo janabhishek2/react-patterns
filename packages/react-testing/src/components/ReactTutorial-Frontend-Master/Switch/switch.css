@@ -1,0 +1,52 @@
+.switch input {
+    display: none;
+}
+
+.switch-wrapper:hover {
+    cursor: pointer;
+}
+
+.switch-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+}
+
+.slider {
+    width: 30%;
+    height: 25px;
+    border-radius: 100px;
+    background-color: lightgrey;
+    position: relative;
+}
+
+.slider::before {
+    min-width: 20px;
+    min-height: 20px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100px;
+    background-color: red;
+    content: "";
+    transition: all 0.3s ease;
+}
+
+.switch:has(input:checked) .slider {
+    background-color: black;
+}
+
+.switch:has(input:focus-visible) .slider {
+    outline: 1px solid green;
+}
+
+.switch:has(input:checked) .slider::before {
+    left: calc(100% - 23px);
+}
+
+.switch-label {
+    margin-left: 5px;
+}
