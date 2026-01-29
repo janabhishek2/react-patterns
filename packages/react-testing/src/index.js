@@ -16,6 +16,7 @@ import GridLights from './components/ReactTutorial-Frontend-Master/GridLights/Gr
 import StarRating from './components/ReactTutorial-Frontend-Master/StarRating/StarRating';
 import FileExplorer from './components/ReactTutorial-Frontend-Master/FileExplorer/FileExplorer';
 import Switch from './components/ReactTutorial-Frontend-Master/Switch';
+import PaginationWrapper from './components/ReactTutorial-Frontend-Master/Pagination';
 function App() {
 
     // useEffect(() => {
@@ -33,10 +34,9 @@ function App() {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh"
     }}>
         <Provider store={store}>
-            <Switch />
+            <PaginationWrapper />
         </Provider>
     </div>)
 }
