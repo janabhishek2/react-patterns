@@ -1,5 +1,14 @@
+.pagination {
+ min-width: 700px;
+ align-items: center;
+ display: flex;
+ flex-direction: column;
+}
+
 .pagination-footer {
-    display: flex;;
+    width: inherit;
+    display: flex;
+    margin-top: 1rem;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
 }
