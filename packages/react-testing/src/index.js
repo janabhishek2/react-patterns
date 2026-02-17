@@ -17,6 +17,7 @@ import StarRating from './components/ReactTutorial-Frontend-Master/StarRating/St
 import FileExplorer from './components/ReactTutorial-Frontend-Master/FileExplorer/FileExplorer';
 import Switch from './components/ReactTutorial-Frontend-Master/Switch';
 import PaginationWrapper from './components/ReactTutorial-Frontend-Master/Pagination';
+import Modal from './components/ReactTutorial-Frontend-Master/Modal';
 function App() {
 
     // useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
         alignItems: "center",
     }}>
         <Provider store={store}>
-            <PaginationWrapper />
+            <Modal />
         </Provider>
     </div>)
 }
