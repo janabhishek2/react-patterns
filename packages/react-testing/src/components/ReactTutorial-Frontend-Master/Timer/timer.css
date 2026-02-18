@@ -1,0 +1,24 @@
+.timer {
+    margin-top: 1rem;
+    width: 500px;
+}
+
+.text-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.text-fields input {
+    border-radius: 5px;
+    height: 50px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

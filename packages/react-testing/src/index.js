@@ -18,6 +18,7 @@ import FileExplorer from './components/ReactTutorial-Frontend-Master/FileExplore
 import Switch from './components/ReactTutorial-Frontend-Master/Switch';
 import PaginationWrapper from './components/ReactTutorial-Frontend-Master/Pagination';
 import Modal from './components/ReactTutorial-Frontend-Master/Modal';
+import Timer from './components/ReactTutorial-Frontend-Master/Timer';
 function App() {
 
     // useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
         alignItems: "center",
     }}>
         <Provider store={store}>
-            <Modal />
+            <Timer />
         </Provider>
     </div>)
 }
