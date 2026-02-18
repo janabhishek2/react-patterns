@@ -21,6 +21,8 @@ function ModalWrapper() {
                <Modal onClose={() => setShowModal(false)}>
                    <h1>This is the heading</h1>
                    Random Text
+                   <a href="https://www.google.com">A sample link</a>
+                   <button className='save' >Save</button>
                </Modal>
             )}
         </div>

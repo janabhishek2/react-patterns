@@ -44,19 +44,35 @@ function Modal({ onClose, children }) {
 
     const backdropRef = useRef(null);
     const contentRef = useRef(null);
+    const closeRef = useRef(null);
 
     const handleKeyEvent = (e) => {
         if(e.key === "Escape") {
             handleClose();
         }
+
+        if(e.key === "Tab") {
+            if(document.activeElement.classList.contains('save')) {
+                const el = document.getElementsByClassName('dialog-close')[0];
+                
+                e.preventDefault();
+                e.stopPropagation();
+                el.focus();
+            }
+        }
     }
 
+    const focusOnClose = () => {
+        closeRef.current.focus();
+    };
+
     useEffect(() => {
-      const keyboardListener =  document.addEventListener("keyup", handleKeyEvent);
+      const keyboardListener =  document.addEventListener("keydown", handleKeyEvent);
       //   To block interaction of outside elements with DOM.
       blockOutsideElements();
+      focusOnClose();
       return () => {
-        document.removeEventListener("keyup", keyboardListener);
+        document.removeEventListener("keydown", keyboardListener);
         unblockOutsideElements();
       }
     }, [])
@@ -69,7 +85,7 @@ function Modal({ onClose, children }) {
 
             <div className="dialog-content" ref={contentRef}>
                 {
-                    !!onClose && (<button onClick={handleClose} className="dialog-close">
+                    !!onClose && (<button ref={closeRef} onClick={handleClose} className="dialog-close">
                         &times;
                     </button>)
                 }
