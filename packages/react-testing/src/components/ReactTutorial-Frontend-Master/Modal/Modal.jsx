@@ -16,6 +16,32 @@ function Modal({ onClose, children }) {
         });
     }
 
+    const blockOutsideElements = () => {
+        const body = document.body;
+        
+        const allBodyElements = [...body.children];
+
+        allBodyElements.forEach((el) => {
+            if(!el.getAttribute("data-dialog")) {
+                el.setAttribute("aria-hidden", true);
+                el.setAttribute("inert", true);
+            }
+        })
+    }
+
+    const unblockOutsideElements = () => {
+         const body = document.body;
+        
+        const allBodyElements = [...body.children];
+
+        allBodyElements.forEach((el) => {
+            if(!el.getAttribute("data-dialog")) {
+                el.removeAttribute("aria-hidden");
+                el.removeAttribute("inert");
+            }
+        })
+    }
+
     const backdropRef = useRef(null);
     const contentRef = useRef(null);
 
@@ -24,15 +50,18 @@ function Modal({ onClose, children }) {
             handleClose();
         }
     }
+
     useEffect(() => {
       const keyboardListener =  document.addEventListener("keyup", handleKeyEvent);
-
+      //   To block interaction of outside elements with DOM.
+      blockOutsideElements();
       return () => {
         document.removeEventListener("keyup", keyboardListener);
+        unblockOutsideElements();
       }
     }, [])
 
-    return createPortal( <div className="dialog">
+    return createPortal( <div className="dialog" data-dialog="true" >
             
             {/* backdrop */}
             <div className="dialog-backdrop" onClick={handleClose} ref={backdropRef}></div>
