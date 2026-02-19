@@ -7,18 +7,7 @@ import './index.css';
 // import NotificationsLibrary from './components/NotificationsLibrary/main';
 // import Tutorial from './components/ReactTutorial-Frontend-Master/Tutorial';
 import store from './store/store';
-import StopWatch from './components/StopWatch/StopWatch';
-import InfiniteScroll from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScroll';
-import InfiniteScrollIntersectionObserver from './components/ReactTutorial-Frontend-Master/InfiniteScroll/InfiniteScrollIntersectionObserver';
-import Toys from './components/ReactTutorial-Frontend-Master/DragNDrop';
-import DraggableList from './components/ReactTutorial-Frontend-Master/DraggableList/DraggableList';
-import GridLights from './components/ReactTutorial-Frontend-Master/GridLights/GridLights';
-import StarRating from './components/ReactTutorial-Frontend-Master/StarRating/StarRating';
-import FileExplorer from './components/ReactTutorial-Frontend-Master/FileExplorer/FileExplorer';
-import Switch from './components/ReactTutorial-Frontend-Master/Switch';
-import PaginationWrapper from './components/ReactTutorial-Frontend-Master/Pagination';
-import Modal from './components/ReactTutorial-Frontend-Master/Modal';
-import Timer from './components/ReactTutorial-Frontend-Master/Timer';
+import ProgressBar from './components/ReactTutorial-Frontend-Master/ProgressBar';
 function App() {
 
     // useEffect(() => {
@@ -31,6 +20,9 @@ function App() {
 
     //     performanceObserver.observe({ type: 'longtask', buffered: true });
     // }, []);
+
+   
+
     return (<div style={{
         display: "flex",
         flexDirection: "row",
@@ -38,7 +30,7 @@ function App() {
         alignItems: "center",
     }}>
         <Provider store={store}>
-            <Timer />
+            <ProgressBar />
         </Provider>
     </div>)
 }
