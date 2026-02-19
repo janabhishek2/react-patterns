@@ -47,11 +47,19 @@ function Timer() {
         }
     }
 
-    const finalTimeRef = useRef(null);
+    const finalTimeRef = useRef(0);
+    const prevUsedTimeRef = useRef(0);
     const intervalRef = useRef(null);
+    const startTimeRef = useRef(0);
 
     const handleStart = () => {
         // Get time in ms
+
+        // if final time ref is not set, set final time
+
+        // set start call time ref to current time + spentTimeRef.
+
+        // Need to fix this logic
 
         let timeInMs = 0;
         OrderOfTimeValues.forEach((timeValue) => {
@@ -61,12 +69,18 @@ function Timer() {
                 timeInMs += config[timeValue].value * factor;
             }
         });
+        
+        startTimeRef.current = Date.now();
 
-        finalTimeRef.current = Date.now() + timeInMs;
+        if(!finalTimeRef.current) {
+            finalTimeRef.current = timeInMs + Date.now();
+        }
 
         intervalRef.current = setInterval(() => {
-            setTime(() => {
-                const newTime = finalTimeRef.current - Date.now();
+            let prevTime = prevUsedTimeRef.current;
+            setTime(() => { 
+                console.log(startTimeRef.current);           
+                const newTime = finalTimeRef.current - prevTime - Date.now();
                 if(newTime < 0) {
                     clearInterval(intervalRef.current);
                     return 0;
@@ -90,7 +104,14 @@ function Timer() {
     }
 
     const handlePause = () => {
+        // Update used time using startTime and Date now
 
+        prevUsedTimeRef.current = prevUsedTimeRef.current + (Date.now() - startTimeRef.current);
+        // console.log( prevUsedTimeRef.current, startTimeRef.current);
+        // Clear interval
+
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
     };
 
     const handleReset = () => {
