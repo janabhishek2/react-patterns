@@ -8,7 +8,22 @@ function ProgressBar(props) {
         max,
         onStart,
         onComplete
-    } = props
+    } = props;
+    const completedRef = React.useRef(false);
+    const startRef = React.useRef(false);
+
+    React.useEffect(() => {
+        if(value > 0 && !startRef.current) {
+            onStart();
+            startRef.current = true;
+        }
+        if(value >= max && !completedRef.current) {
+             onComplete();
+            completedRef.current = true;
+        }
+    }, [value]);
+
+    const scaleFactor = 1 + (value / max);
 
     return (
         <div className='progress-bar'>

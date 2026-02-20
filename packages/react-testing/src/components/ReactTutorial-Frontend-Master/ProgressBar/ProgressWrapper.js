@@ -23,8 +23,6 @@ function ProgressWrapper() {
         }
     }, []);
 
-    console.log(value);
-
     const handleStart = () => {
         console.log("Started!");
     };
@@ -35,10 +33,10 @@ function ProgressWrapper() {
 
     return (
         <ProgressBar
-                value={value}
-                max={MAX}
-                onStart={handleStart}
-                onComplete={handleComplete}
+            value={value}
+            max={MAX}
+            onStart={handleStart}
+            onComplete={handleComplete}
         />
     )
 }
