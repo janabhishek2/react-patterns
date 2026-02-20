@@ -26,11 +26,20 @@ function ProgressBar(props) {
     const scaleFactor = 1 + (value / max);
 
     return (
+        <>
         <div className='progress-bar'>
-            <div style={{ width: `${value}%`}} className='progress-complete'>
+            <div style={{ transform: `translateX(${value - 100}%)`}} className='progress-complete'>
 
             </div>
+
+            
         </div>
+
+        <div className='test'>
+                
+            </div>
+        </>
+       
     )
 };
 
