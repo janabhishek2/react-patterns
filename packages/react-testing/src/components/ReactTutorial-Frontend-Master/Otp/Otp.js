@@ -3,22 +3,27 @@ import PropTypes from "prop-types";
 import "./otp.css";
 
 function Otp(props) {
-    const { count } = props;
+    const { count, onOtpComplete } = props;
+    const MaskingArray = Array.from({ length: count }, () => "*");
 
     const [otps, setOtps] = useState(Array.from({ length: count }, () => ""));
+    const [masking, setMasking] = useState(Array.from({ length: count }, () => ""));
 
     const handleChange = (index) => {
         return (event) => {
             let oldOtps = [...otps];
-
+            let maskingOtps = [...masking];
             const key = event.key;
 
             if (key === "Backspace") {
                 oldOtps[index] = "";
+                maskingOtps[index] = "";
                 if (inputRefs?.current?.[index - 1]) {
                     inputRefs?.current?.[index - 1]?.focus();
                 }
                 setOtps(oldOtps);
+                setMasking(maskingOtps);
+                return;
             }
 
             if (key === "ArrowRight") {
@@ -33,16 +38,23 @@ function Otp(props) {
                 return;
             }
             oldOtps[index] = event.key;
+            maskingOtps[index] = MaskingArray[index];
+            setOtps(oldOtps);
+            setMasking(maskingOtps);
             if (inputRefs?.current[index + 1]) {
                 inputRefs.current[index + 1].focus();
             }
-            setOtps(oldOtps);
+
+            let newOtp = oldOtps.join("");
+            if(newOtp.length === count) {
+                onOtpComplete(newOtp);
+            }
         };
     };
 
     const moveFocusToLeft = (index, oldOtps) => {
         if (inputRefs?.current?.[index - 1]) {
-            const emptyIndex = oldOtps.indexOf("");
+            const emptyIndex = oldOtps.slice(0, index + 1).indexOf("");
             inputRefs?.current?.[emptyIndex]?.focus();
         }
     };
@@ -51,7 +63,7 @@ function Otp(props) {
         // While right field is not empty
 
         if (inputRefs?.current[index + 1]) {
-            const emptyIndex = oldOtps.indexOf("");
+            const emptyIndex = oldOtps.slice(index).indexOf("");
             inputRefs.current[emptyIndex].focus();
         }
     };
@@ -73,8 +85,10 @@ function Otp(props) {
                         maxLength={1}
                         id={index}
                         onClick={handleClick(index)}
-                        value={otps[index]}
+                        value={masking[index] ?? ""}
                         onKeyUp={handleChange(index)}
+                        inputMode="numeric"
+                        autoComplete="one-time-code"
                     />
                 );
             })}
