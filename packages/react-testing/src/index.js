@@ -9,6 +9,7 @@ import './index.css';
 import store from './store/store';
 import ProgressBar from './components/ReactTutorial-Frontend-Master/ProgressBar';
 import OtpWrapper from './components/ReactTutorial-Frontend-Master/Otp/OtpWrapper';
+import MultiStepFormWrapper from './components/ReactTutorial-Frontend-Master/MultiStepForm/MultiStepFormWrapper';
 function App() {
 
     // useEffect(() => {
@@ -31,7 +32,7 @@ function App() {
         alignItems: "center",
     }}>
         <Provider store={store}>
-            <OtpWrapper />
+            <MultiStepFormWrapper />
         </Provider>
     </div>)
 }

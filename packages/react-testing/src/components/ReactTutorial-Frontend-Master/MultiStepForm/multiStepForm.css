@@ -1,0 +1,23 @@
+.multi-step-form-wrapper {
+    width: 290px;
+}
+
+fieldset label {
+    display: block;
+    margin-top: 1rem;
+    position: relative;
+}
+
+label input {
+    position: absolute;
+    right: 0
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons button:nth-child(2) {
+    margin-left: 1rem;
+}
