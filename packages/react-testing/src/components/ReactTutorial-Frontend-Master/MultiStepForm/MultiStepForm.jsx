@@ -19,7 +19,9 @@ const DefaultInputs = {
     }
 }
 
-function MultiStepForm() {
+function MultiStepForm(props) {
+    const { onSubmit, onCancel } = props;
+
     const [currStep, setCurrStep] = useState(Page.Step1);
 
     const [inputs, setInputs] = useState(DefaultInputs);
@@ -43,6 +45,7 @@ function MultiStepForm() {
             setCurrStep((prev) => prev + 1);
         } else {
             console.log("Submit Data");
+            onSubmit(inputs);
         }
     };
 
@@ -55,7 +58,7 @@ function MultiStepForm() {
     };
 
     const handleCancel = () => {
-        console.log("Cancelled!");
+        onCancel();
     }
 
     return (

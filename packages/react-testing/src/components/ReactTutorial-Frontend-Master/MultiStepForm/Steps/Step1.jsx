@@ -19,7 +19,7 @@ function Step1({ onChange, data }) {
                     <span>Age</span>
                     <input type="text" value={age} onChange={handleChange('age')}/>
                 </label>
-            </fieldset>
+        </fieldset>
     )
 }
 
