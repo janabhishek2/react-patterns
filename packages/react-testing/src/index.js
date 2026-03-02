@@ -11,63 +11,51 @@ import ProgressBar from './components/ReactTutorial-Frontend-Master/ProgressBar'
 import OtpWrapper from './components/ReactTutorial-Frontend-Master/Otp/OtpWrapper';
 import MultiStepFormWrapper from './components/ReactTutorial-Frontend-Master/MultiStepForm/MultiStepFormWrapper';
 import CompoundPattern from './components/ReactTutorial-Frontend-Master/CompoundPattern';
-function App() {
+import Polling from './components/Polling';
+// function App() {
 
-    // useEffect(() => {
-    //     const performanceObserver = new PerformanceObserver((list) => {
-    //          const entries = list.getEntries();
-    //         entries.forEach((entry) => {
-    //             console.log("Long task detected:", entry);
-    //         });
-    //     })
+//     // useEffect(() => {
+//     //     const performanceObserver = new PerformanceObserver((list) => {
+//     //          const entries = list.getEntries();
+//     //         entries.forEach((entry) => {
+//     //             console.log("Long task detected:", entry);
+//     //         });
+//     //     })
 
-    //     performanceObserver.observe({ type: 'longtask', buffered: true });
-    // }, []);
+//     //     performanceObserver.observe({ type: 'longtask', buffered: true });
+//     // }, []);
 
-    const div = <div meta="hello">Hello</div>
+//     const div = <div meta="hello">Hello</div>
    
-    console.log(div);
+//     console.log(div);
 
-    return (<div style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-    }}>
-        <Provider store={store}>
-            <CompoundPattern />
-        </Provider>
-    </div>)
+//     return (<div style={{
+//         display: "flex",
+//         flexDirection: "row",
+//         justifyContent: "center",
+//         alignItems: "center",
+//     }}>
+//         <Provider store={store}>
+//             <CompoundPattern />
+//         </Provider>
+//     </div>)
+// }
+let score = 10;
+function App() {
+    return (<React.StrictMode>
+        <Polling />
+    </React.StrictMode>);
+};
+
+function Score() {
+    score = score + 10;
+    console.log(score);
+    return (
+        <h1>Score is: {score}</h1>
+    )
 }
 
 
-// export default function App() {
-//   const [users, setUsers] = useState([
-//     { id: 1, name: "Amit" },
-//     { id: 2, name: "Rahul" },
-//     { id: 3, name: "Priya" }
-//   ]);
-
-//   const removeFirst = () => {
-//     const sliced = users.slice(1);
-//     console.log(sliced);
-//     setUsers(sliced);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={removeFirst}>Remove First User</button>
-
-//       {
-//         users.map((user, index) => (
-//             <div key={index}>
-//             <input defaultValue={user.name} />
-//             </div>
-//         ))
-//       }
-//     </div>
-//   );
-// }
 
 const root = createRoot(document.getElementById("root"))
 root.render(<App />);
