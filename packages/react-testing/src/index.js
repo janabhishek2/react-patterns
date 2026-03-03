@@ -11,7 +11,7 @@ import ProgressBar from './components/ReactTutorial-Frontend-Master/ProgressBar'
 import OtpWrapper from './components/ReactTutorial-Frontend-Master/Otp/OtpWrapper';
 import MultiStepFormWrapper from './components/ReactTutorial-Frontend-Master/MultiStepForm/MultiStepFormWrapper';
 import CompoundPattern from './components/ReactTutorial-Frontend-Master/CompoundPattern';
-import Polling from './components/Polling';
+import Props from './components/Props';
 // function App() {
 
 //     // useEffect(() => {
@@ -43,7 +43,7 @@ import Polling from './components/Polling';
 let score = 10;
 function App() {
     return (<React.StrictMode>
-        <Polling />
+        <Props />
     </React.StrictMode>);
 };
 
