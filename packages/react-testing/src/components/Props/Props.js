@@ -8,10 +8,13 @@ function Props() {
         <div>
             <List
                 data={data}
-                render={(itemData, index) => {
+            >
+                {
+                (itemData, index) => {
                     return <ListWithButton data={itemData} index={index} />;
-                }}
-            />
+                }
+                }
+            </List>
             <List data={data} />
         </div>
     );
@@ -30,12 +33,12 @@ function ListWithButton({ data, index }) {
     );
 }
 
-function List({ data, render }) {
-    
+function List({ data, children }) {
+
     return (<div className="wrapper">
         {data.map((item, index) => {
-            if (render && typeof render === "function") {
-                return render(item, index);
+            if (children && typeof children === "function") {
+                return children(item, index);
             }
             return (
                 <div key={index} className="item">

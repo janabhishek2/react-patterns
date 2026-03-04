@@ -1,1 +1,1 @@
-export { default } from './Props';
+export { default } from './ChildrenProp';
