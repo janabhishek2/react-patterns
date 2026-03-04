@@ -19,10 +19,13 @@ function Props() {
 
 function ListWithButton({ data, index }) {
 
+    const handleClick =()=> {
+        console.log(data, 'is clicked');
+    }
     return (
         <div className="item" key={index}>
             {data}
-            <button>Click me!</button>
+            <button onClick={handleClick}>Click me!</button>
         </div>
     );
 }
