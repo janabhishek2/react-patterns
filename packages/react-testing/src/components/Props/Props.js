@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Child from './Child';
 
-function Props({ children }) {
+function Props() {
 
     const [count, setCount] = useState(0);
 
@@ -12,7 +12,7 @@ function Props({ children }) {
         <div>
             <h3>Count is: {count}</h3>
             <button onClick={handleClick}>Click me to trigger child fn</button>
-            {children}
+            <Child />
         </div>
     )
 }
