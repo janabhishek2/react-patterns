@@ -1,16 +1,12 @@
 import React from 'react'
 
-function Child(args) {
+function Child() {
 
-    const childMethod = () => {
-        console.log("Child method called - 1");
-    };
-
-    window.childFn = childMethod;
+    console.log("Child render");
 
     return (
         <div>Child</div>
     )
 }
 
-export default Child
+export default (Child)

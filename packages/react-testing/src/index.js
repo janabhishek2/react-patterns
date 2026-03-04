@@ -12,6 +12,7 @@ import OtpWrapper from './components/ReactTutorial-Frontend-Master/Otp/OtpWrappe
 import MultiStepFormWrapper from './components/ReactTutorial-Frontend-Master/MultiStepForm/MultiStepFormWrapper';
 import CompoundPattern from './components/ReactTutorial-Frontend-Master/CompoundPattern';
 import Props from './components/Props';
+import Child from './components/Props/Child';
 // function App() {
 
 //     // useEffect(() => {
@@ -43,7 +44,9 @@ import Props from './components/Props';
 let score = 10;
 function App() {
     return (<React.StrictMode>
-        <Props />
+        <Props>
+            <Child />
+        </Props>
     </React.StrictMode>);
 };
 
