@@ -13,6 +13,7 @@ import MultiStepFormWrapper from './components/ReactTutorial-Frontend-Master/Mul
 import CompoundPattern from './components/ReactTutorial-Frontend-Master/CompoundPattern';
 import Props from './components/Props';
 import Child from './components/Props/Child';
+import TeeTotaler from './components/Logger';
 // function App() {
 
 //     // useEffect(() => {
@@ -44,9 +45,7 @@ import Child from './components/Props/Child';
 let score = 10;
 function App() {
     return (<React.StrictMode>
-        <Props>
-            <Child />
-        </Props>
+        <TeeTotaler />
     </React.StrictMode>);
 };
 
