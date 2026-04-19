@@ -13,7 +13,10 @@ import MultiStepFormWrapper from './components/ReactTutorial-Frontend-Master/Mul
 import CompoundPattern from './components/ReactTutorial-Frontend-Master/CompoundPattern';
 import Props from './components/Props';
 import Child from './components/Props/Child';
-import TeeTotaler from './components/Logger';
+import NetworkLayer from './components/NetworkLayer';
+import VirtualisedList from './components/ReactTutorial-Frontend-Master/VirtualisedList';
+// import TeeTotaler from './components/Logger';
+
 // function App() {
 
 //     // useEffect(() => {
@@ -45,7 +48,14 @@ import TeeTotaler from './components/Logger';
 let score = 10;
 function App() {
     return (<React.StrictMode>
-        <TeeTotaler />
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+        }}>
+            <VirtualisedList />
+        </div>
     </React.StrictMode>);
 };
 
