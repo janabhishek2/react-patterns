@@ -1,0 +1,15 @@
+.list-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow-y: scroll;
+    border: 2px solid grey;
+}
+
+.list-container div {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 20px;
+    width: 100px;
+    text-align: center;
+}
