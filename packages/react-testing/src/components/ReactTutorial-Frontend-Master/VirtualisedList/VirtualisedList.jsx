@@ -1,5 +1,6 @@
 import React from 'react'
 import List from './List';
+import List1 from './List1';
 
 const data = Array.from({ length: 1000 }, (_, index) => index);
 
@@ -9,7 +10,8 @@ function VirtualisedList() {
     
     return (
         <div>
-            <List data={data} renderRow={Row}/>
+            {/* <List data={data} renderRow={undefined}/> */}
+            <List1 data={data} renderRow={undefined} />
         </div>
     )
 }

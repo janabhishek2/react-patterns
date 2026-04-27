@@ -1,0 +1,12 @@
+.list-container {
+    width: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative
+}
+
+.list-item {
+    width: 100%;
+    /* padding: 20px; */
+    position: absolute;
+}
