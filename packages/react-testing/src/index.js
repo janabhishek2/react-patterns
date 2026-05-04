@@ -16,6 +16,7 @@ import Child from './components/Props/Child';
 import NetworkLayer from './components/NetworkLayer';
 import VirtualisedList from './components/ReactTutorial-Frontend-Master/VirtualisedList';
 // import TeeTotaler from './components/Logger';
+import PopOver from './components/ReactTutorial-Frontend-Master/PopOver';
 
 // function App() {
 
@@ -54,7 +55,13 @@ function App() {
             alignItems: "center",
             height: "100vh",
         }}>
-            <VirtualisedList />
+            <PopOver>
+                <PopOver.Action label={"Click me!!"}>
+                </PopOver.Action>
+                <PopOver.Panel>
+                    <div>Panel conente!!</div>
+                </PopOver.Panel>
+            </PopOver>
         </div>
     </React.StrictMode>);
 };

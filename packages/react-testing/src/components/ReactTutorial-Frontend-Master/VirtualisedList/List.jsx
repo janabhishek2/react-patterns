@@ -12,7 +12,7 @@ function List({ data, renderRow }) {
 
     const [scrollTop, setScrollTop] = useState(0);
 
-    const startIndex = Math.max(Math.floor((scrollTop / ROW_HEIGHT))-OVERSCAN, 0);
+    const startIndex = Math.max(Math.floor((scrollTop / ROW_HEIGHT)) - OVERSCAN, 0);
     const endIndex = Math.min(Math.floor((scrollTop + CLIENT_HEIGHT)/ROW_HEIGHT) + OVERSCAN, data.length);
 
     const handleScroll = (e) => {
