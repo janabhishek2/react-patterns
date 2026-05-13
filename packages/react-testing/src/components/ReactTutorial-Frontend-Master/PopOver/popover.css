@@ -1,0 +1,29 @@
+.popover {
+    position: relative;
+    width: 100%;
+    height: inherit;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popover .action {
+    position: relative;
+    min-height: 20px;
+    font-size: larger;
+    padding: 5px 20px;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    color: blue;
+}
+
+.popover .panel {
+    position: absolute;
+    top: 35px;
+    width: 100%;
+    height: auto;
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}

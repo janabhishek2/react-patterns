@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import Action from './Action';
 import Panel from './Panel';
 import PopOverContext from './popoverContext';
+import './popover.css';
 
 function PopOver({ children }) {
 
@@ -15,7 +16,9 @@ function PopOver({ children }) {
         isOpen,
         handleToggle
     }}>
-        {children}
+        <div className='popover'>
+            {children}
+        </div>
     </PopOverContext.Provider>
 }
 

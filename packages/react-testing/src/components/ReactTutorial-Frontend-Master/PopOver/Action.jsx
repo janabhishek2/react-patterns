@@ -1,14 +1,15 @@
 import React from 'react'
 import { usePopOverContext } from './popoverContext'
+import './popover.css';
 
 function Action({ label, node }) {
 
     const { handleToggle } = usePopOverContext();
 
     if(label) {
-        return <button onClick={handleToggle}>{label}</button>
+        return <button className='action' onClick={handleToggle}>{label}</button>
     } else {
-        return <button onClick={handleToggle}>{node}</button>
+        return <button className='action' onClick={handleToggle}>{node}</button>
     }
 }
 
