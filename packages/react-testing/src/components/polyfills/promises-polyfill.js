@@ -4,13 +4,11 @@
 //     }, 2000);
 // });
 
-
 // p.then((res) => {
 //     console.log(res);
 // }).then((res) => {
 //     console.log(res);
 // });
-
 
 class MyPromise {
     #value = "";
@@ -20,31 +18,31 @@ class MyPromise {
     constructor(callback) {
         try {
             callback(this.#onSuccess, this.#onFail);
-        } catch(err){
+        } catch (err) {
             this.#onFail(err);
         }
     }
 
     #runCallbacks = () => {
-        if(this.#state === "resolved") {
-            this.#thenCbs.forEach((cb) => {
-                cb(this.#value);
-            });
-        }
+        queueMicrotask(() => {
+            if (this.#state === "resolved") {
+                this.#thenCbs.forEach((cb) => {
+                    cb(this.#value);
+                });
+                this.#thenCbs = [];
+            }
 
-        this.#thenCbs = [];
-
-        if(this.#state === "rejected") {
-            this.#catchcbs.forEach((cb) => {
-                cb(this.#value);
-            })
-        }
-
-        this.#catchcbs = [];
-    }
+            if (this.#state === "rejected") {
+                this.#catchcbs.forEach((cb) => {
+                    cb(this.#value);
+                });
+                this.#catchcbs = [];
+            }
+        });
+    };
 
     #onSuccess = (successVal) => {
-        if(this.#state !== "pending") return;
+        if (this.#state !== "pending") return;
 
         this.#state = "resolved";
         this.#value = successVal;
@@ -53,8 +51,7 @@ class MyPromise {
     };
 
     #onFail = (failVal) => {
-
-        if(this.#state !== "pending") return;
+        if (this.#state !== "pending") return;
 
         this.#state = "rejected";
         this.#value = failVal;
@@ -62,21 +59,49 @@ class MyPromise {
         this.#runCallbacks();
     };
 
-    then = (thenCb) => {
-        this.#thenCbs.push(thenCb);
-    }
+    then = (thenCb, errCb) => {
+        if (errCb) {
+            this.#catchcbs.push(errCb);
+        }
+
+        if (thenCb) {
+            this.#thenCbs.push(thenCb);
+        }
+
+        this.#runCallbacks();
+    };
 
     catch = (catchCb) => {
-        this.#catchcbs.push(catchCb);
+        this.then(undefined, catchCb);
+    };
+
+    static resolve = (resolvedValue) => {
+       return new MyPromise((resolve, reject) => {
+          resolve(resolvedValue);
+       })
     }
-};
 
-const myPromise = new MyPromise(function(resolve, reject) {
+    static reject = (rejectedValue) => {
+        return new MyPromise((resolve, reject) => {
+            reject(rejectedValue);
+        })
+    }
+}
+
+const myPromise = new MyPromise(function (resolve, reject) {
     setTimeout(() => {
-        resolve(3);
-    }, 2000);
+        reject(3);
+    }, 100);
 });
 
-myPromise.then((res) => {
-    console.log(res);
-});
+// myPromise
+//     // .then((res) => {
+//     //     console.log(res);
+//     // })
+//     .catch((err) => {
+//         console.log("err", err);
+//     });
+
+const p = MyPromise.reject(3);
+
+console.log(p);
