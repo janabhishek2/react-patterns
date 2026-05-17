@@ -60,15 +60,33 @@ class MyPromise {
     };
 
     then = (thenCb, errCb) => {
-        if (errCb) {
-            this.#catchcbs.push(errCb);
-        }
+        return new MyPromise((resolve,_) => {
 
-        if (thenCb) {
-            this.#thenCbs.push(thenCb);
-        }
+             this.#thenCbs.push((value) => {
+                    if(!thenCb) {
+                        resolve(value);
+                        return;
+                    }
+                    const ans = thenCb(value);
+                    resolve(ans);
+            });
 
-        this.#runCallbacks();
+            if (errCb) {
+                this.#catchcbs.push((resolvedValue) => {
+                    return new MyPromise((resolve, reject) => {
+                        if(!errCb) {
+                            reject(resolvedValue);
+                            return;
+                        } else {
+                            const rejectedVal = errCb(resolvedValue);
+                            return reject(rejectedVal);
+                        }
+                    })
+                });
+            }
+
+            this.#runCallbacks();
+        });
     };
 
     catch = (catchCb) => {
@@ -76,32 +94,26 @@ class MyPromise {
     };
 
     static resolve = (resolvedValue) => {
-       return new MyPromise((resolve, reject) => {
-          resolve(resolvedValue);
-       })
-    }
+        return new MyPromise((resolve, reject) => {
+            resolve(resolvedValue);
+        });
+    };
 
     static reject = (rejectedValue) => {
         return new MyPromise((resolve, reject) => {
             reject(rejectedValue);
-        })
-    }
+        });
+    };
 }
 
-const myPromise = new MyPromise(function (resolve, reject) {
-    setTimeout(() => {
-        reject(3);
-    }, 100);
-});
+const myPromise = fetch('https://dummyjson.com/todos');
 
-// myPromise
-//     // .then((res) => {
-//     //     console.log(res);
-//     // })
-//     .catch((err) => {
-//         console.log("err", err);
-//     });
-
-const p = MyPromise.reject(3);
-
-console.log(p);
+myPromise
+    .then((res) => {
+        console.log("res1",res);
+        const json = res.status;
+        return json;
+    })
+    .then((res) => {
+        console.log("Ans", res);
+    });
