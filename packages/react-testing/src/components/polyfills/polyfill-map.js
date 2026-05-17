@@ -4,6 +4,8 @@
 
 // console.log(newArr);
 
+// Method1
+
 const customMap = function(cb){
     const newArr = [];
     this.forEach((item) => {
