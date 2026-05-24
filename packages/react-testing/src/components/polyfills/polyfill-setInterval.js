@@ -49,4 +49,8 @@ const randomFn = () => {
     console.log("Hello there");
 };
 
+const randomFn2 = (name) => {
+    console.log("Bye there")
+}
+
 // mySetInterval(randomFn, 1000);

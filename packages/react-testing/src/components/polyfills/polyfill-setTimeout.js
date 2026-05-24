@@ -34,9 +34,10 @@ const runCallbacks = function() {
     const timeouts = window.timeouts;
 
     timeouts.forEach((timeout) => {
-        const { exec, args, timeToRun } = timeout;
+        const { exec, args, timeToRun, id } = timeout;
         if(Date.now() >= timeToRun) {
             exec(...args);
+            clearMyTimeout(id);
         } else {
             requestIdleCallback(runCallbacks)
         }
@@ -49,6 +50,5 @@ const id = mySetTimeout(function(){
 
 console.log(window.timeouts);
 setTimeout(() => {
-    clearMyTimeout(id);
     console.log(window.timeouts);
 }, 5000);
