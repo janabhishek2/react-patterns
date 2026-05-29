@@ -31,38 +31,27 @@ function sendMessage() {
         time: new Date()
     };
 
-    const outMsgElement = createMessage(messageObject, "outgoing");
-    msgContainer.appendChild(outMsgElement);
+    const outMsgElement = document.createElement("div");
+    outMsgElement.innerHTML = createMessage(messageObject, "outgoing");
+    msgContainer.appendChild(outMsgElement.firstChild);
 
     socket.emit('message', messageObject);
 }
 
 function createMessage(msg, type) {
 const { sender, message, time } = msg;
-    // new message li element
-    const newMessageElement = document.createElement("li");
-    // styles
-    if(type == "incoming") {
-        newMessageElement.className = "message-left";
-    } else {
-        newMessageElement.className = "message-right";
-    }
-   
-    // new message P element
-    const innerParaElement = document.createElement("p");
-    innerParaElement.className = "message";
-    
-    newMessageElement.appendChild(innerParaElement);
-
-    // Set content of innerParaElement
-    innerParaElement.textContent = `${sender} ${message} ${time.toString()}`
-
-    return newMessageElement;
+    return `<li class=${type === "incoming" ? "message-left" : "message-right"}>
+          <p class="message">
+            ${sender}
+            <span>${message} ● ${time.toString()}</span>
+          </p>
+    </li>`;
 }
 
 const handleIncomingMessage = function(inMessage) {
-    const newMessage = createMessage(inMessage, "incoming");
-    msgContainer.appendChild(newMessage);
+    const newMessage = document.createElement("div");
+    newMessage.innerHTML = createMessage(inMessage, "incoming");
+    msgContainer.appendChild(newMessage.firstChild);
     return true;
 }
 
