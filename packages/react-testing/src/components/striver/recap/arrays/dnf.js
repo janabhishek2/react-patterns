@@ -1,4 +1,4 @@
-const arr = [1, 2, 0, 0, 1, 2, 0, 0, 1];
+const arr = [1, 2, 0, 0, 1, 2, 0, 0, 1, 0 , 0, 0];
  
 // 0->low-1 -> 0
 // low-mid-1 -> 1;
@@ -20,14 +20,12 @@ function sortedArray(arr) {
     let mid = 0;
     let high = n-1;
 
-    while(mid < high) {
+    while(mid <= high) {
         if(arr[mid] === 0) {
-            // console.log(arr[mid], arr[low]);
             let temp = arr[low];
             arr[low] = arr[mid];
             arr[mid] = temp;
 
-            // console.log(arr[mid], arr[low]);
             low++;
             mid++;
         }
@@ -37,9 +35,9 @@ function sortedArray(arr) {
         }
 
         else if(arr[mid] === 2) {
-            let temp = arr[mid];
-            arr[mid] = arr[high];
-            arr[high] = temp;
+            let temp = arr[high];
+            arr[high] = 2;
+            arr[mid] = temp;
             high--;
         }
 
