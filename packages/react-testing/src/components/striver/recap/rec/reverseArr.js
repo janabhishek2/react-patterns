@@ -19,7 +19,23 @@ function reverseSecond(arr, l, r) {
     }
 }
 
-const arr = [1, 2, 3, 4, 5];
-const ans = reverseSecond(arr, 0, arr.length - 1);
+function isPalindrome(str) {
+    let arr = Array.from(str);
+    const n = arr.length;
+    let l = 0;
+    let r = n-1;
+
+    const compute = (arr, l, r) => {
+        if(l > r) return true;
+        else {
+            return (arr[l] === arr[r]) && compute(arr, l+1, r-1);
+        }
+    }
+
+    return compute(arr, l, r);
+}
+
+const str = "abbac";
+const ans = isPalindrome(str);
 
 console.log(ans);
