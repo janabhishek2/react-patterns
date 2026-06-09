@@ -9,3 +9,5 @@
 Recursion
 1. Functional, parameterised recursion
 2. reverse array.
+3. Single, multiple recursion calls: fibonacci
+4. Subsequences of array
