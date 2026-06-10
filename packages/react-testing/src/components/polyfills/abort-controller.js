@@ -1,24 +1,58 @@
-let timeoutId = null;
+// function cancelablePromise(signal) {
+//   return new Promise((resolve, reject) => {
+//     // Handle already-aborted signal
+//     if (signal.aborted) {
+//       return reject(signal.reason);
+//     }
+
+//     const timeoutId = setTimeout(() => {
+//       resolve("Operation completed");
+//     }, 5000);
+
+//     const onAbort = () => {
+//       clearTimeout(timeoutId)
+//       reject("Aborted");
+//     };
+
+//     signal.addEventListener("abort", onAbort, { once: true });
+//   });
+// }
+
+// const controller = new AbortController();
+// const signal = controller.signal;
+
+// const p = cancelablePromise(signal);
+// p.then((res) => {
+//     console.log(res);
+// }).catch((err) => {
+//     console.log("Error is", err);
+// })
+
+// controller.abort();
+
+function cancellablePromise(signal) {
+    return new Promise((resolve, reject) => {
+        if(signal.aborted) return reject(signal.reason);
+    
+        const timeoutId = setTimeout(() => {
+            return resolve(true);
+        }, 3000);
+        signal.addEventListener("abort", () => {
+            clearTimeout(timeoutId);
+            reject("This has been aborted!");
+        });
+    })
+}
+
 const controller = new AbortController();
 const signal = controller.signal;
 
-const startTimeout = () => {
-    timeoutId = setTimeout(() => {
-        console.log("Timeout started!!");
-    }, 3000);
-}
+const pr = cancellablePromise(signal);
 
-signal.addEventListener("abort", () => {
-    cancelTimeout();
-    console.log("Aborted");
-})
+pr.then((res) => {
+    console.log(res);
+}).catch(err => {
+    console.log("Err is: ", err);
+}) 
 
-const cancelTimeout = () => {
-    clearTimeout(timeoutId);
-}
-
-startTimeout();
-
-setTimeout(() => {
-    controller.abort();
-}, 1000);
+controller.abort();
