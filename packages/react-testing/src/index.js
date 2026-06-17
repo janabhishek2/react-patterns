@@ -55,13 +55,7 @@ function App() {
             alignItems: "center",
             height: "100vh",
         }}>
-            <PopOver>
-                <PopOver.Action label={"Click me!!"}>
-                </PopOver.Action>
-                <PopOver.Panel>
-                    <div>Panel conente!!</div>
-                </PopOver.Panel>
-            </PopOver>
+            
         </div>
     </React.StrictMode>);
 };
