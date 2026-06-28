@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DraggableListTest from "./DraggableList/DraggableListTest";
 
 function debounce(fn, delay) {
     let timeoutId = null;
@@ -33,12 +34,13 @@ function Tutorial(props) {
 
     return (
         <>
+        <DraggableListTest />
             {/* input */}
-            <div>
+            {/* <div>
                 <input type="text" value={search} onChange={handleChange} />
             </div>
 
-            <Item data={query} />
+            <Item data={query} /> */}
         </>
     );
 }
