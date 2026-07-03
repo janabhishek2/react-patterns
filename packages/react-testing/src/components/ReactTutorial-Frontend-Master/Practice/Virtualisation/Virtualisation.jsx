@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import './infinite.css';
+import './virtualisation.css';
 
 let items = Array.from({ length: 1000 }, (_,i ) => i);
 const ITEM_HEIGHT = 30;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import DraggableListTest from "./DraggableList/DraggableListTest";
 import OtpWrapper from "./Practice/Otp";
-import InfiniteScroll from "./Practice/InfiniteScroll";
+import Virtualisation from "./Practice/Virtualisation";
 
 function debounce(fn, delay) {
     let timeoutId = null;
@@ -36,7 +36,7 @@ function Tutorial(props) {
 
     return (
         <>
-        <InfiniteScroll />
+        <Virtualisation />
             {/* input */}
             {/* <div>
                 <input type="text" value={search} onChange={handleChange} />
