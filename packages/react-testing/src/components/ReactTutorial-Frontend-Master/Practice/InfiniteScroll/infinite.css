@@ -1,0 +1,19 @@
+.scroll-wrapper { 
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    overflow: scroll;
+    position: relative;
+}
+
+.scroll-item {
+    min-height: 30px;
+    border: 1px solid brown;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+}
