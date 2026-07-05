@@ -38,7 +38,7 @@ function Tutorial(props) {
 
     return (
         <>
-        <Popover />
+        <Popover onOpen={() => {console.log("opened")}}/>
             {/* input */}
             {/* <div>
                 <input type="text" value={search} onChange={handleChange} />

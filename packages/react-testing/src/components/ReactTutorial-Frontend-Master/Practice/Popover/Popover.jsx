@@ -47,12 +47,17 @@ function Popover({ children }) {
 Popover.Trigger = Trigger;
 Popover.Content = Content;
 
-function PopoverWrapper() {
+function PopoverWrapper({ onOpen = () => {}}) {
 
      const [isOpen, setIsOpen] = useState(false);
 
     const toggleShow = () => {
-        setIsOpen((prev) => !prev);
+        setIsOpen((prev) => {
+            if(prev === false) {
+                onOpen();
+            }
+            return !prev;
+        });
     };
 
     const triggerRef = useRef(null);
@@ -72,8 +77,6 @@ function PopoverWrapper() {
             } else {
                 contentRef.current.style.top = `${topIndexPop}px`;
             }
-
-           
         }
     }, [triggerRef?.current, contentRef?.current])
     return (
