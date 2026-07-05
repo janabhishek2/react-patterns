@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+// import DraggableListTest from "./DraggableList/DraggableListTest";
+// import OtpWrapper from "./Practice/Otp";
+// import Virtualisation from "./Practice/Virtualisation";
+// import Inf from "./Practice/InfiniteScroll";
+import Popover from "./Practice/Popover";
 
 function debounce(fn, delay) {
     let timeoutId = null;
@@ -33,12 +38,13 @@ function Tutorial(props) {
 
     return (
         <>
+        <Popover />
             {/* input */}
-            <div>
+            {/* <div>
                 <input type="text" value={search} onChange={handleChange} />
             </div>
 
-            <Item data={query} />
+            <Item data={query} /> */}
         </>
     );
 }

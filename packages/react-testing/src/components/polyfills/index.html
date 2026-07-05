@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Promises Polyfill</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        #box {  
+            width: 100px;
+            min-height: 100px;
+            background-color: red;
+            top: 0;
+            left: 0;
+            position: absolute;
+            left: 0;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Promises Polyfill Demo</h1>
-    <p>Open the console to see the resolved value.</p>
-    <script src="./polyfill-bind.js"></script>
+
+    <div>One</div>
+
+<div>Three</div>
+<script>
+  document.body.append("Two");
+</script>
+    
+    <!-- <script src="./polyfill-event-loop.js"></script> -->
 </body>
 </html>
