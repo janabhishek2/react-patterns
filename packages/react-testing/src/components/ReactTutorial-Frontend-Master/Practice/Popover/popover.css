@@ -1,0 +1,27 @@
+.popover {
+    position: relative;
+}
+
+.popover .trigger {
+    padding: 5px;
+    border: 1px solid purple;
+    background-color: grey;
+    color: white;
+    font-style: italic;
+    border-radius: 10px;
+}
+
+.content {
+    position: absolute;
+    padding: 10px;
+    border: 1px solid purple;
+    background-color: white;
+    color: black;
+    font-style: italic;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.content.hidden {
+    opacity: 0;
+}
