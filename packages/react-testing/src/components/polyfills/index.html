@@ -19,17 +19,26 @@
             left: 0;
         }
 
+        .container {
+            width: 300px;
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid black;
+        }
+
+        .content {
+            width: 100%;;
+            height: 2000px;
+        }
+
     </style>
 </head>
 <body>
-
-    <div>One</div>
-
-<div>Three</div>
-<script>
-  document.body.append("Two");
-</script>
-    
-    <!-- <script src="./polyfill-event-loop.js"></script> -->
+    <div class="container" onscroll="handleScroll()">
+        <div class="content">
+        </div>
+    </div>
+    <script src="./polyfill-throttle.js"></script>
+    <!-- <script src="./polyfill-event-loop.js"></> -->
 </body>
 </html>
