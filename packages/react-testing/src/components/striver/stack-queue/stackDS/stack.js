@@ -1,4 +1,4 @@
-export default class Stack {
+class Stack {
     constructor(maxSize = 10) {
         this.maxSize = maxSize;
         this.stack = [];
@@ -24,4 +24,10 @@ export default class Stack {
 
         return this.stack[this.stack.length - 1];
     }
+
+    isEmpty() {
+        return this.stack.length === 0;
+    }
 };
+
+module.exports = Stack;
