@@ -32,3 +32,7 @@ const prevSmallerElement = (arr) => {
 
 const ans = prevSmallerElement(arr);
 console.log(ans);
+
+module.exports = { 
+    prevSmallerElement
+}
