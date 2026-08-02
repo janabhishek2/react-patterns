@@ -1,7 +1,9 @@
 const arr = [4,4,3,3];
 const Stack = require('./stackDS/stack');
 
-// Get index of next smallest element
+// Get index of next smaller-or-equal element
+// non-strict on purpose: pse is strict, so a subarray with duplicate
+// minimums is counted once, by its leftmost minimum
 const nseIndexes = (arr) => {
     const n = arr.length;
     const st = new Stack(arr.length);
@@ -9,12 +11,12 @@ const nseIndexes = (arr) => {
     for(let i= n-1; i>=0; i--) {
         if(i== n-1) {
             nse[i] = n;
-        } else if(st.top().ele < arr[i]) {
+        } else if(st.top().ele <= arr[i]) {
             // push to stack
             // nse = n
             nse[i] = st.top().i;
-        } else if(st.top().ele >= arr[i]) {
-            while(!st.isEmpty() && st.top().ele >= arr[i]) {
+        } else if(st.top().ele > arr[i]) {
+            while(!st.isEmpty() && st.top().ele > arr[i]) {
                 st.pop();
             }
             if(st.isEmpty()) {
