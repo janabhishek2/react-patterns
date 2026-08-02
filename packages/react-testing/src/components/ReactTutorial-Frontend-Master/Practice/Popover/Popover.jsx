@@ -38,7 +38,6 @@ function Content({ children, contentRef }) {
 }
 
 function Popover({ children }) {
-   
     return (
          <div className="popover">{children}</div>
     );

@@ -6,6 +6,15 @@
 
 // Method1
 
+/**
+ * customMap(cb) — the simplest possible Array.prototype.map() polyfill.
+ *
+ * Iterates with the built-in forEach, applies `cb` to each element, and
+ * collects the results into a new array (the original is untouched).
+ *
+ * Unlike the index-based versions in the sibling files, this relies on
+ * forEach, so it naturally skips holes but does not preserve their positions.
+ */
 const customMap = function(cb){
     const newArr = [];
     this.forEach((item) => {

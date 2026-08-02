@@ -1,0 +1,32 @@
+.accordion  {
+    width: 100%;
+    /* position: relative; */
+    /* border: 1px solid gainsboro; */
+    width: 80vw;
+    height: 96px;
+    overflow: hidden;
+    transition: height 0.3s ease-in;
+}
+
+.accordion .accordion-heading {
+    /* border: 1px solid orange; */
+    background-color: lightcoral;
+    border-radius: 10px;;
+    padding: 1rem;
+    height: 96px;;
+    width: 100%;
+}
+
+.accordion-heading:focus-visible {
+    outline: 20px solid blue;
+}
+
+.accordion .accordion-content {
+    padding: 1rem;
+    background-color: beige;
+    border-radius: 10px;
+}
+
+.accordion[data-expanded="true"] {
+    height: 300px;
+}
