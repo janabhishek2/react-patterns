@@ -1,7 +1,8 @@
 // if the height of various buildings are represented as numbers in an array
 // Calculate the total water that can be stored between the buildings.
 
-const heights = [1, 0, 3, 0, 3, 0, 1];
+// const heights = [1, 0, 3, 0, 3, 0, 1];
+const heights= [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
 
 const min = (a, b) => a > b ? b: a;
 
