@@ -1,3 +1,5 @@
+// The commented block below is the original reference implementation kept for
+// study — it shows a cancellable promise driven by an AbortController signal.
 // function cancelablePromise(signal) {
 //   return new Promise((resolve, reject) => {
 //     // Handle already-aborted signal
@@ -30,10 +32,22 @@
 
 // controller.abort();
 
+/**
+ * cancellablePromise(signal)
+ * Wraps a long-running async task (here, a 3s timer) in a promise that can be
+ * cancelled through an AbortSignal.
+ *
+ *  - If the signal is ALREADY aborted when we start, reject immediately with
+ *    the abort reason (no point starting the work).
+ *  - Otherwise start a 3s timer that resolves with `true` on completion.
+ *  - We also subscribe to the signal's "abort" event: if it fires before the
+ *    timer completes, we clear the pending timeout and reject instead —
+ *    this is what makes the operation cancellable.
+ */
 function cancellablePromise(signal) {
     return new Promise((resolve, reject) => {
         if(signal.aborted) return reject(signal.reason);
-    
+
         const timeoutId = setTimeout(() => {
             return resolve(true);
         }, 3000);
@@ -44,6 +58,8 @@ function cancellablePromise(signal) {
     })
 }
 
+// AbortController produces a `signal` we can pass around and an `.abort()`
+// method that flips that signal to the aborted state.
 const controller = new AbortController();
 const signal = controller.signal;
 
@@ -53,6 +69,8 @@ pr.then((res) => {
     console.log(res);
 }).catch(err => {
     console.log("Err is: ", err);
-}) 
+})
 
+// Called synchronously right after — so the abort fires before the 3s timer,
+// and the promise rejects with "This has been aborted!".
 controller.abort();

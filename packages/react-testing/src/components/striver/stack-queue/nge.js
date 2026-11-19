@@ -38,3 +38,7 @@ const getCircularNge = (arr) => {
 
 const nge = getCircularNge(arr);
 console.log(nge);
+
+module.exports = {
+    getNge
+};

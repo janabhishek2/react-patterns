@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import AutoComplete from "./AutoComplete";
 // import DraggableListTest from "./DraggableList/DraggableListTest";
 // import OtpWrapper from "./Practice/Otp";
 // import Virtualisation from "./Practice/Virtualisation";
 // import Inf from "./Practice/InfiniteScroll";
-import Popover from "./Practice/Popover";
+// import Popover from "./Practice/Popover";
+// import Toggle from "./Practice/Toggle";
+// import AccordionWrapper from "./Accordion";
 
 function debounce(fn, delay) {
     let timeoutId = null;
@@ -37,15 +40,10 @@ function Tutorial(props) {
     }
 
     return (
-        <>
-        <Popover />
-            {/* input */}
-            {/* <div>
-                <input type="text" value={search} onChange={handleChange} />
-            </div>
-
-            <Item data={query} /> */}
-        </>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <AutoComplete />
+            
+        </div>
     );
 }
 
