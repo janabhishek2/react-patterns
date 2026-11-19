@@ -32,3 +32,10 @@ const anmol = {
 // Called without binding → `this` is the global object → logs "Abhishek".
 // (Try: nameOp.myBind(anmol)() to see binding to `anmol` instead.)
 nameOp();
+
+
+function myBind(thisArg, ...args) {
+    return function() {   
+        this.call(thisArg, ...args);
+    }
+}

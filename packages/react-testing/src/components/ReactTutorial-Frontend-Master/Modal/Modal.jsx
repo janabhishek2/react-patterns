@@ -81,8 +81,8 @@ function Modal({ onClose, children }) {
             
             {/* backdrop */}
             <div className="dialog-backdrop" onClick={handleClose} ref={backdropRef}></div>
+            
             {/* Modal Content */}
-
             <div className="dialog-content" ref={contentRef}>
                 {
                     !!onClose && (<button ref={closeRef} onClick={handleClose} className="dialog-close">

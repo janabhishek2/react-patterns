@@ -55,13 +55,12 @@ function InfiniteScrollIntersectionObserver() {
         if (elementsRef.current?.length >= 0) {
             const observer = new IntersectionObserver(function (entries) {
                 entries.forEach((entry) => {
-                    if( entry.isIntersecting) {
+                    if(entry.isIntersecting) {
                         observer.unobserve(entries[0].target)
                         loadMoreData();
                     }
                 })
             }, {});
-
             observer.observe(elementsRef.current.at(-1));
         }
     }, [data]);
